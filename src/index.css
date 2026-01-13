@@ -1,3 +1,6 @@
+/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
 :root {
   /* Color Palette - Warm & Natural */
   --color-primary: #4A5D4F;
@@ -34,9 +37,11 @@
   --spacing-2xl: 4rem;
   --spacing-3xl: 6rem;
 
-  /* Typography - Elegant Serif */
-  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-heading: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  /* Typography - Luxury System */
+  --font-heading: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-primary: var(--font-body);
+  --font-secondary: var(--font-heading);
 
   /* Shadows */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
@@ -68,15 +73,17 @@ html {
 }
 
 body {
-  font-family: var(--font-primary);
+  font-family: var(--font-body);
   color: var(--color-text);
   background-color: var(--color-bg);
+  font-size: 16px;
+  font-weight: 400;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Typography */
+/* Typography - Luxury System */
 h1,
 h2,
 h3,
@@ -84,29 +91,65 @@ h4,
 h5,
 h6 {
   font-family: var(--font-heading);
-  font-weight: 700;
   line-height: 1.2;
   color: var(--color-text);
+  margin: 0;
 }
 
+/* H1: 72px, Uppercase, Letter spacing 0.15em */
 h1 {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  margin-bottom: var(--spacing-md);
+  font-size: clamp(2.5rem, 6vw, 72px);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: var(--spacing-lg);
 }
 
+/* H2: 42px, Uppercase, Letter spacing 0.1em */
 h2 {
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(1.75rem, 4vw, 42px);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
   margin-bottom: var(--spacing-md);
 }
 
+/* H3 (Sub-labels): 18px, Uppercase, Bold (700), Letter spacing 0.2em */
 h3 {
-  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
   margin-bottom: var(--spacing-sm);
 }
 
-p {
+h4,
+h5,
+h6 {
+  font-family: var(--font-body);
+  font-weight: 600;
+  margin-bottom: var(--spacing-sm);
+}
+
+h4 {
+  font-size: 1.25rem;
+}
+
+h5 {
   font-size: 1.125rem;
-  line-height: 1.8;
+}
+
+h6 {
+  font-size: 1rem;
+}
+
+/* Body Text: 16px, Regular (400), Line height 1.6 */
+p {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
   color: var(--color-text-light);
   margin-bottom: var(--spacing-sm);
 }
@@ -129,21 +172,23 @@ a:hover {
   padding: 0 var(--spacing-lg);
 }
 
-/* Buttons */
+/* Buttons: 14px, Uppercase, Semi-Bold, Letter spacing 0.1em */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: var(--spacing-xs);
   padding: 1rem 2rem;
-  font-size: 1rem;
+  font-family: var(--font-body);
+  font-size: 14px;
   font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
   border: none;
   border-radius: var(--radius-md);
   cursor: pointer;
   transition: all var(--transition-base);
   text-decoration: none;
-  font-family: var(--font-primary);
 }
 
 .btn-primary {
@@ -171,7 +216,7 @@ a:hover {
 
 .btn-large {
   padding: 1.25rem 2.5rem;
-  font-size: 1.125rem;
+  font-size: 16px;
 }
 
 /* Glass Effect */

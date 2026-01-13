@@ -8,7 +8,7 @@ const About = () => {
                 <div className="about-grid">
                     <div className="about-image">
                         <img
-                            src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80"
+                            src={`${SITE_CONFIG.mediaBaseUrl}/${SITE_CONFIG.headshot}`}
                             alt={SITE_CONFIG.agentName}
                         />
                     </div>
@@ -19,16 +19,15 @@ const About = () => {
                         <p className="about-label">LUXURY ESTATES AGENT</p>
 
                         <p>
-                            {SITE_CONFIG.agentName} brings an abundance of personal real estate experience and solid business
-                            background to each transaction. Raised in a real estate family, he specializes in
-                            recognizing opportunities and forecasting emerging trends in various neighborhood
-                            markets in Dallas.
+                            {SITE_CONFIG.agentName} brings a wealth of real estate expertise and a proven track record
+                            to every transaction. With deep roots in the Dallas market, he excels at identifying
+                            prime opportunities and anticipating emerging trends across the city's diverse neighborhoods.
                         </p>
 
                         <p>
-                            Cole offers a thorough, hands-on approach to real estate that is discerning and
-                            collaborative. Cole knows the importance of assembling a great team that
-                            understands your goals.
+                            {SITE_CONFIG.agentName.split(' ')[0]} delivers a meticulous, client-focused approach to real estate
+                            that is both strategic and personalized. {SITE_CONFIG.agentName.split(' ')[0]} understands that
+                            success requires more than expertise—it demands assembling the right team to bring your vision to life.
                         </p>
 
                         <p className="about-license">{SITE_CONFIG.agentName} | {SITE_CONFIG.agentLicense}</p>

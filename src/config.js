@@ -8,4 +8,6 @@ export const SITE_CONFIG = {
   mediaBaseUrl: "https://pub-0a14d2bf83cc482ab589da588a45c6b0.r2.dev",
   // Hero video from R2
   heroVideo: "dallas-house.mp4",
+  // Headshot from R2
+  headshot: "cole-swearingen-headshot.webp",
 };
