@@ -36,20 +36,27 @@
 .hero-container {
     position: relative;
     z-index: 2;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .hero-content {
     text-align: center;
     color: var(--color-text-inverse);
+    max-width: 900px;
+    width: 100%;
 }
 
 .hero-name {
     font-family: var(--font-heading);
-    font-size: clamp(3rem, 8vw, 6rem);
+    font-size: clamp(2.4rem, 6.4vw, 4.8rem);
+    /* 20% smaller than previous */
     font-weight: 400;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.15em;
     margin-bottom: var(--spacing-md);
-    line-height: 1;
+    line-height: 1.1;
     color: var(--color-text-inverse);
 }
 

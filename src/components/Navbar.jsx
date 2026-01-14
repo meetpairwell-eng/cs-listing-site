@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { SITE_CONFIG } from '../config';
 import './Navbar.css';
 
-const Navbar = () => {
+const Navbar = ({ onContactClick }) => {
     const [scrolled, setScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -21,6 +21,11 @@ const Navbar = () => {
             element.scrollIntoView({ behavior: 'smooth' });
             setMobileMenuOpen(false);
         }
+    };
+
+    const handleContactClick = () => {
+        setMobileMenuOpen(false);
+        onContactClick();
     };
 
     return (
@@ -45,7 +50,7 @@ const Navbar = () => {
                     <li><a onClick={() => scrollToSection('about')}>ABOUT</a></li>
                     <li><a onClick={() => scrollToSection('listings')}>PROPERTIES</a></li>
                     <li><a onClick={() => scrollToSection('services')}>SERVICES</a></li>
-                    <li><a onClick={() => scrollToSection('contact')}>LET'S CONNECT</a></li>
+                    <li><a onClick={handleContactClick}>LET'S CONNECT</a></li>
                 </ul>
             </div>
         </nav>

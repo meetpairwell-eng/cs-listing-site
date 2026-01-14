@@ -8,6 +8,8 @@
     grid-template-columns: 400px 1fr;
     gap: var(--spacing-3xl);
     align-items: start;
+    padding: 0 5%;
+    /* Adds padding to left and right of the grid contents */
 }
 
 .about-image {

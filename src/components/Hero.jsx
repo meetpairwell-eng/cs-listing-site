@@ -25,7 +25,6 @@ const Hero = () => {
                 <div className="hero-content">
                     <h1 className="hero-name">{SITE_CONFIG.agentName.toUpperCase()}</h1>
                     <p className="hero-subtitle">LUXURY ESTATES AGENT</p>
-                    <p className="hero-license">{SITE_CONFIG.agentLicense}</p>
                     <a href="#listings" className="btn-hero">
                         SEARCH HOMES
                     </a>

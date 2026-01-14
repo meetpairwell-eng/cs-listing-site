@@ -1,5 +1,6 @@
 .testimonials-section {
-    padding: var(--spacing-3xl) 0;
+    padding: 50px 0;
+    /* Significantly reduced for visibility */
     background-color: var(--color-bg-secondary);
     overflow: hidden;
     position: relative;
@@ -7,8 +8,11 @@
 
 .testimonials-header {
     text-align: center;
-    margin-bottom: var(--spacing-2xl);
+    margin-bottom: var(--spacing-md);
+    /* Reduced spacing to keep title visible */
     padding: 0 var(--spacing-md);
+    position: relative;
+    z-index: 2;
 }
 
 .testimonials-header h2 {
@@ -16,12 +20,12 @@
     font-size: clamp(2rem, 4vw, 3rem);
     letter-spacing: 0.1em;
     margin-bottom: var(--spacing-sm);
-    color: var(--color-text);
+    color: white;
 }
 
 .testimonials-subtitle {
     font-family: var(--font-body);
-    color: var(--color-text-light);
+    color: rgba(255, 255, 255, 0.9);
     font-size: 1rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
@@ -32,7 +36,8 @@
     width: 100%;
     overflow: visible;
     /* Allows cards to peek */
-    padding-bottom: var(--spacing-xl);
+    padding-bottom: var(--spacing-sm);
+    /* Reduced to bring controls closer */
 }
 
 .testimonials-track {
@@ -40,14 +45,16 @@
     justify-content: center;
     align-items: center;
     gap: var(--spacing-xl);
-    padding: var(--spacing-lg) 0;
+    padding: var(--spacing-sm) 0;
+    /* Reduced to bring title and controls closer */
     width: 100%;
 }
 
 .testimonial-card {
     flex: 0 0 600px;
     background: white;
-    padding: var(--spacing-2xl) var(--spacing-xl);
+    padding: 30px var(--spacing-xl);
+    /* Significantly reduced for visibility */
     text-align: center;
     border-radius: var(--radius-sm);
     box-shadow: var(--shadow-md);
@@ -58,7 +65,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 400px;
+    min-height: 280px;
+    /* Dramatically reduced to make change obvious */
     position: relative;
     /* For z-index context */
 }
@@ -136,25 +144,28 @@
     display: flex;
     justify-content: center;
     gap: var(--spacing-md);
-    margin-top: var(--spacing-lg);
+    margin-top: var(--spacing-sm);
+    /* Reduced to keep controls close to cards */
+    position: relative;
+    z-index: 2;
 }
 
 .control-btn {
     width: 50px;
     height: 50px;
-    border: 1px solid var(--color-border);
+    border: 1px solid white;
     background: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     transition: all var(--transition-base);
-    color: var(--color-text);
+    color: white;
 }
 
 .control-btn:hover {
-    border-color: var(--color-text);
-    background: var(--color-bg);
+    border-color: white;
+    background: rgba(255, 255, 255, 0.2);
 }
 
 /* Background Image Integration (Optional based on design) */
@@ -168,8 +179,7 @@
     /* Fallback/Placeholder */
     background-size: cover;
     background-position: center;
-    opacity: 0.1;
-    /* Very subtle background texture */
+    opacity: 1;
     z-index: 0;
     pointer-events: none;
 }
@@ -179,8 +189,8 @@
     .testimonial-card {
         flex: 0 0 85vw;
         /* Almost full width on mobile */
-        min-height: 350px;
-        padding: var(--spacing-xl);
+        min-height: 298px;
+        padding: calc(var(--spacing-xl) * 0.85);
     }
 
     .testimonials-track {

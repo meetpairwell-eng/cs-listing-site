@@ -77,7 +77,7 @@ body {
   color: var(--color-text);
   background-color: var(--color-bg);
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -99,7 +99,7 @@ h6 {
 /* H1: 72px, Uppercase, Letter spacing 0.15em */
 h1 {
   font-size: clamp(2.5rem, 6vw, 72px);
-  font-weight: 400;
+  font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.15em;
   margin-bottom: var(--spacing-lg);
@@ -108,7 +108,7 @@ h1 {
 /* H2: 42px, Uppercase, Letter spacing 0.1em */
 h2 {
   font-size: clamp(1.75rem, 4vw, 42px);
-  font-weight: 400;
+  font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: var(--spacing-md);
@@ -148,7 +148,7 @@ h6 {
 p {
   font-family: var(--font-body);
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1.6;
   color: var(--color-text-light);
   margin-bottom: var(--spacing-sm);

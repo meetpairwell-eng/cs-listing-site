@@ -1,11 +1,7 @@
 import { SITE_CONFIG } from '../config';
 import './Contact.css';
 
-const Contact = () => {
-    const handleConnect = () => {
-        window.location.href = `mailto:${SITE_CONFIG.agentEmail}`;
-    };
-
+const Contact = ({ onContactClick }) => {
     return (
         <section id="contact" className="contact-hero-section">
             <div className="contact-hero-overlay"></div>
@@ -17,7 +13,7 @@ const Contact = () => {
                     writing and negotiating a contract, and much more. Contact {SITE_CONFIG.agentName.split(' ')[0]}
                     today to discuss all your real estate needs!
                 </p>
-                <button onClick={handleConnect} className="btn-contact-hero">
+                <button onClick={onContactClick} className="btn-contact-hero">
                     LET'S CONNECT
                 </button>
             </div>

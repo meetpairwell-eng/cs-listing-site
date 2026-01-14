@@ -3,6 +3,8 @@ export const SITE_CONFIG = {
   agentInitials: "CS",
   agentEmail: "cole.swearingen@compass.com",
   agentLicense: "CA DRE# 02052462",
+  agentPhone: "(214) 555-0100", // Update with real phone number
+  agentAddress: "Compass, 5950 Berkshire Ln #700, Dallas, TX 75225",
   agency: "Compass Real Estate",
   // Your specific R2 Placeholder URL
   mediaBaseUrl: "https://pub-0a14d2bf83cc482ab589da588a45c6b0.r2.dev",
@@ -10,4 +12,11 @@ export const SITE_CONFIG = {
   heroVideo: "dallas-house.mp4",
   // Headshot from R2
   headshot: "cole-swearingen-headshot.webp",
+  // Social Media Links (update with real URLs or set to null to hide)
+  socialMedia: {
+    facebook: null,
+    instagram: null,
+    linkedin: null,
+    zillow: null
+  }
 };

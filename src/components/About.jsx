@@ -30,7 +30,7 @@ const About = () => {
                             success requires more than expertise—it demands assembling the right team to bring your vision to life.
                         </p>
 
-                        <p className="about-license">{SITE_CONFIG.agentName} | {SITE_CONFIG.agentLicense}</p>
+
 
                         <a href="#contact" className="btn-minimal">
                             LEARN MORE

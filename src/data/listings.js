@@ -16,13 +16,13 @@ export const listings = [
         "id": "notable-sale-01",
         "status": "Sold",
         "title": "416 21ST PL",
-        "address": "416 21ST PL, SANTA MONICA, CA 90402",
-        "price": "$12,500,000",
-        "heroImage": "house-thumb.jpg",
+        "address": "5609 Ursula Ln, Dallas, TX 75229",
+        "price": "$6,995,000",
+        "heroImage": "5609-Ursula-Hero.webp",
         "specs": {
-            "beds": 6,
+            "beds": 5,
             "baths": 8,
-            "sqft": "6,370"
+            "sqft": "7,200"
         }
     },
     {
