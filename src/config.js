@@ -18,5 +18,17 @@ export const SITE_CONFIG = {
     instagram: null,
     linkedin: null,
     zillow: null
+  },
+  // Mapbox Configuration
+  mapbox: {
+    accessToken: 'pk.eyJ1IjoibWVldHBhaXJ3ZWxsIiwiYSI6ImNta2VkamIxdjA2MXUzbG9nMHZhMnBhdmQifQ.LoWOwOUDP11K7-RW8xV1Lw',
+    defaultCenter: [-96.7970, 32.7767], // Dallas, TX
+    defaultZoom: 11
+  },
+  // Google Maps Configuration
+  googleMaps: {
+    apiKey: 'AIzaSyC6GA8oF04SukbTbmc83cxCznQHDeBvsy0',
+    defaultCenter: { lat: 32.7767, lng: -96.7970 }, // Dallas, TX
+    defaultZoom: 11
   }
 };

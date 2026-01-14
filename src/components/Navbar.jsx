@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { SITE_CONFIG } from '../config';
 import './Navbar.css';
 
-const Navbar = ({ onContactClick }) => {
+const Navbar = ({ onContactClick, onSearchClick, onHomeClick, currentView }) => {
     const [scrolled, setScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -16,11 +16,22 @@ const Navbar = ({ onContactClick }) => {
     }, []);
 
     const scrollToSection = (id) => {
-        const element = document.getElementById(id);
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-            setMobileMenuOpen(false);
+        if (currentView !== 'home') {
+            onHomeClick();
+            // Wait for view to switch then scroll
+            setTimeout(() => {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                }
+            }, 100);
+        } else {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
         }
+        setMobileMenuOpen(false);
     };
 
     const handleContactClick = () => {
@@ -28,11 +39,22 @@ const Navbar = ({ onContactClick }) => {
         onContactClick();
     };
 
+    const handleSearchClick = () => {
+        setMobileMenuOpen(false);
+        onSearchClick();
+    };
+
+    const handleHomeClick = () => {
+        setMobileMenuOpen(false);
+        onHomeClick();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
     return (
-        <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+        <nav className={`navbar ${scrolled || currentView === 'search' ? 'scrolled' : ''}`}>
             <div className="container navbar-container">
                 {/* Logo - Agent Initials */}
-                <div className="navbar-logo">
+                <div className="navbar-logo" onClick={handleHomeClick} style={{ cursor: 'pointer' }}>
                     <span className="logo-initials">{SITE_CONFIG.agentInitials}</span>
                 </div>
 
@@ -48,7 +70,7 @@ const Navbar = ({ onContactClick }) => {
 
                 <ul className={`navbar-menu ${mobileMenuOpen ? 'open' : ''}`}>
                     <li><a onClick={() => scrollToSection('about')}>ABOUT</a></li>
-                    <li><a onClick={() => scrollToSection('listings')}>PROPERTIES</a></li>
+                    <li><a onClick={handleSearchClick}>PROPERTY SEARCH</a></li>
                     <li><a onClick={() => scrollToSection('services')}>SERVICES</a></li>
                     <li><a onClick={handleContactClick}>LET'S CONNECT</a></li>
                 </ul>
