@@ -1,5 +1,18 @@
 export const listings = [
     {
+        "id": "potomac-3808",
+        "status": "Sold",
+        "title": "3808 POTOMAC AVE",
+        "address": "3808 POTOMAC AVE, HIGHLAND PARK, TX 75205",
+        "price": "$16,900,000",
+        "heroImage": "3808-Potomac-Hero.webp",
+        "specs": {
+            "beds": 6,
+            "baths": 11,
+            "sqft": "10,000"
+        }
+    },
+    {
         "id": "notable-sale-01",
         "status": "Sold",
         "title": "416 21ST PL",
