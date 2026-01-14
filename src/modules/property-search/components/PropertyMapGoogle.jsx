@@ -12,6 +12,9 @@ const PropertyMapGoogle = ({ listings, onMapMove, onMarkerClick, selectedListing
     const [activeMarker, setActiveMarker] = useState(null);
     const [mapLoaded, setMapLoaded] = useState(false);
 
+    console.log('Google Maps API Key:', SITE_CONFIG.googleMaps.apiKey ? 'Loaded' : 'Missing');
+    console.log('API Key value:', SITE_CONFIG.googleMaps.apiKey);
+
     const { isLoaded } = useJsApiLoader({
         id: 'google-map-script',
         googleMapsApiKey: SITE_CONFIG.googleMaps.apiKey

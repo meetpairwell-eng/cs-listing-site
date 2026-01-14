@@ -27,7 +27,7 @@ export const SITE_CONFIG = {
   },
   // Google Maps Configuration
   googleMaps: {
-    apiKey: 'AIzaSyC6GA8oF04SukbTbmc83cxCznQHDeBvsy0',
+    apiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
     defaultCenter: { lat: 32.7767, lng: -96.7970 }, // Dallas, TX
     defaultZoom: 11
   }
