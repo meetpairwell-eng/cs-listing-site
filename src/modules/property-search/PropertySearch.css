@@ -107,10 +107,10 @@
 
 .property-search-container {
     display: flex;
-    height: calc(100vh - 140px);
     width: 100%;
     flex: 1;
-    margin-top: 60px;
+    overflow: hidden;
+    /* Ensure content stays within container */
 }
 
 /* Sidebar */
