@@ -11,6 +11,7 @@ const PropertyMapGoogle = ({ listings, onMapMove, onMarkerClick, selectedListing
     const [map, setMap] = useState(null);
     const [activeMarker, setActiveMarker] = useState(null);
     const [mapLoaded, setMapLoaded] = useState(false);
+    const [isInitialLoad, setIsInitialLoad] = useState(true);
 
     console.log('Google Maps API Key:', SITE_CONFIG.googleMaps.apiKey ? 'Loaded' : 'Missing');
     console.log('API Key value:', SITE_CONFIG.googleMaps.apiKey);
@@ -24,15 +25,19 @@ const PropertyMapGoogle = ({ listings, onMapMove, onMarkerClick, selectedListing
         console.log('Google Map loaded successfully!');
         setMap(map);
         setMapLoaded(true);
+        // Allow bounds changes after a short delay to ensure initial center is set
+        setTimeout(() => {
+            setIsInitialLoad(false);
+        }, 1000);
     }, []);
 
     const onUnmount = useCallback(() => {
         setMap(null);
     }, []);
 
-    // Handle map bounds change
+    // Handle map bounds change - skip on initial load
     const handleBoundsChanged = useCallback(() => {
-        if (map && onMapMove) {
+        if (map && onMapMove && !isInitialLoad) {
             const bounds = map.getBounds();
             if (bounds) {
                 const ne = bounds.getNorthEast();
@@ -45,7 +50,7 @@ const PropertyMapGoogle = ({ listings, onMapMove, onMarkerClick, selectedListing
                 });
             }
         }
-    }, [map, onMapMove]);
+    }, [map, onMapMove, isInitialLoad]);
 
     // Fly to selected listing
     useEffect(() => {
