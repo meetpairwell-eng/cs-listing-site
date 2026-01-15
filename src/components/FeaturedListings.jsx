@@ -1,46 +1,51 @@
 import { Link } from 'react-router-dom';
-import { mockListings } from '../modules/property-search/api/mockData';
+import { getSoldListings } from '../data/listings';
+import { SITE_CONFIG } from '../config';
 import './FeaturedListings.css';
 
 const FeaturedListings = () => {
-    // Get first 3 sold properties
-    const soldListings = mockListings
-        .filter(listing => listing.status === 'Sold')
-        .slice(0, 3);
+    const listings = getSoldListings();
 
-    const formatPrice = (price) => {
-        if (price >= 1000000) {
-            return `$${(price / 1000000).toFixed(1)}M`;
-        }
-        return `$${price.toLocaleString()}`;
+    const getMediaUrl = (filename) => {
+        return `${SITE_CONFIG.mediaBaseUrl}/${filename}`;
     };
 
     return (
-        <section id="listings" className="featured-listings">
+        <section id="listings" className="section listings-section">
             <div className="container">
-                <h2 className="section-title">NOTABLE SALES</h2>
+                <div className="section-header text-center">
+                    <h2>NOTABLE SALES</h2>
+                </div>
 
                 <div className="listings-grid">
-                    {soldListings.map((listing) => (
+                    {listings.map((listing) => (
                         <div key={listing.id} className="listing-card">
                             <div className="listing-image">
-                                <img src={listing.image} alt={listing.address} />
+                                <img
+                                    src={getMediaUrl(listing.heroImage)}
+                                    alt={listing.title}
+                                    onError={(e) => {
+                                        e.target.src = 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80';
+                                    }}
+                                />
                                 <div className="listing-status">{listing.status}</div>
                             </div>
-                            <div className="listing-info">
-                                <h3 className="listing-price">{formatPrice(listing.price)}</h3>
+
+                            <div className="listing-content">
+                                <h3 className="listing-title">{listing.title}</h3>
                                 <p className="listing-address">{listing.address}</p>
-                                <p className="listing-details">
-                                    {listing.beds} BD | {listing.baths} BA | {listing.sqft.toLocaleString()} SQ.FT.
+                                <p className="listing-specs">
+                                    {listing.specs.beds} BD | {listing.specs.baths} BA | {listing.specs.sqft} SQ.FT.
                                 </p>
+                                <div className="listing-price">{listing.price}</div>
                             </div>
                         </div>
                     ))}
                 </div>
 
-                <div className="view-all-container">
-                    <Link to="/properties" className="btn-view-all">
-                        VIEW ALL PROPERTIES
+                <div className="text-center" style={{ marginTop: '40px' }}>
+                    <Link to="/properties" className="btn-primary">
+                        View All Properties
                     </Link>
                 </div>
             </div>
