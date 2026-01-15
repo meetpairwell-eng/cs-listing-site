@@ -1,10 +1,15 @@
 import { useState, useEffect } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import useFavorites from '../hooks/useFavorites';
 import { SITE_CONFIG } from '../config';
 import './Navbar.css';
 
-const Navbar = ({ onContactClick, onSearchClick, onHomeClick, onPropertiesClick, currentView }) => {
+const Navbar = ({ onContactClick }) => {
     const [scrolled, setScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const location = useLocation();
+    const navigate = useNavigate();
+    const { favoritesCount } = useFavorites();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -28,9 +33,9 @@ const Navbar = ({ onContactClick, onSearchClick, onHomeClick, onPropertiesClick,
     }, [mobileMenuOpen]);
 
     const scrollToSection = (id) => {
-        if (currentView !== 'home') {
-            onHomeClick();
-            // Wait for view to switch then scroll
+        if (location.pathname !== '/') {
+            navigate('/');
+            // Wait for navigation then scroll
             setTimeout(() => {
                 const element = document.getElementById(id);
                 if (element) {
@@ -51,27 +56,23 @@ const Navbar = ({ onContactClick, onSearchClick, onHomeClick, onPropertiesClick,
         onContactClick();
     };
 
-    const handleSearchClick = () => {
+    const handleLogoClick = () => {
         setMobileMenuOpen(false);
-        onSearchClick();
-    };
-
-    const handleHomeClick = () => {
-        setMobileMenuOpen(false);
-        onHomeClick();
+        navigate('/');
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
-    const handlePropertiesClick = () => {
+    const closeMobileMenu = () => {
         setMobileMenuOpen(false);
-        onPropertiesClick();
     };
 
+    const isSearchPage = location.pathname === '/search';
+
     return (
-        <nav className={`navbar ${scrolled || currentView === 'search' ? 'scrolled' : ''}`}>
+        <nav className={`navbar ${scrolled || isSearchPage ? 'scrolled' : ''}`}>
             <div className="container navbar-container">
                 {/* Logo - Agent Initials */}
-                <div className="navbar-logo" onClick={handleHomeClick} style={{ cursor: 'pointer' }}>
+                <div className="navbar-logo" onClick={handleLogoClick} style={{ cursor: 'pointer' }}>
                     <span className="logo-initials">{SITE_CONFIG.agentInitials}</span>
                 </div>
 
@@ -87,9 +88,21 @@ const Navbar = ({ onContactClick, onSearchClick, onHomeClick, onPropertiesClick,
 
                 <ul className={`navbar-menu ${mobileMenuOpen ? 'open' : ''}`}>
                     <li><a onClick={() => scrollToSection('about')}>ABOUT</a></li>
-                    <li><a onClick={handlePropertiesClick}>PROPERTIES</a></li>
-                    <li><a onClick={handleSearchClick}>HOME SEARCH</a></li>
+                    <li>
+                        <Link to="/properties" onClick={closeMobileMenu}>PROPERTIES</Link>
+                    </li>
+                    <li>
+                        <Link to="/search" onClick={closeMobileMenu}>HOME SEARCH</Link>
+                    </li>
                     <li><a onClick={() => scrollToSection('services')}>SERVICES</a></li>
+                    <li>
+                        <Link to="/favorites" onClick={closeMobileMenu} className="favorites-link">
+                            FAVORITES
+                            {favoritesCount > 0 && (
+                                <span className="favorites-badge">{favoritesCount}</span>
+                            )}
+                        </Link>
+                    </li>
                     <li><a onClick={handleContactClick}>LET'S CONNECT</a></li>
                 </ul>
             </div>

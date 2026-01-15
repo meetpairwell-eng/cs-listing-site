@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Services from './components/Services';
@@ -10,49 +11,79 @@ import ContactModal from './components/ContactModal';
 import FloatingContactButton from './components/FloatingContactButton';
 import PropertySearch from './modules/property-search/PropertySearch';
 import FeaturedProperties from './pages/FeaturedProperties';
+import Favorites from './pages/Favorites';
 import Footer from './components/Footer';
 import './App.css';
 
+// Home Page Component
+const HomePage = ({ onContactClick }) => (
+  <>
+    <Hero />
+    <Services />
+    <About />
+    <FeaturedListings />
+    <Testimonials />
+    <Contact onContactClick={onContactClick} />
+    <Footer />
+  </>
+);
+
 function App() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
-  const [currentView, setCurrentView] = useState('home'); // 'home', 'search', or 'featured'
 
   return (
-    <div className="App">
-      <Navbar
-        onContactClick={() => setIsContactModalOpen(true)}
-        onSearchClick={() => setCurrentView('search')}
-        onHomeClick={() => setCurrentView('home')}
-        onPropertiesClick={() => setCurrentView('featured')}
-        currentView={currentView}
-      />
+    <BrowserRouter>
+      <div className="App">
+        <Navbar onContactClick={() => setIsContactModalOpen(true)} />
 
-      {currentView === 'home' ? (
-        <>
-          <Hero />
-          <Services />
-          <About />
-          <FeaturedListings onViewAll={() => setCurrentView('featured')} />
-          <Testimonials />
-          <Contact onContactClick={() => setIsContactModalOpen(true)} />
-          <Footer />
-        </>
-      ) : currentView === 'search' ? (
-        <PropertySearch />
-      ) : (
-        <>
-          <FeaturedProperties />
-          <Footer />
-        </>
-      )}
+        <Routes>
+          {/* Home Page */}
+          <Route
+            path="/"
+            element={
+              <HomePage
+                onContactClick={() => setIsContactModalOpen(true)}
+              />
+            }
+          />
 
-      <FloatingContactButton onClick={() => setIsContactModalOpen(true)} />
+          {/* Property Search */}
+          <Route path="/search" element={<PropertySearch />} />
 
-      <ContactModal
-        isOpen={isContactModalOpen}
-        onClose={() => setIsContactModalOpen(false)}
-      />
-    </div>
+          {/* Featured Properties */}
+          <Route
+            path="/properties"
+            element={
+              <>
+                <FeaturedProperties />
+                <Footer />
+              </>
+            }
+          />
+
+          {/* Favorites */}
+          <Route
+            path="/favorites"
+            element={
+              <>
+                <Favorites />
+                <Footer />
+              </>
+            }
+          />
+
+          {/* Catch all - redirect to home */}
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+
+        <FloatingContactButton onClick={() => setIsContactModalOpen(true)} />
+
+        <ContactModal
+          isOpen={isContactModalOpen}
+          onClose={() => setIsContactModalOpen(false)}
+        />
+      </div>
+    </BrowserRouter>
   );
 }
 

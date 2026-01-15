@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { SITE_CONFIG } from '../config';
 import './Hero.css';
 
@@ -25,9 +26,9 @@ const Hero = () => {
                 <div className="hero-content">
                     <h1 className="hero-name">{SITE_CONFIG.agentName.toUpperCase()}</h1>
                     <p className="hero-subtitle">LUXURY ESTATES AGENT</p>
-                    <a href="#listings" className="btn-hero">
+                    <Link to="/search" className="btn-hero">
                         SEARCH HOMES
-                    </a>
+                    </Link>
                 </div>
             </div>
         </section>

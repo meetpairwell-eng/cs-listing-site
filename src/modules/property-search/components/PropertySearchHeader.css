@@ -211,3 +211,30 @@
 .action-btn.save:hover {
     background: #333;
 }
+
+/* Clear Filters Button */
+.clear-filters-btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid #ddd;
+    background: white;
+    border-radius: 20px;
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+    color: var(--color-text-light);
+}
+
+.clear-filters-btn:hover {
+    background: #f8f8f8;
+    border-color: #000;
+    color: #000;
+}
+
+/* Filter Count Badge */
+.filter-count-badge {
+    color: var(--color-primary);
+    font-size: 20px;
+    margin-left: 4px;
+}

@@ -1,54 +1,48 @@
-import { getSoldListings } from '../data/listings';
-import { SITE_CONFIG } from '../config';
+import { Link } from 'react-router-dom';
+import { mockListings } from '../modules/property-search/api/mockData';
 import './FeaturedListings.css';
 
-const FeaturedListings = ({ onViewAll }) => {
-    const listings = getSoldListings();
+const FeaturedListings = () => {
+    // Get first 3 sold properties
+    const soldListings = mockListings
+        .filter(listing => listing.status === 'Sold')
+        .slice(0, 3);
 
-    const getMediaUrl = (filename) => {
-        return `${SITE_CONFIG.mediaBaseUrl}/${filename}`;
+    const formatPrice = (price) => {
+        if (price >= 1000000) {
+            return `$${(price / 1000000).toFixed(1)}M`;
+        }
+        return `$${price.toLocaleString()}`;
     };
 
     return (
-        <section id="listings" className="section listings-section">
+        <section id="listings" className="featured-listings">
             <div className="container">
-                <div className="section-header text-center">
-                    <h2>NOTABLE SALES</h2>
-                </div>
+                <h2 className="section-title">NOTABLE SALES</h2>
 
                 <div className="listings-grid">
-                    {listings.map((listing) => (
+                    {soldListings.map((listing) => (
                         <div key={listing.id} className="listing-card">
                             <div className="listing-image">
-                                <img
-                                    src={getMediaUrl(listing.heroImage)}
-                                    alt={listing.title}
-                                    onError={(e) => {
-                                        e.target.src = 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80';
-                                    }}
-                                />
+                                <img src={listing.image} alt={listing.address} />
                                 <div className="listing-status">{listing.status}</div>
                             </div>
-
-                            <div className="listing-content">
-                                <h3 className="listing-title">{listing.title}</h3>
+                            <div className="listing-info">
+                                <h3 className="listing-price">{formatPrice(listing.price)}</h3>
                                 <p className="listing-address">{listing.address}</p>
-                                <p className="listing-specs">
-                                    {listing.specs.beds} BD | {listing.specs.baths} BA | {listing.specs.sqft} SQ.FT.
+                                <p className="listing-details">
+                                    {listing.beds} BD | {listing.baths} BA | {listing.sqft.toLocaleString()} SQ.FT.
                                 </p>
-                                <div className="listing-price">{listing.price}</div>
                             </div>
                         </div>
                     ))}
                 </div>
 
-                {onViewAll && (
-                    <div className="text-center" style={{ marginTop: '40px' }}>
-                        <button onClick={onViewAll} className="btn-primary">
-                            View All Properties
-                        </button>
-                    </div>
-                )}
+                <div className="view-all-container">
+                    <Link to="/properties" className="btn-view-all">
+                        VIEW ALL PROPERTIES
+                    </Link>
+                </div>
             </div>
         </section>
     );

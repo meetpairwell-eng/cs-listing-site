@@ -254,6 +254,36 @@
     font-weight: 500;
 }
 
+/* Favorite Button */
+.favorite-btn {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    color: var(--color-text-light);
+    z-index: 2;
+}
+
+.favorite-btn.active {
+    color: #e74c3c;
+}
+
+.favorite-btn:hover {
+    transform: scale(1.1);
+    background: white;
+}
+
+
 /* Map */
 .property-search-map {
     width: 60%;
