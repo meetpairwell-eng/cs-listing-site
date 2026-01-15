@@ -5,7 +5,7 @@ const PropertyCard = ({ listing, onClick, isSelected }) => {
     const favorite = isFavorite(listing.id);
 
     const handleFavoriteClick = (e) => {
-        e.stopPropagation(); // Prevent card click
+        e.stopPropagation();
         toggleFavorite(listing.id);
     };
 
@@ -29,15 +29,15 @@ const PropertyCard = ({ listing, onClick, isSelected }) => {
 
             <div className="property-details">
                 <div className="property-price">{listing.priceFormatted}</div>
+                <div className="property-specs">
+                    {listing.beds} bd · {listing.baths} ba · {listing.sqftFormatted} sqft
+                </div>
                 <div className="property-address">
                     {listing.address}
-                    <br />
-                    {listing.city}, {listing.state} {listing.zipCode}
                 </div>
-                <div className="property-specs">
-                    {listing.beds} BD | {listing.baths} BA | {listing.sqftFormatted} SQ.FT.
+                <div className="property-mls">
+                    MLS®: {listing.mlsId || 'N/A'}
                 </div>
-                <div className="property-type">{listing.propertyType}</div>
             </div>
         </div>
     );

@@ -2,14 +2,14 @@ import PropertyCard from './PropertyCard';
 
 const PropertyList = ({ listings, onPropertyClick, selectedListing }) => {
     return (
-        <div className="property-list">
+        <>
             <div className="property-list-header">
-                <h3>{listings.length} Properties</h3>
-                <p>Showing properties in current map view</p>
+                <h3>Real Estate & Homes for Sale</h3>
+                <p>{listings.length} results</p>
             </div>
 
             <div className="property-list-scroll">
-                {listings.map(listing => (
+                {listings.map((listing) => (
                     <PropertyCard
                         key={listing.id}
                         listing={listing}
@@ -18,7 +18,7 @@ const PropertyList = ({ listings, onPropertyClick, selectedListing }) => {
                     />
                 ))}
             </div>
-        </div>
+        </>
     );
 };
 
