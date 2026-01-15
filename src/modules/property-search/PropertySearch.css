@@ -113,25 +113,27 @@
     /* Ensure content stays within container */
 }
 
-/* Sidebar */
+/* Sidebar - Changed to 50% */
 .property-search-sidebar {
-    width: 40%;
-    background: white;
-    overflow: hidden;
+    width: 50%;
     display: flex;
     flex-direction: column;
-    border-right: 1px solid var(--color-border);
+    background: var(--color-bg);
+    overflow: hidden;
 }
 
 .property-list {
     display: flex;
     flex-direction: column;
     height: 100%;
+    overflow: hidden;
 }
 
 .property-list-header {
-    padding: var(--spacing-lg);
+    padding: var(--spacing-md) var(--spacing-lg);
     border-bottom: 1px solid var(--color-border);
+    background: white;
+    flex-shrink: 0;
 }
 
 .property-list-header h3 {
@@ -212,11 +214,14 @@
     right: 1rem;
     background: #000;
     color: #fff;
-    padding: 0.5rem 1rem;
-    font-size: 0.75rem;
+    padding: 0.45rem 0.9rem;
+    /* Was 0.5rem 1rem, now 10% smaller */
+    font-size: 0.675rem;
+    /* Was 0.75rem, now 10% smaller */
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.1em;
+    z-index: 1;
 }
 
 .property-details {
@@ -262,12 +267,12 @@
     background: rgba(255, 255, 255, 0.9);
     border: none;
     border-radius: 50%;
-    width: 36px;
-    height: 36px;
+    width: 32px;
+    height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 18px;
+    font-size: 16px;
     cursor: pointer;
     transition: all var(--transition-base);
     color: var(--color-text-light);

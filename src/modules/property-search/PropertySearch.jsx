@@ -91,8 +91,13 @@ const PropertySearch = () => {
 
     return (
         <section className="property-search-section">
-            <PropertySearchHeader filters={filters} onFiltersChange={setFilters} />
-            <div className={`property-search-container ${showMobileMap ? 'mobile-view-map' : 'mobile-view-list'}`}>
+            <PropertySearchHeader
+                filters={filters}
+                onFiltersChange={setFilters}
+            />
+
+            <div className="property-search-container">
+                {/* Sidebar with listings */}
                 <div className="property-search-sidebar">
                     <PropertyList
                         listings={filteredListings}
@@ -101,21 +106,15 @@ const PropertySearch = () => {
                     />
                 </div>
 
+                {/* Map */}
                 <div className="property-search-map">
                     <PropertyMapGoogle
                         listings={filteredListings}
-                        onMapMove={handleMapMove}
-                        onMarkerClick={handleMarkerClick}
                         selectedListing={selectedListing}
+                        onMarkerClick={handlePropertyClick}
+                        onMapMove={handleMapMove}
                     />
                 </div>
-
-                <button
-                    className="mobile-map-toggle"
-                    onClick={() => setShowMobileMap(!showMobileMap)}
-                >
-                    {showMobileMap ? 'List View' : 'View Map'}
-                </button>
             </div>
         </section>
     );
