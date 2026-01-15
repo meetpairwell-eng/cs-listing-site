@@ -1,12 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
-import { SITE_CONFIG } from '../../../config';
 import FilterModal from './FilterModal';
+import './PropertySearchHeader.css';
 
 const PropertySearchHeader = ({ filters, onFiltersChange }) => {
     const [showFilterModal, setShowFilterModal] = useState(false);
-    const [activeDropdown, setActiveDropdown] = useState(null);
+    const [openFilter, setOpenFilter] = useState(null);
     const searchInputRef = useRef(null);
 
+    // Google Places Autocomplete
     useEffect(() => {
         if (!window.google || !window.google.maps || !window.google.maps.places || !searchInputRef.current) return;
 
@@ -21,6 +22,22 @@ const PropertySearchHeader = ({ filters, onFiltersChange }) => {
         });
     }, []);
 
+    // Close dropdown when clicking outside
+    useEffect(() => {
+        const handleClickOutside = (e) => {
+            if (openFilter && !e.target.closest('.filter-dropdown-wrapper')) {
+                setOpenFilter(null);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, [openFilter]);
+
+    const toggleFilter = (filterName) => {
+        setOpenFilter(openFilter === filterName ? null : filterName);
+    };
+
     const getFilterLabel = (key) => {
         if (!filters) return 'Loading...';
 
@@ -33,28 +50,12 @@ const PropertySearchHeader = ({ filters, onFiltersChange }) => {
         }
         if (key === 'beds') return filters.beds === 'Any' ? 'All beds' : `${filters.beds} beds`;
         if (key === 'baths') return filters.baths === 'Any' ? 'All baths' : `${filters.baths} baths`;
-        if (key === 'propertyTypes') return 'All property types';
+        return 'All property types';
     };
-
-    const toggleDropdown = (dropdown) => {
-        console.log('Toggle dropdown clicked:', dropdown, 'Current:', activeDropdown);
-        setActiveDropdown(activeDropdown === dropdown ? null : dropdown);
-    };
-
-    // Close dropdown when clicking outside
-    useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (activeDropdown && !event.target.closest('.filter-dropdown-container')) {
-                setActiveDropdown(null);
-            }
-        };
-
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => document.removeEventListener('mousedown', handleClickOutside);
-    }, [activeDropdown]);
 
     return (
         <div className="property-search-header">
+            {/* Search Bar */}
             <div className="search-bar-container">
                 <svg className="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <circle cx="11" cy="11" r="8" />
@@ -68,23 +69,33 @@ const PropertySearchHeader = ({ filters, onFiltersChange }) => {
                 />
             </div>
 
+            {/* Filter Pills */}
             <div className="filter-pills">
-                {/* Listing Type Dropdown */}
-                <div className="filter-dropdown-container">
-                    <button className="filter-pill" onClick={() => toggleDropdown('listingType')}>
+                {/* For Sale/Rent */}
+                <div className="filter-dropdown-wrapper">
+                    <button
+                        className="filter-pill"
+                        onClick={() => toggleFilter('listingType')}
+                    >
                         {getFilterLabel('listingType')}
                     </button>
-                    {activeDropdown === 'listingType' && filters && (
+                    {openFilter === 'listingType' && filters && (
                         <div className="filter-dropdown">
                             <button
                                 className={`dropdown-option ${filters.listingType === 'buy' ? 'active' : ''}`}
-                                onClick={() => { onFiltersChange({ ...filters, listingType: 'buy' }); setActiveDropdown(null); }}
+                                onClick={() => {
+                                    onFiltersChange({ ...filters, listingType: 'buy' });
+                                    setOpenFilter(null);
+                                }}
                             >
                                 For sale
                             </button>
                             <button
                                 className={`dropdown-option ${filters.listingType === 'rent' ? 'active' : ''}`}
-                                onClick={() => { onFiltersChange({ ...filters, listingType: 'rent' }); setActiveDropdown(null); }}
+                                onClick={() => {
+                                    onFiltersChange({ ...filters, listingType: 'rent' });
+                                    setOpenFilter(null);
+                                }}
                             >
                                 For rent
                             </button>
@@ -92,25 +103,28 @@ const PropertySearchHeader = ({ filters, onFiltersChange }) => {
                     )}
                 </div>
 
-                {/* Price Dropdown */}
-                <div className="filter-dropdown-container">
-                    <button className="filter-pill" onClick={() => toggleDropdown('price')}>
+                {/* Price */}
+                <div className="filter-dropdown-wrapper">
+                    <button
+                        className="filter-pill"
+                        onClick={() => toggleFilter('price')}
+                    >
                         {getFilterLabel('price')}
                     </button>
-                    {activeDropdown === 'price' && filters && (
+                    {openFilter === 'price' && filters && (
                         <div className="filter-dropdown price-dropdown">
                             <div className="price-inputs-inline">
                                 <input
                                     type="text"
                                     placeholder="No min"
-                                    value={filters.priceMin}
+                                    value={filters.priceMin || ''}
                                     onChange={(e) => onFiltersChange({ ...filters, priceMin: e.target.value })}
                                 />
                                 <span>to</span>
                                 <input
                                     type="text"
                                     placeholder="No max"
-                                    value={filters.priceMax}
+                                    value={filters.priceMax || ''}
                                     onChange={(e) => onFiltersChange({ ...filters, priceMax: e.target.value })}
                                 />
                             </div>
@@ -118,22 +132,29 @@ const PropertySearchHeader = ({ filters, onFiltersChange }) => {
                     )}
                 </div>
 
+                {/* Property Types */}
                 <button className="filter-pill" onClick={() => setShowFilterModal(true)}>
-                    {getFilterLabel('propertyTypes')}
+                    All property types
                 </button>
 
-                {/* Beds Dropdown */}
-                <div className="filter-dropdown-container">
-                    <button className="filter-pill" onClick={() => toggleDropdown('beds')}>
+                {/* Beds */}
+                <div className="filter-dropdown-wrapper">
+                    <button
+                        className="filter-pill"
+                        onClick={() => toggleFilter('beds')}
+                    >
                         {getFilterLabel('beds')}
                     </button>
-                    {activeDropdown === 'beds' && filters && (
+                    {openFilter === 'beds' && filters && (
                         <div className="filter-dropdown beds-dropdown">
                             {['Any', 'Studio', '1', '2', '3', '4', '5+'].map(opt => (
                                 <button
                                     key={opt}
                                     className={`dropdown-pill ${filters.beds === opt ? 'active' : ''}`}
-                                    onClick={() => { onFiltersChange({ ...filters, beds: opt }); setActiveDropdown(null); }}
+                                    onClick={() => {
+                                        onFiltersChange({ ...filters, beds: opt });
+                                        setOpenFilter(null);
+                                    }}
                                 >
                                     {opt}
                                 </button>
@@ -142,18 +163,24 @@ const PropertySearchHeader = ({ filters, onFiltersChange }) => {
                     )}
                 </div>
 
-                {/* Baths Dropdown */}
-                <div className="filter-dropdown-container">
-                    <button className="filter-pill" onClick={() => toggleDropdown('baths')}>
+                {/* Baths */}
+                <div className="filter-dropdown-wrapper">
+                    <button
+                        className="filter-pill"
+                        onClick={() => toggleFilter('baths')}
+                    >
                         {getFilterLabel('baths')}
                     </button>
-                    {activeDropdown === 'baths' && filters && (
+                    {openFilter === 'baths' && filters && (
                         <div className="filter-dropdown baths-dropdown">
                             {['Any', '1', '2', '3', '4', '5+'].map(opt => (
                                 <button
                                     key={opt}
                                     className={`dropdown-pill ${filters.baths === opt ? 'active' : ''}`}
-                                    onClick={() => { onFiltersChange({ ...filters, baths: opt }); setActiveDropdown(null); }}
+                                    onClick={() => {
+                                        onFiltersChange({ ...filters, baths: opt });
+                                        setOpenFilter(null);
+                                    }}
                                 >
                                     {opt}
                                 </button>
@@ -163,6 +190,7 @@ const PropertySearchHeader = ({ filters, onFiltersChange }) => {
                 </div>
             </div>
 
+            {/* Action Buttons */}
             <div className="header-actions">
                 <button className="action-btn">List</button>
                 <button className="action-btn">Map</button>

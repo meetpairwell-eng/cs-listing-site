@@ -1,0 +1,212 @@
+/* Property Search Header Styles */
+.property-search-header {
+    background: #f5f5f5;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 1rem 2rem;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Search Bar */
+.search-bar-container {
+    position: relative;
+    flex-shrink: 0;
+    width: 280px;
+}
+
+.search-bar-container .search-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+    pointer-events: none;
+}
+
+.search-bar-container .search-input {
+    width: 100%;
+    padding: 0.75rem 1rem 0.75rem 3rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: white;
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+}
+
+.search-bar-container .search-input:focus {
+    outline: none;
+    border-color: #999;
+}
+
+/* Filter Pills Container */
+.filter-pills {
+    display: flex;
+    gap: 0.5rem;
+    flex: 1;
+    align-items: center;
+}
+
+/* Filter Dropdown Wrapper - CRITICAL for positioning */
+.filter-dropdown-wrapper {
+    position: relative;
+}
+
+/* Filter Pills */
+.filter-pill {
+    padding: 0.5rem 1rem;
+    border: 1px solid #ddd;
+    background: white;
+    border-radius: 20px;
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.filter-pill:hover {
+    border-color: #000;
+    background: #f8f8f8;
+}
+
+/* Dropdown Menus */
+.filter-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    padding: 0.5rem;
+    min-width: 200px;
+    z-index: 1000;
+}
+
+.dropdown-option {
+    display: block;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: none;
+    background: white;
+    text-align: left;
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background 0.2s;
+}
+
+.dropdown-option:hover {
+    background: #f5f5f5;
+}
+
+.dropdown-option.active {
+    background: #000;
+    color: white;
+}
+
+/* Price Dropdown */
+.price-dropdown {
+    min-width: 300px;
+}
+
+.price-inputs-inline {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+}
+
+.price-inputs-inline input {
+    flex: 1;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+}
+
+.price-inputs-inline span {
+    color: #666;
+    font-size: 0.875rem;
+}
+
+/* Beds/Baths Dropdowns */
+.beds-dropdown,
+.baths-dropdown {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    padding: 0.75rem;
+}
+
+.dropdown-pill {
+    padding: 0.5rem 1rem;
+    border: 1px solid #ddd;
+    background: white;
+    border-radius: 20px;
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.dropdown-pill:hover {
+    background: #f5f5f5;
+}
+
+.dropdown-pill.active {
+    background: #000;
+    color: white;
+    border-color: #000;
+}
+
+/* Header Actions */
+.header-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-shrink: 0;
+}
+
+.action-btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid #ddd;
+    background: white;
+    border-radius: 6px;
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.action-btn:hover {
+    background: #f8f8f8;
+}
+
+.action-btn.primary {
+    background: #000;
+    color: white;
+    border-color: #000;
+}
+
+.action-btn.primary:hover {
+    background: #333;
+}
+
+.action-btn.save {
+    background: #000;
+    color: white;
+    border-color: #000;
+}
+
+.action-btn.save:hover {
+    background: #333;
+}
