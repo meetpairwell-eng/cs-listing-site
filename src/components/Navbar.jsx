@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { SITE_CONFIG } from '../config';
 import './Navbar.css';
 
-const Navbar = ({ onContactClick, onSearchClick, onHomeClick, currentView }) => {
+const Navbar = ({ onContactClick, onSearchClick, onHomeClick, onPropertiesClick, currentView }) => {
     const [scrolled, setScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -62,6 +62,11 @@ const Navbar = ({ onContactClick, onSearchClick, onHomeClick, currentView }) => 
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
+    const handlePropertiesClick = () => {
+        setMobileMenuOpen(false);
+        onPropertiesClick();
+    };
+
     return (
         <nav className={`navbar ${scrolled || currentView === 'search' ? 'scrolled' : ''}`}>
             <div className="container navbar-container">
@@ -82,7 +87,8 @@ const Navbar = ({ onContactClick, onSearchClick, onHomeClick, currentView }) => 
 
                 <ul className={`navbar-menu ${mobileMenuOpen ? 'open' : ''}`}>
                     <li><a onClick={() => scrollToSection('about')}>ABOUT</a></li>
-                    <li><a onClick={handleSearchClick}>PROPERTY SEARCH</a></li>
+                    <li><a onClick={handlePropertiesClick}>PROPERTIES</a></li>
+                    <li><a onClick={handleSearchClick}>HOME SEARCH</a></li>
                     <li><a onClick={() => scrollToSection('services')}>SERVICES</a></li>
                     <li><a onClick={handleContactClick}>LET'S CONNECT</a></li>
                 </ul>

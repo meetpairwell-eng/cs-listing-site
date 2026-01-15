@@ -23,6 +23,7 @@ function App() {
         onContactClick={() => setIsContactModalOpen(true)}
         onSearchClick={() => setCurrentView('search')}
         onHomeClick={() => setCurrentView('home')}
+        onPropertiesClick={() => setCurrentView('featured')}
         currentView={currentView}
       />
 
