@@ -9,12 +9,13 @@ import Contact from './components/Contact';
 import ContactModal from './components/ContactModal';
 import FloatingContactButton from './components/FloatingContactButton';
 import PropertySearch from './modules/property-search/PropertySearch';
+import FeaturedProperties from './pages/FeaturedProperties';
 import Footer from './components/Footer';
 import './App.css';
 
 function App() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
-  const [currentView, setCurrentView] = useState('home'); // 'home' or 'search'
+  const [currentView, setCurrentView] = useState('home'); // 'home', 'search', or 'featured'
 
   return (
     <div className="App">
@@ -30,13 +31,18 @@ function App() {
           <Hero />
           <Services />
           <About />
-          <FeaturedListings />
+          <FeaturedListings onViewAll={() => setCurrentView('featured')} />
           <Testimonials />
           <Contact onContactClick={() => setIsContactModalOpen(true)} />
           <Footer />
         </>
-      ) : (
+      ) : currentView === 'search' ? (
         <PropertySearch />
+      ) : (
+        <>
+          <FeaturedProperties />
+          <Footer />
+        </>
       )}
 
       <FloatingContactButton onClick={() => setIsContactModalOpen(true)} />

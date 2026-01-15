@@ -2,7 +2,7 @@ import { getSoldListings } from '../data/listings';
 import { SITE_CONFIG } from '../config';
 import './FeaturedListings.css';
 
-const FeaturedListings = () => {
+const FeaturedListings = ({ onViewAll }) => {
     const listings = getSoldListings();
 
     const getMediaUrl = (filename) => {
@@ -41,6 +41,14 @@ const FeaturedListings = () => {
                         </div>
                     ))}
                 </div>
+
+                {onViewAll && (
+                    <div className="text-center" style={{ marginTop: '40px' }}>
+                        <button onClick={onViewAll} className="btn-primary">
+                            View All Properties
+                        </button>
+                    </div>
+                )}
             </div>
         </section>
     );

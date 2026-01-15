@@ -7,7 +7,7 @@ const DALLAS_CENTER = {
 };
 
 const PROPERTY_TYPES = ['Single Family', 'Condo', 'Townhouse', 'Luxury Estate'];
-const STATUSES = ['Active', 'Pending', 'Sold'];
+const STATUSES = ['For sale', 'Pending', 'Sold'];
 const STREET_NAMES = [
     'Oak', 'Maple', 'Cedar', 'Pine', 'Elm', 'Willow', 'Birch', 'Magnolia',
     'Highland', 'Park', 'Lake', 'River', 'Forest', 'Garden', 'Valley', 'Hill'
@@ -82,6 +82,7 @@ function generateListing(id) {
         sqftFormatted: sqft.toLocaleString(),
         propertyType: PROPERTY_TYPES[Math.floor(Math.random() * PROPERTY_TYPES.length)],
         status: STATUSES[Math.floor(Math.random() * STATUSES.length)],
+        mlsId: `${Math.floor(Math.random() * 90000) + 10000}`, // Random 5-digit MLS ID
         coordinates: coords,
         image: `https://images.unsplash.com/${photoId}?w=800&q=80&auto=format&fit=crop`,
         description: `Beautiful ${beds} bedroom, ${baths} bathroom property in Dallas. Features modern amenities and excellent location.`
