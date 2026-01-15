@@ -1,0 +1,366 @@
+.filter-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+    display: flex;
+    align-items: flex-end;
+    /* Bottom sheet on very small, full screen on mobile usually */
+}
+
+.filter-modal {
+    background: white;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+.filter-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.filter-modal-header h2 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.reset-btn {
+    background: none;
+    border: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #000;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: #666;
+    transition: color 0.2s;
+}
+
+.close-btn:hover {
+    color: #000;
+}
+
+.filter-modal-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Tabs */
+.filter-tabs {
+    background: #f0f0f0;
+    padding: 4px;
+    border-radius: 100px;
+    display: flex;
+}
+
+.tab-btn {
+    flex: 1;
+    border: none;
+    background: none;
+    padding: 0.75rem;
+    border-radius: 100px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.tab-btn.active {
+    background: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Search */
+.filter-search {
+    position: relative;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 0.75rem 0.75rem 0.75rem 2.5rem;
+}
+
+.filter-search .search-icon {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+}
+
+.filter-search input {
+    width: 100%;
+    border: none;
+    font-size: 0.875rem;
+    outline: none;
+}
+
+/* Sections */
+.filter-section {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 1.5rem;
+}
+
+.filter-section:last-child {
+    border-bottom: none;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.section-header h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* Price Inputs */
+.price-inputs {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.input-group {
+    flex: 1;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 0.75rem;
+}
+
+.input-group input {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 0.875rem;
+}
+
+.price-slider-visual {
+    position: relative;
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+
+/* Price Slider */
+.price-slider-container {
+    margin-top: 1.5rem;
+}
+
+.dual-slider {
+    position: relative;
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.dual-slider .slider-track {
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background: #ddd;
+    border-radius: 2px;
+    pointer-events: none;
+}
+
+.dual-slider .slider-range {
+    position: absolute;
+    height: 4px;
+    background: #000;
+    border-radius: 2px;
+    pointer-events: none;
+}
+
+.price-slider {
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background: transparent;
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+    pointer-events: none;
+}
+
+.price-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #000;
+    cursor: pointer;
+    border: 2px solid white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    pointer-events: auto;
+}
+
+.price-slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #000;
+    cursor: pointer;
+    border: 2px solid white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    pointer-events: auto;
+}
+
+.slider-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+    color: #666;
+}
+
+.slider-track {
+    height: 2px;
+    background: #000;
+    width: 100%;
+}
+
+.slider-handles {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+}
+
+.handle {
+    width: 24px;
+    height: 24px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Pills */
+.pills-scroll {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+}
+
+.pill-btn {
+    padding: 0.5rem 1.5rem;
+    border: 1px solid #eee;
+    background: white;
+    border-radius: 100px;
+    white-space: nowrap;
+    font-size: 0.875rem;
+    cursor: pointer;
+}
+
+.pill-btn.active {
+    background: #000;
+    color: white;
+    border-color: #000;
+}
+
+/* Property Types */
+.property-types-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.type-card {
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    background: white;
+    cursor: pointer;
+}
+
+.type-card:hover {
+    border-color: #000;
+}
+
+.type-card .type-icon {
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.type-card:hover .type-icon {
+    color: #000;
+}
+
+.type-card span {
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+/* Footer */
+.filter-modal-footer {
+    padding: 1rem;
+    border-top: 1px solid #eee;
+    display: flex;
+    gap: 1rem;
+    background: white;
+}
+
+.save-search-btn-secondary {
+    padding: 0.75rem 1.5rem;
+    background: #f5f5f5;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    cursor: pointer;
+}
+
+.see-results-btn {
+    flex: 1;
+    background: #000;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem;
+    font-weight: 600;
+    font-size: 0.875rem;
+    cursor: pointer;
+}
