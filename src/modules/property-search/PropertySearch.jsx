@@ -69,8 +69,9 @@ const PropertySearch = () => {
 
     // Handle map movement - filter listings by visible bounds
     const handleMapMove = useCallback((bounds) => {
-        const filtered = filterListingsByBounds(allListings, bounds);
-        setFilteredListings(filtered);
+        // Disabled to maintain initial Dallas center
+        // const filtered = filterListingsByBounds(allListings, bounds);
+        // setFilteredListings(filtered);
     }, [allListings]);
 
     // Handle property card click - fly to location on map
