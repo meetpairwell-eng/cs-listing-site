@@ -1,7 +1,8 @@
 /* Property Search Module Styles */
 
 .property-search-section {
-    min-height: 100vh;
+    height: 100vh;
+    overflow: hidden;
     background: var(--color-bg);
     display: flex;
     flex-direction: column;
@@ -250,7 +251,7 @@
     width: 60%;
     position: relative;
     background: #f0f0f0;
-    min-height: calc(100vh - 80px);
+    height: 100%;
 }
 
 .map-container {
