@@ -15,6 +15,18 @@ const Navbar = ({ onContactClick, onSearchClick, onHomeClick, currentView }) => 
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    // Close mobile menu when clicking outside
+    useEffect(() => {
+        const handleClickOutside = (e) => {
+            if (mobileMenuOpen && !e.target.closest('.navbar')) {
+                setMobileMenuOpen(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, [mobileMenuOpen]);
+
     const scrollToSection = (id) => {
         if (currentView !== 'home') {
             onHomeClick();
