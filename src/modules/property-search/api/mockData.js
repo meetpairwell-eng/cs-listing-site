@@ -30,15 +30,26 @@ const UNSPLASH_PHOTOS = [
 
 // Generate random coordinate within radius of Dallas
 function generateCoordinate() {
-    const radiusMiles = 15;
+    // Explicit Dallas Center
+    const centerLat = 32.7767;
+    const centerLng = -96.7970;
+
+    // Reduce radius to 10 miles to keep closer to city center
+    const radiusMiles = 10;
+
     // 1 degree latitude ≈ 69 miles
     // 1 degree longitude ≈ 54.6 miles at Dallas latitude
     const latOffset = (Math.random() - 0.5) * (radiusMiles / 69);
     const lngOffset = (Math.random() - 0.5) * (radiusMiles / 54.6);
 
+    const lat = centerLat + latOffset;
+    const lng = centerLng + lngOffset;
+
+    // console.log('Generated coord:', lat, lng); // Uncomment for debugging
+
     return {
-        lat: DALLAS_CENTER.lat + latOffset,
-        lng: DALLAS_CENTER.lng + lngOffset
+        lat: lat,
+        lng: lng
     };
 }
 
