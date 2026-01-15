@@ -19,12 +19,6 @@ export const SITE_CONFIG = {
     linkedin: null,
     zillow: null
   },
-  // Mapbox Configuration
-  mapbox: {
-    accessToken: 'pk.eyJ1IjoibWVldHBhaXJ3ZWxsIiwiYSI6ImNta2VkamIxdjA2MXUzbG9nMHZhMnBhdmQifQ.LoWOwOUDP11K7-RW8xV1Lw',
-    defaultCenter: [-96.7970, 32.7767], // Dallas, TX
-    defaultZoom: 11
-  },
   // Google Maps Configuration
   googleMaps: {
     apiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
