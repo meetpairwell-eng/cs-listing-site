@@ -7,15 +7,24 @@ const PropertySearchHeader = ({ filters, onFiltersChange }) => {
     const [openFilter, setOpenFilter] = useState(null);
     const searchInputRef = useRef(null);
 
-    // Simple search functionality - filter by address/city
-    const handleSearch = (e) => {
-        const searchTerm = e.target.value.toLowerCase();
-        if (searchTerm.length > 2) {
-            // This would filter listings - for now just log
-            console.log('Searching for:', searchTerm);
-            // TODO: Connect to parent component to filter listings
+    // Google Places Autocomplete
+    useEffect(() => {
+        if (!window.google || !window.google.maps || !window.google.maps.places || !searchInputRef.current) {
+            console.log('Google Maps API not loaded yet');
+            return;
         }
-    };
+
+        const autocomplete = new window.google.maps.places.Autocomplete(searchInputRef.current, {
+            types: ['geocode'],
+            componentRestrictions: { country: 'us' }
+        });
+
+        autocomplete.addListener('place_changed', () => {
+            const place = autocomplete.getPlace();
+            console.log('Selected place:', place);
+            // TODO: Use place data to filter listings
+        });
+    }, []);
 
     // Close dropdown when clicking outside
     useEffect(() => {
@@ -60,8 +69,7 @@ const PropertySearchHeader = ({ filters, onFiltersChange }) => {
                     ref={searchInputRef}
                     type="text"
                     className="search-input"
-                    placeholder="Search by city or address..."
-                    onChange={handleSearch}
+                    placeholder="City, neighborhood, ZIP code..."
                 />
             </div>
 
