@@ -53,26 +53,9 @@
     border-color: #999;
 }
 
-.filter-pills {
-    display: flex;
-    gap: 0.5rem;
-    flex: 1;
-    overflow-x: auto;
-    overflow-y: visible;
-}
+/* Filter pills styles moved to PropertySearchHeader.css */
 
-.filter-pill {
-    padding: 0.5rem 1rem;
-    border: 1px solid #ddd;
-    background: white;
-    border-radius: 20px;
-    font-family: var(--font-body);
-    font-size: 0.875rem;
-    cursor: pointer;
-    transition: all 0.2s;
-    white-space: nowrap;
-    flex-shrink: 0;
-}
+/* Filter pill styles moved to PropertySearchHeader.css */
 
 .filter-pill:hover {
     border-color: #000;
@@ -398,25 +381,7 @@
         display: flex;
     }
 
-    .search-filters {
-        display: none;
-        width: 100%;
-        padding-top: 0.5rem;
-        border-top: 1px solid var(--color-border);
-    }
-
-    .search-filters.show-mobile {
-        display: flex;
-        background: white;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        flex-direction: column;
-        padding: 1rem;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        z-index: 100;
-    }
+    /* Old search-filters class - no longer used, filters now in PropertySearchHeader */
 
     .property-search-container {
         flex-direction: column;
