@@ -153,34 +153,50 @@
 .property-list-scroll {
     flex: 1;
     overflow-y: auto;
-    padding: var(--spacing-md);
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--spacing-md);
-    align-content: start;
+    padding: 0.5rem;
+    /* Reduced padding for cleaner look */
+    background: #fafafa;
+    /* Subtle background */
 }
 
-/* Property Card */
+.property-list-scroll::-webkit-scrollbar {
+    width: 8px;
+}
+
+.property-list-scroll::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.property-list-scroll::-webkit-scrollbar-thumb {
+    background: #ddd;
+    border-radius: 4px;
+}
+
+.property-list-scroll::-webkit-scrollbar-thumb:hover {
+    background: #ccc;
+}
+
+/* Property Card - Simplified & Clean */
 .property-card {
     background: white;
-    border: 1px solid var(--color-border);
+    border: none;
+    /* Removed border */
     cursor: pointer;
     transition: all var(--transition-base);
     overflow: hidden;
     display: flex;
     flex-direction: column;
     min-height: 320px;
-    /* Force minimum height */
+    margin-bottom: 1rem;
 }
 
 .property-card:hover {
-    box-shadow: var(--shadow-lg);
-    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    /* Subtle shadow on hover */
 }
 
 .property-card.selected {
-    border-color: var(--color-primary);
-    box-shadow: 0 0 0 2px var(--color-primary);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
 }
 
 .property-image {
@@ -188,11 +204,9 @@
     width: 100%;
     height: 180px;
     min-height: 180px;
-    /* Force minimum height */
     overflow: hidden;
     background: #f5f5f5;
     flex-shrink: 0;
-    /* Prevent shrinking */
 }
 
 .property-image img {
@@ -225,38 +239,42 @@
 }
 
 .property-details {
-    padding: var(--spacing-md);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
+/* Price - Larger, cleaner */
 .property-price {
     font-family: var(--font-heading);
     font-size: 1.5rem;
-    font-weight: 600;
+    font-weight: 400;
     color: var(--color-text);
-    margin-bottom: 0.5rem;
+    letter-spacing: 0.02em;
 }
 
+/* Address - Simplified */
 .property-address {
     font-size: 0.875rem;
     color: var(--color-text);
-    margin-bottom: 0.75rem;
     line-height: 1.4;
-    font-weight: 500;
+    font-weight: 400;
 }
 
+/* Specs - Cleaner, smaller */
 .property-specs {
     font-size: 0.75rem;
     color: var(--color-text-light);
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    margin-bottom: 0.5rem;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .property-type {
     font-size: 0.75rem;
     color: var(--color-text-light);
-    font-weight: 500;
+    font-weight: 400;
 }
 
 /* Favorite Button */
