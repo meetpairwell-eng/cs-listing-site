@@ -232,20 +232,22 @@
     position: absolute;
     top: 0.5rem;
     left: 0.5rem;
-    /* Moved to left like reference */
-    background: rgba(100, 100, 100, 0.75);
-    /* Lighter gray, semi-transparent */
+    background: rgba(60, 60, 60, 0.8);
+    /* Darker, more visible */
     color: #fff;
-    padding: 0.35rem 0.75rem;
-    font-size: 0.65rem;
+    padding: 0.25rem 0.5rem;
+    /* Smaller padding */
+    font-size: 0.625rem;
+    /* Smaller font */
     font-weight: 500;
-    /* Lighter weight */
     text-transform: capitalize;
-    /* Not all caps */
     letter-spacing: 0.02em;
-    border-radius: 4px;
-    /* Rounded corners */
-    z-index: 1;
+    border-radius: 3px;
+    z-index: 2;
+    width: auto;
+    /* Don't stretch */
+    display: inline-block;
+    /* Don't take full width */
 }
 
 .property-details {
