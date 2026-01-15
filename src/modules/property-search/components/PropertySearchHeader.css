@@ -138,9 +138,10 @@
     font-size: 0.875rem;
 }
 
-/* Beds/Baths Dropdowns */
+/* Beds/Baths/Property Types Dropdowns */
 .beds-dropdown,
-.baths-dropdown {
+.baths-dropdown,
+.property-types-dropdown {
     display: flex;
     gap: 0.5rem;
     flex-wrap: wrap;

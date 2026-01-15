@@ -133,9 +133,35 @@ const PropertySearchHeader = ({ filters, onFiltersChange }) => {
                 </div>
 
                 {/* Property Types */}
-                <button className="filter-pill" onClick={() => setShowFilterModal(true)}>
-                    All property types
-                </button>
+                <div className="filter-dropdown-wrapper">
+                    <button
+                        className="filter-pill"
+                        onClick={() => toggleFilter('propertyTypes')}
+                    >
+                        {filters?.propertyTypes?.length > 0
+                            ? `${filters.propertyTypes.length} property type${filters.propertyTypes.length > 1 ? 's' : ''}`
+                            : 'All property types'}
+                    </button>
+                    {openFilter === 'propertyTypes' && filters && (
+                        <div className="filter-dropdown property-types-dropdown">
+                            {['Home', 'Condo', 'Townhome', 'Land', 'Multi-family'].map(type => (
+                                <button
+                                    key={type}
+                                    className={`dropdown-pill ${filters.propertyTypes?.includes(type) ? 'active' : ''}`}
+                                    onClick={() => {
+                                        const current = filters.propertyTypes || [];
+                                        const updated = current.includes(type)
+                                            ? current.filter(t => t !== type)
+                                            : [...current, type];
+                                        onFiltersChange({ ...filters, propertyTypes: updated });
+                                    }}
+                                >
+                                    {type}
+                                </button>
+                            ))}
+                        </div>
+                    )}
+                </div>
 
                 {/* Beds */}
                 <div className="filter-dropdown-wrapper">
