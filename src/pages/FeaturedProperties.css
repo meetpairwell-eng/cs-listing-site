@@ -164,7 +164,7 @@
 
 .status-badge,
 .mls-badge {
-    background-color: #EBE7E0;
+    background-color: #d3d3d3;
     color: #000;
     padding: 4px 35px;
     font-size: 14px;
@@ -180,9 +180,18 @@
 }
 
 .featured-property-info {
-    background-color: #EBE7E0;
+    background-color: rgba(234, 231, 224, 0.9);
     padding: 30px 15px;
     text-align: left;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.featured-property-card:hover .featured-property-info {
+    transform: translateY(0);
 }
 
 .featured-property-price {
@@ -226,6 +235,12 @@
 @media (max-width: 768px) {
     .featured-property-info {
         padding: 20px 12px 16px;
+        position: static;
+        transform: none;
+    }
+
+    .featured-property-card:hover .featured-property-info {
+        transform: none;
     }
 
     .featured-property-price {
