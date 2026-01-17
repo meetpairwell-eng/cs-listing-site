@@ -212,6 +212,35 @@
     background: #333;
 }
 
+/* Heart Button */
+.action-btn.heart-btn {
+    position: relative;
+    font-size: 1.25rem;
+    padding: 0.5rem 0.75rem;
+    line-height: 1;
+}
+
+.action-btn.heart-btn .heart-icon {
+    display: inline-block;
+}
+
+.action-btn.heart-btn .favorites-badge {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background: var(--color-primary);
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 10px;
+    min-width: 18px;
+    height: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
 /* Clear Filters Button */
 .clear-filters-btn {
     padding: 0.5rem 1rem;

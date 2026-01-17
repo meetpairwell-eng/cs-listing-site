@@ -43,11 +43,7 @@ const FeaturedListings = () => {
                     ))}
                 </div>
 
-                <div className="text-center" style={{ marginTop: '40px' }}>
-                    <Link to="/properties" className="btn-primary">
-                        View All Properties
-                    </Link>
-                </div>
+
             </div>
         </section>
     );

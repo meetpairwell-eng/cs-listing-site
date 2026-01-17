@@ -11,6 +11,13 @@ const ContactModal = ({ isOpen, onClose }) => {
     });
     const [consent, setConsent] = useState(false);
 
+    // Helper to get correct asset URL
+    const getAssetUrl = (path) => {
+        if (!path) return '';
+        if (path.startsWith('http') || path.startsWith('/') || path.startsWith('data:')) return path;
+        return `${SITE_CONFIG.mediaBaseUrl}/${path}`;
+    };
+
     if (!isOpen) return null;
 
     const handleChange = (e) => {
@@ -55,7 +62,12 @@ const ContactModal = ({ isOpen, onClose }) => {
 
                 <div className="modal-content-wrapper">
                     {/* Left Side - Contact Details */}
-                    <div className="modal-contact-details">
+                    <div
+                        className="modal-contact-details"
+                        style={{
+                            backgroundImage: `linear-gradient(rgba(26, 26, 26, 0.85), rgba(26, 26, 26, 0.85)), url(${SITE_CONFIG.modalBg})`
+                        }}
+                    >
                         <h2 className="modal-section-title">CONTACT DETAILS</h2>
                         <div className="modal-agent-info">
                             <p className="modal-agent-name">{SITE_CONFIG.agentName.toUpperCase()}</p>

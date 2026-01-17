@@ -86,7 +86,7 @@ function generateListing(id) {
         state: 'TX',
         zipCode: `75${Math.floor(Math.random() * 900) + 100}`,
         price: price,
-        priceFormatted: `$${(price / 1000).toFixed(0)}K`,
+        priceFormatted: `$${price.toLocaleString()}`,
         beds: beds,
         baths: baths,
         sqft: sqft,

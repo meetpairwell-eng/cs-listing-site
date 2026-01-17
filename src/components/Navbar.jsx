@@ -67,9 +67,10 @@ const Navbar = ({ onContactClick }) => {
     };
 
     const isSearchPage = location.pathname === '/search';
+    const isFavoritesPage = location.pathname === '/favorites';
 
     return (
-        <nav className={`navbar ${scrolled || isSearchPage ? 'scrolled' : ''}`}>
+        <nav className={`navbar ${scrolled || isSearchPage || isFavoritesPage ? 'scrolled' : ''}`}>
             <div className="container navbar-container">
                 {/* Logo - Agent Initials */}
                 <div className="navbar-logo" onClick={handleLogoClick} style={{ cursor: 'pointer' }}>
@@ -95,14 +96,6 @@ const Navbar = ({ onContactClick }) => {
                         <Link to="/search" onClick={closeMobileMenu}>HOME SEARCH</Link>
                     </li>
                     <li><a onClick={() => scrollToSection('services')}>SERVICES</a></li>
-                    <li>
-                        <Link to="/favorites" onClick={closeMobileMenu} className="favorites-link">
-                            FAVORITES
-                            {favoritesCount > 0 && (
-                                <span className="favorites-badge">{favoritesCount}</span>
-                            )}
-                        </Link>
-                    </li>
                     <li><a onClick={handleContactClick}>LET'S CONNECT</a></li>
                 </ul>
             </div>

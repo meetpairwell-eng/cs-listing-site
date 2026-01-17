@@ -96,6 +96,12 @@
     gap: 0.5rem;
 }
 
+.heart-icon-link .heart-icon {
+    font-size: 1.25rem;
+    line-height: 1;
+    display: inline-block;
+}
+
 .favorites-badge {
     background: var(--color-primary);
     color: white;
@@ -108,6 +114,9 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    position: absolute;
+    top: -8px;
+    right: -8px;
 }
 
 /* Mobile Responsive */

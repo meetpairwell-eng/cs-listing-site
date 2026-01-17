@@ -19,7 +19,7 @@ import './App.css';
 const HomePage = ({ onContactClick }) => (
   <>
     <Hero />
-    <Services />
+    <Services onContactClick={onContactClick} />
     <About />
     <FeaturedListings />
     <Testimonials />

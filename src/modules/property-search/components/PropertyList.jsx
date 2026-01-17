@@ -4,7 +4,7 @@ const PropertyList = ({ listings, onPropertyClick, selectedListing }) => {
     return (
         <>
             <div className="property-list-header">
-                <h3>Real Estate & Homes for Sale</h3>
+                <h3>Real estate & homes for sale</h3>
                 <p>{listings.length} results</p>
             </div>
 

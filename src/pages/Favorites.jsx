@@ -34,7 +34,6 @@ const Favorites = () => {
                             <div className="empty-icon">♥</div>
                             <h2>No Favorites Yet</h2>
                             <p>Start adding properties to your favorites to see them here.</p>
-                            <a href="/search" className="btn-primary">Browse Properties</a>
                         </div>
                     ) : (
                         <div className="favorites-grid">

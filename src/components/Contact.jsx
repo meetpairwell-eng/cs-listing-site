@@ -2,8 +2,16 @@ import { SITE_CONFIG } from '../config';
 import './Contact.css';
 
 const Contact = ({ onContactClick }) => {
+    const bgImage = SITE_CONFIG.contactHeroBg.startsWith('http')
+        ? SITE_CONFIG.contactHeroBg
+        : `${SITE_CONFIG.mediaBaseUrl}/${SITE_CONFIG.contactHeroBg}`;
+
     return (
-        <section id="contact" className="contact-hero-section">
+        <section
+            id="contact"
+            className="contact-hero-section"
+            style={{ backgroundImage: `url(${bgImage})` }}
+        >
             <div className="contact-hero-overlay"></div>
             <div className="contact-hero-content">
                 <h2 className="contact-hero-title">WORK WITH {SITE_CONFIG.agentName.split(' ')[0].toUpperCase()}</h2>

@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
+import useFavorites from '../../../hooks/useFavorites';
 import FilterModal from './FilterModal';
 import './PropertySearchHeader.css';
 
@@ -6,6 +8,8 @@ const PropertySearchHeader = ({ filters, onFiltersChange }) => {
     const [showFilterModal, setShowFilterModal] = useState(false);
     const [openFilter, setOpenFilter] = useState(null);
     const searchInputRef = useRef(null);
+    const { favoritesCount } = useFavorites();
+    const navigate = useNavigate();
 
     // Google Places Autocomplete
     useEffect(() => {
@@ -222,6 +226,16 @@ const PropertySearchHeader = ({ filters, onFiltersChange }) => {
 
             {/* Action Buttons */}
             <div className="header-actions">
+                <button
+                    className="action-btn heart-btn"
+                    onClick={() => navigate('/favorites')}
+                    aria-label="View favorites"
+                >
+                    <span className="heart-icon">♥</span>
+                    {favoritesCount > 0 && (
+                        <span className="favorites-badge">{favoritesCount}</span>
+                    )}
+                </button>
                 <button className="action-btn">List</button>
                 <button className="action-btn">Map</button>
                 <button className="action-btn primary" onClick={() => setShowFilterModal(true)}>

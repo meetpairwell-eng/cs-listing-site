@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
-import { GoogleMap, useJsApiLoader, Marker, InfoWindow } from '@react-google-maps/api';
+import { GoogleMap, useJsApiLoader, Marker, InfoWindow, OverlayView } from '@react-google-maps/api';
 import { SITE_CONFIG } from '../../../config';
 
 const containerStyle = {
@@ -91,7 +91,7 @@ const PropertyMapGoogle = ({ listings, onMapMove, onMarkerClick, selectedListing
                 fullscreenControl: true
             }}
         >
-            {listings.map((listing) => (
+            {listings.map((listing, index) => (
                 <Marker
                     key={listing.id}
                     position={{
@@ -106,20 +106,53 @@ const PropertyMapGoogle = ({ listings, onMapMove, onMarkerClick, selectedListing
                     }}
                     icon={{
                         path: window.google.maps.SymbolPath.CIRCLE,
-                        scale: selectedListing?.id === listing.id ? 12 : 10,
-                        fillColor: selectedListing?.id === listing.id ? '#4A5D4F' : '#FFFFFF',
+                        scale: selectedListing?.id === listing.id ? 12 : 8,
+                        fillColor: selectedListing?.id === listing.id ? '#4A5D4F' : '#1A1A1A',
                         fillOpacity: 1,
-                        strokeColor: '#4A5D4F',
+                        strokeColor: '#FFFFFF',
                         strokeWeight: 2
                     }}
-                    label={{
-                        text: listing.priceFormatted,
-                        color: selectedListing?.id === listing.id ? '#FFFFFF' : '#000000',
-                        fontSize: '12px',
-                        fontWeight: 'bold'
-                    }}
+                    zIndex={100}
                 />
             ))}
+
+            {/* Price labels as overlays - every 4th marker */}
+            {listings.map((listing, index) => {
+                if (index % 4 !== 0) return null;
+
+                const priceText = listing.price >= 1000000
+                    ? `${(listing.price / 1000000).toFixed(1)}M`
+                    : `${Math.round(listing.price / 1000)}K`;
+
+                return (
+                    <OverlayView
+                        key={`label-${listing.id}`}
+                        position={{
+                            lat: listing.coordinates.lat,
+                            lng: listing.coordinates.lng
+                        }}
+                        mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
+                    >
+                        <div style={{
+                            position: 'absolute',
+                            transform: 'translate(-50%, -200%)',
+                            background: 'white',
+                            padding: '4px 10px',
+                            borderRadius: '12px',
+                            boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
+                            fontFamily: 'Inter, sans-serif',
+                            fontSize: '12px',
+                            fontWeight: '700',
+                            color: '#1A1A1A',
+                            whiteSpace: 'nowrap',
+                            pointerEvents: 'none',
+                            zIndex: 1000
+                        }}>
+                            {priceText}
+                        </div>
+                    </OverlayView>
+                );
+            })}
 
             {activeMarker && (
                 <InfoWindow

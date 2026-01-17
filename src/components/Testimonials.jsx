@@ -1,9 +1,17 @@
 import { useState } from 'react';
+import { SITE_CONFIG } from '../config';
 import { testimonials } from '../data/testimonials';
 import './Testimonials.css';
 
 const Testimonials = () => {
     const [activeIndex, setActiveIndex] = useState(0);
+
+    // Helper to get correct asset URL
+    const getAssetUrl = (path) => {
+        if (!path) return '';
+        if (path.startsWith('http') || path.startsWith('/') || path.startsWith('data:')) return path;
+        return `${SITE_CONFIG.mediaBaseUrl}/${path}`;
+    };
 
     const nextTestimonial = () => {
         setActiveIndex((prev) => (prev + 1) % testimonials.length);
@@ -38,7 +46,10 @@ const Testimonials = () => {
 
     return (
         <section className="testimonials-section">
-            <div className="testimonials-bg"></div>
+            <div
+                className="testimonials-bg"
+                style={{ backgroundImage: `url(${SITE_CONFIG.testimonialsBg})` }}
+            ></div>
 
             <div className="testimonials-header">
                 <h2>CLIENT TESTIMONIALS</h2>

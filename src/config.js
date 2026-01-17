@@ -12,6 +12,12 @@ export const SITE_CONFIG = {
   heroVideo: "dallas-house.mp4",
   // Headshot from R2
   headshot: "cole-swearingen-headshot.webp",
+  // Contact section background
+  contactHeroBg: "contact-bg.png",
+  // Modal background (Unsplash or R2)
+  modalBg: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80",
+  // Testimonials section background
+  testimonialsBg: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80",
   // Social Media Links (update with real URLs or set to null to hide)
   socialMedia: {
     facebook: null,
