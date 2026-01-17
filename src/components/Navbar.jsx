@@ -95,7 +95,9 @@ const Navbar = ({ onContactClick }) => {
                     <li>
                         <Link to="/search" onClick={closeMobileMenu}>HOME SEARCH</Link>
                     </li>
-                    <li><a onClick={() => scrollToSection('services')}>SERVICES</a></li>
+                    <li>
+                        <Link to="/home-valuation" onClick={closeMobileMenu}>HOME VALUATION</Link>
+                    </li>
                     <li><a onClick={handleContactClick}>LET'S CONNECT</a></li>
                 </ul>
             </div>

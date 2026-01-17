@@ -12,6 +12,7 @@ import FloatingContactButton from './components/FloatingContactButton';
 import PropertySearch from './modules/property-search/PropertySearch';
 import FeaturedProperties from './pages/FeaturedProperties';
 import Favorites from './pages/Favorites';
+import HomeValuation from './pages/HomeValuation';
 import Footer from './components/Footer';
 import './App.css';
 
@@ -67,6 +68,17 @@ function App() {
             element={
               <>
                 <Favorites />
+                <Footer />
+              </>
+            }
+          />
+
+          {/* Home Valuation */}
+          <Route
+            path="/home-valuation"
+            element={
+              <>
+                <HomeValuation onContactClick={() => setIsContactModalOpen(true)} />
                 <Footer />
               </>
             }

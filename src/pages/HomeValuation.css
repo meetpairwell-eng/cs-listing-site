@@ -1,0 +1,493 @@
+/* Home Valuation Page Styles */
+
+.home-valuation-page {
+    min-height: 100vh;
+    background: #f5f5f5;
+}
+
+/* Hero Section */
+.hv-hero {
+    position: relative;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 20px 80px;
+    overflow: hidden;
+}
+
+.hv-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+.hv-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hv-hero-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #e0e0e0;
+    margin-bottom: 1rem;
+}
+
+.hv-hero-subtitle {
+    font-family: var(--font-body);
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: #b0b0b0;
+    margin-bottom: 3rem;
+}
+
+.hv-search-form {
+    margin-bottom: 2rem;
+}
+
+.hv-search-wrapper {
+    display: flex;
+    gap: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .hv-search-wrapper {
+        flex-direction: column;
+    }
+}
+
+.hv-search-input {
+    flex: 1;
+    padding: 1rem 1.5rem;
+    border: 2px solid #fff;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.95);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: #1a1a1a;
+}
+
+.hv-search-input:focus {
+    outline: none;
+    border-color: #e0e0e0;
+    background: #fff;
+}
+
+.hv-search-button {
+    padding: 1rem 2rem;
+    background: #fff;
+    color: #1a1a1a;
+    border: 2px solid #fff;
+    border-radius: 4px;
+    font-family: var(--font-heading);
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.hv-search-button:hover {
+    background: transparent;
+    color: #fff;
+}
+
+.hv-hero-benefits {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.875rem;
+    color: #e0e0e0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+@media (max-width: 768px) {
+    .hv-hero-benefits {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+/* Section Title - Global */
+.hv-section-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: center;
+    color: #1a1a1a;
+    margin-bottom: 1.5rem;
+}
+
+/* Valuation Process Section */
+.hv-process {
+    padding: 100px 0;
+    background: #fff;
+    overflow: hidden;
+}
+
+.hv-process-subtitle {
+    text-align: center;
+    font-family: var(--font-body);
+    font-size: 1.125rem;
+    color: #666;
+    margin-bottom: 4rem;
+    text-transform: capitalize;
+}
+
+.hv-process-timeline {
+    position: relative;
+    max-width: 1200px;
+    margin: 80px auto 0;
+    padding-bottom: 40px;
+}
+
+.hv-timeline-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: #000;
+    transform: translateX(-50%);
+}
+
+.hv-timeline-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 100px;
+    position: relative;
+}
+
+.hv-timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.hv-timeline-dot {
+    position: absolute;
+    left: 50%;
+    top: 15px;
+    width: 8px;
+    height: 8px;
+    background: #000;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+.hv-timeline-label {
+    width: 45%;
+    display: flex;
+}
+
+.hv-timeline-content {
+    width: 45%;
+}
+
+.label-box {
+    background: #f0f0f0;
+    padding: 12px 24px;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    font-family: var(--font-body);
+    font-weight: 500;
+    color: #333;
+}
+
+.hv-timeline-content h3 {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    color: #1a1a1a;
+    letter-spacing: 0.05em;
+}
+
+.hv-timeline-content p {
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.8;
+    color: #444;
+    margin: 0;
+    text-align: justify;
+}
+
+/* CMA: Label left, Content right */
+.hv-timeline-item.cma .hv-timeline-label {
+    justify-content: flex-end;
+    padding-right: 30px;
+}
+
+.hv-timeline-item.cma .hv-timeline-content {
+    padding-left: 30px;
+}
+
+/* Appraisal: Label right, Content left */
+.hv-timeline-item.appraisal {
+    flex-direction: row-reverse;
+}
+
+.hv-timeline-item.appraisal .hv-timeline-label {
+    justify-content: flex-start;
+    padding-left: 30px;
+}
+
+.hv-timeline-item.appraisal .hv-timeline-content {
+    padding-right: 30px;
+    text-align: right;
+}
+
+.hv-feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0;
+}
+
+.hv-feature-list li {
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.hv-feature-list li strong {
+    color: #1a1a1a;
+    display: block;
+    margin-bottom: 2px;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+}
+
+.appraisal .hv-feature-list li {
+    text-align: right;
+}
+
+@media (max-width: 768px) {
+    .hv-timeline-line {
+        left: 20px;
+    }
+
+    .hv-timeline-dot {
+        left: 20px;
+    }
+
+    .hv-timeline-item {
+        flex-direction: column !important;
+        margin-bottom: 60px;
+    }
+
+    .hv-timeline-label,
+    .hv-timeline-content {
+        width: 100%;
+        padding: 0 0 0 50px !important;
+        text-align: left !important;
+        justify-content: flex-start !important;
+    }
+
+    .hv-timeline-label {
+        margin-bottom: 20px;
+    }
+}
+
+/* FAQ Section - Enhanced */
+.hv-faq {
+    padding: 8rem 0;
+    background: #fff;
+}
+
+.hv-faq-intro {
+    text-align: center;
+    font-family: var(--font-body);
+    font-size: 1.125rem;
+    color: #666;
+    margin-bottom: 4rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hv-faq-list {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.hv-faq-item {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.hv-faq-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.hv-faq-question {
+    width: 100%;
+    padding: 1.75rem 2.5rem;
+    background: transparent;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-family: var(--font-heading);
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    text-align: left;
+    transition: all 0.3s ease;
+}
+
+.hv-faq-question:hover {
+    color: #333;
+}
+
+.hv-faq-icon {
+    font-size: 1.75rem;
+    font-weight: 300;
+    color: #666;
+    transition: transform 0.3s ease;
+    margin-left: 1rem;
+    flex-shrink: 0;
+}
+
+.hv-faq-item.active .hv-faq-icon {
+    transform: rotate(180deg);
+}
+
+.hv-faq-item.active .hv-faq-question {
+    background: #f5f5f5;
+}
+
+.hv-faq-answer {
+    padding: 0 2.5rem 2rem;
+    animation: fadeIn 0.4s ease;
+}
+
+.hv-faq-answer p {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #666;
+    margin: 0;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* CTA Section */
+.hv-cta {
+    padding: 6rem 0;
+    background: #1a1a1a;
+    text-align: center;
+}
+
+.hv-cta-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #e0e0e0;
+    margin-bottom: 1rem;
+}
+
+.hv-cta-text {
+    font-family: var(--font-body);
+    font-size: 1.125rem;
+    color: #b0b0b0;
+    margin-bottom: 2.5rem;
+}
+
+.hv-cta-button {
+    padding: 1.25rem 3rem;
+    background: #fff;
+    color: #1a1a1a;
+    border: 2px solid #fff;
+    border-radius: 4px;
+    font-family: var(--font-heading);
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.hv-cta-button:hover {
+    background: transparent;
+    color: #fff;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .hv-hero {
+        min-height: 60vh;
+        padding: 100px 20px 60px;
+    }
+
+    .hv-benefits,
+    .hv-faq,
+    .hv-cta {
+        padding: 4rem 0;
+    }
+
+    .hv-section-title {
+        margin-bottom: 2.5rem;
+    }
+
+    .hv-benefits-grid {
+        gap: 1.5rem;
+    }
+
+    .hv-benefit-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .hv-faq-question {
+        padding: 1.25rem 1.5rem;
+        font-size: 1rem;
+    }
+
+    .hv-faq-answer {
+        padding: 0 1.5rem 1.25rem;
+    }
+}

@@ -2,31 +2,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
 
 :root {
-  /* Color Palette - Warm & Natural */
+  /* ... existing colors ... */
   --color-primary: #4A5D4F;
-  /* Duck Green - Farrow & Ball W55 */
   --color-primary-light: #5C6F5F;
   --color-primary-dark: #3A4D3F;
   --color-accent: #4A5D4F;
-  /* Duck Green accent */
   --color-gold: #C9A961;
-  /* Gold accent (kept for highlights) */
 
-  /* Neutrals - Warm Palette */
   --color-bg: #FFFFFF;
-  /* White */
   --color-bg-secondary: #EBE6DF;
-  /* Warm beige/cream */
   --color-bg-dark: #1A1A1A;
-  /* Black for contrast */
   --color-text: #1A1A1A;
-  /* Black text */
   --color-text-light: #666666;
-  /* Gray text */
   --color-text-inverse: #FFFFFF;
-  /* White text */
   --color-border: #D5CFC5;
-  /* Warm border color */
 
   /* Spacing */
   --spacing-xs: 0.5rem;
