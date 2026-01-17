@@ -1,10 +1,11 @@
 import { SITE_CONFIG } from '../config';
+import contactBg from '../assets/contact-bg.png';
 import './Contact.css';
 
 const Contact = ({ onContactClick }) => {
-    const bgImage = SITE_CONFIG.contactHeroBg.startsWith('http')
+    const bgImage = SITE_CONFIG.contactHeroBg && SITE_CONFIG.contactHeroBg.startsWith('http')
         ? SITE_CONFIG.contactHeroBg
-        : `${SITE_CONFIG.mediaBaseUrl}/${SITE_CONFIG.contactHeroBg}`;
+        : contactBg;
 
     return (
         <section

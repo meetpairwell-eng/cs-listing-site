@@ -45,7 +45,7 @@ const Testimonials = () => {
     const visibleCards = getVisibleTestimonials();
 
     return (
-        <section className="testimonials-section">
+        <section id="testimonials" className="testimonials-section">
             <div
                 className="testimonials-bg"
                 style={{ backgroundImage: `url(${SITE_CONFIG.testimonialsBg})` }}
