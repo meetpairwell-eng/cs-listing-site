@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { SITE_CONFIG } from '../config';
 import ValuationModal from '../components/ValuationModal';
+import heroImage from '../assets/valuation-hero.png';
 import './HomeValuation.css';
 
 const HomeValuation = ({ onContactClick }) => {
@@ -41,38 +42,34 @@ const HomeValuation = ({ onContactClick }) => {
     const faqs = [
         {
             question: "How accurate is the home valuation?",
-            answer: "Our valuations leverage cutting-edge algorithms combined with comprehensive real-time market data to deliver highly accurate estimates. We analyze thousands of data points including recent comparable sales, current market conditions, property characteristics, and neighborhood trends. While our automated valuation provides an excellent starting point, we recommend scheduling a comprehensive market analysis with one of our expert agents for the most precise valuation. Our agents can account for unique property features, recent renovations, and subtle market nuances that automated systems may not fully capture, ensuring you receive the most accurate assessment of your home's true market value."
+            answer: "Our valuations combine comprehensive real-time market data with personalized expertise to deliver highly accurate estimates. We analyze recent comparable sales, current market conditions, property characteristics, and neighborhood trends. For the most precise valuation, we pair this data with a comprehensive market analysis from one of our expert agents who personally account for your home's unique features, recent renovations, and subtle market nuances to ensure you receive the most accurate assessment of your property's true value."
         },
         {
             question: "What factors affect my home's value?",
-            answer: "Your home's value is influenced by a complex interplay of numerous factors. Location remains paramount—proximity to quality schools, shopping centers, parks, and employment hubs significantly impacts value. Physical characteristics including square footage, number of bedrooms and bathrooms, lot size, and architectural style play crucial roles. The property's condition, age, and any recent upgrades or renovations are carefully considered. We also analyze comparable sales in your neighborhood, current market trends, local economic conditions, and seasonal fluctuations. Additional factors include curb appeal, energy efficiency features, smart home technology, outdoor living spaces, and even the quality of local amenities and community services. Our comprehensive analysis ensures all these elements are properly weighted to provide you with an accurate valuation."
+            answer: "Location is paramount—proximity to quality schools, shopping, parks, and employment hubs significantly impacts value. We carefully evaluate physical characteristics like square footage, bedrooms, bathrooms, lot size, and architectural style. Your property's condition, age, and recent upgrades are personally assessed. We analyze comparable sales in your neighborhood, current market trends, and local economic conditions. Additional factors include curb appeal, energy efficiency, smart home features, and outdoor living spaces. Our personalized analysis ensures all these elements are properly weighted for your specific property."
         },
         {
             question: "Is this service free?",
-            answer: "Absolutely! Our home valuation service is completely free with zero obligations or hidden fees. We believe in providing valuable, transparent insights to all homeowners, whether you're actively considering selling, planning for the future, or simply curious about your property's current market value. There's no pressure to list with us, and you're welcome to use this information however you see fit. We offer this complimentary service because we're confident that once you experience our expertise and personalized approach, you'll choose to work with us when you're ready to make your next move. Think of it as our way of demonstrating the quality of service and market knowledge we bring to every client relationship."
+            answer: "Absolutely! Our home valuation service is completely free with zero obligations. We provide valuable, transparent insights to all homeowners, whether you're actively considering selling or simply curious about your property's value. There's no pressure to list with us. We offer this complimentary service because we're confident that once you experience our personalized approach and market expertise, you'll choose to work with us when you're ready to make your next move."
         },
         {
             question: "How often should I check my home's value?",
-            answer: "We recommend checking your home's value quarterly to stay well-informed about market trends and your property's appreciation trajectory. Regular monitoring helps you understand seasonal fluctuations and long-term value trends in your neighborhood. However, if you're actively considering selling within the next 6-12 months, monthly valuations can be beneficial to help identify the optimal listing window when market conditions are most favorable. Additionally, you should request a new valuation after completing any significant renovations or improvements, as these can substantially impact your home's worth. Major market events, changes in local zoning, new developments in your area, or shifts in interest rates are also good triggers for requesting an updated valuation to ensure you have the most current information."
+            answer: "We recommend checking your home's value quarterly to stay informed about market trends. However, for a truly accurate assessment, we'll reach out to discuss any recent updates or specific details about your home, as these personalized factors are the primary drivers of your property's current market value."
         },
         {
             question: "What happens after I submit my address?",
-            answer: "Once you submit your address and contact information, our advanced valuation system immediately begins analyzing your property using our proprietary algorithms and comprehensive market database. Within moments, you'll receive an initial automated estimate. Following this, one of our experienced local real estate agents will personally review your property details and prepare a comprehensive Comparative Market Analysis (CMA). This detailed report will include recent comparable sales in your neighborhood, active competing listings, market absorption rates, and current pricing trends. Your dedicated agent will then reach out to you—typically within 24 hours—to discuss the findings, answer any questions, and provide expert insights about your local market conditions. There's absolutely no obligation, and our agents are here to provide valuable information and guidance, whether you're planning to sell immediately or simply exploring your options for the future."
-        },
-        {
-            question: "How long does it take to receive my valuation?",
-            answer: "You'll receive an instant preliminary estimate as soon as you complete the form. This automated valuation provides an immediate baseline understanding of your property's worth based on current market data and comparable sales. For a more detailed and personalized Comparative Market Analysis (CMA), one of our expert agents will contact you within 24 business hours. This comprehensive analysis takes into account the unique features of your property, recent market activity, and local trends that automated systems might miss. If you need expedited service or have specific timing requirements, please let us know in your submission, and we'll do our best to accommodate your schedule."
+            answer: "As soon as you submit your information, our team is notified. One of our local experts will be contacting you shortly to get a detailed description of your home. This conversation is essential because the unique details you provide—such as recent high-end finishes or specific structural upgrades—majorly influence the final valuation and allow us to provide a far more accurate analysis than a generic estimate."
         },
         {
             question: "Do I need to provide access to my home for the valuation?",
-            answer: "No, you don't need to provide physical access to your home for the initial valuation. Our automated system and Comparative Market Analysis can provide accurate estimates based on public records, recent comparable sales, and property data. However, if you'd like the most precise valuation possible, we recommend scheduling an optional in-person assessment. A brief walkthrough allows our agents to note unique features, recent upgrades, condition details, and other value-adding elements that may not be reflected in public records. This personalized approach typically results in a more accurate valuation and provides you with specific recommendations for maximizing your home's value before listing."
+            answer: "Physical access is not required for the initial valuation. We start by contacting you to gather a precise description of your property's features and condition. These details are critical and will majorly influence the accuracy of the evaluation. While a simple phone conversation often provides enough information for a detailed Comparative Market Analysis, we are always available for an in-person walkthrough if you prefer the most granular assessment possible."
         }
     ];
 
     return (
         <div className="home-valuation-page">
             {/* Hero Section */}
-            <section className="hv-hero">
+            <section className="hv-hero" style={{ backgroundImage: `url(${heroImage})` }}>
                 <div className="hv-hero-overlay"></div>
                 <div className="container hv-hero-content">
                     <h1 className="hv-hero-title">Discover Your Home's True Value</h1>
@@ -107,7 +104,6 @@ const HomeValuation = ({ onContactClick }) => {
             <section className="hv-process">
                 <div className="container">
                     <h2 className="hv-section-title">How we perform a valuation</h2>
-                    <p className="hv-process-subtitle">Two Accurate Ways to Perform Home Valuations</p>
 
                     <div className="hv-process-timeline">
                         <div className="hv-timeline-line"></div>
@@ -187,17 +183,6 @@ const HomeValuation = ({ onContactClick }) => {
                             </div>
                         ))}
                     </div>
-                </div>
-            </section>
-
-            {/* CTA Section */}
-            <section className="hv-cta">
-                <div className="container">
-                    <h2 className="hv-cta-title">Ready to Discover Your Home's Value?</h2>
-                    <p className="hv-cta-text">Get started with your free, no-obligation home valuation today</p>
-                    <button className="hv-cta-button" onClick={() => setIsModalOpen(true)}>
-                        Get Your Free Valuation
-                    </button>
                 </div>
             </section>
 

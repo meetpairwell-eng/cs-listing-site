@@ -3,8 +3,9 @@ export const SITE_CONFIG = {
   agentInitials: "CS",
   agentEmail: "cole.swearingen@compass.com",
   agentLicense: "CA DRE# 02052462",
-  agentPhone: "(214) 555-0100", // Update with real phone number
-  agentAddress: "Compass, 5950 Berkshire Ln #700, Dallas, TX 75225",
+  agentPhone: "(214) 927-1313",
+  officePhone: "(214) 814-8100",
+  agentAddress: "5960 Berkshire Ln Ste 700, Dallas TX 75225",
   agency: "Compass Real Estate",
   // Your specific R2 Placeholder URL
   mediaBaseUrl: "https://pub-0a14d2bf83cc482ab589da588a45c6b0.r2.dev",

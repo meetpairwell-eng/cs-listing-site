@@ -1,70 +1,97 @@
+import { Link } from 'react-router-dom';
 import { SITE_CONFIG } from '../config';
 import './Footer.css';
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
 
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
     return (
         <footer className="footer">
             <div className="container">
-                <div className="footer-content">
-                    <div className="footer-brand">
-                        <h3>{SITE_CONFIG.agentName}</h3>
-                        <p>{SITE_CONFIG.agency}</p>
-                        <p className="footer-tagline">
-                            Your trusted partner in Dallas real estate
+                <div className="footer-top">
+                    <div className="footer-brand-logo">
+                        <div className="agent-initials">{SITE_CONFIG.agentInitials}</div>
+                        <div className="agent-name-logo">{SITE_CONFIG.agentName}</div>
+                    </div>
+                    <div className="footer-compass-logo">
+                        <h1>COMPASS</h1>
+                    </div>
+
+                    <div className="footer-info-grid">
+                        <div className="footer-info-col">
+                            <h4>CONTACT</h4>
+                            <a href={`tel:${SITE_CONFIG.agentPhone.replace(/\D/g, '')}`} className="footer-info-link">
+                                tel:{SITE_CONFIG.agentPhone}
+                            </a>
+                            <a href={`mailto:${SITE_CONFIG.agentEmail}`} className="footer-info-link">
+                                {SITE_CONFIG.agentEmail}
+                            </a>
+                        </div>
+
+                        <div className="footer-info-col">
+                            <h4>OFFICE</h4>
+                            <a href={`tel:${SITE_CONFIG.officePhone.replace(/\D/g, '')}`} className="footer-info-link">
+                                tel:{SITE_CONFIG.officePhone}
+                            </a>
+                            <p className="footer-info-text">
+                                {SITE_CONFIG.agentAddress}
+                            </p>
+                        </div>
+
+                        <div className="footer-info-col">
+                            <h4>FOLLOW US</h4>
+                            <div className="footer-social-icons">
+                                <a href={SITE_CONFIG.socialMedia.facebook || "#"} aria-label="Facebook" className="social-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" /></svg>
+                                </a>
+                                <a href={SITE_CONFIG.socialMedia.instagram || "#"} aria-label="Instagram" className="social-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" /></svg>
+                                </a>
+                                <a href={SITE_CONFIG.socialMedia.zillow || "#"} aria-label="Zillow" className="social-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm1.25 15.5h-2.5v-5.5h-1.5v-2.5h4v8zm-1.25-10.5c.69 0 1.25.56 1.25 1.25s-.56 1.25-1.25 1.25-1.25-.56-1.25-1.25.56-1.25 1.25-1.25z" /></svg>
+                                </a>
+                                <a href={SITE_CONFIG.socialMedia.linkedin || "#"} aria-label="LinkedIn" className="social-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" /></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr className="footer-divider" />
+
+                    <nav className="footer-nav">
+                        <Link to="/properties" onClick={scrollToTop}>PROPERTIES</Link>
+                        <span className="nav-separator">|</span>
+                        <Link to="/search" onClick={scrollToTop}>HOME SEARCH</Link>
+                        <span className="nav-separator">|</span>
+                        <Link to="/home-valuation" onClick={scrollToTop}>HOME VALUATION</Link>
+                        <span className="nav-separator">|</span>
+                        <a href="/#testimonials">TESTIMONIALS</a>
+                        <span className="nav-separator">|</span>
+                        <a href="/#contact">CONTACT US</a>
+                    </nav>
+
+                    <div className="footer-legal-links">
+                        <a href="https://www.trec.texas.gov/sites/default/files/pdf-forms/CN%201-5.pdf" target="_blank" rel="noopener noreferrer">Texas Real Estate Commission Consumer Protection Notice</a>
+                        <a href="https://www.trec.texas.gov/sites/default/files/pdf-forms/IABS%201-0.pdf" target="_blank" rel="noopener noreferrer">Texas Real Estate Commission Information About Brokerage Services</a>
+                        <button className="legal-modal-trigger">TREC Disclaimer</button>
+                    </div>
+
+                    <div className="footer-disclaimer">
+                        <p>
+                            {SITE_CONFIG.agentName} is a team of real estate agents affiliated with Compass. Compass is a licensed real estate broker and abides by all applicable equal housing opportunity laws. All material presented herein is intended for informational purposes only. Information is compiled from sources deemed reliable but is subject to errors, omissions, changes in price, condition, sale, or withdrawal without notice. No statement is made as to accuracy of any description. All measurements and square footages are approximate. This is not intended to solicit property already listed. Nothing herein shall be construed as legal, accounting or other professional advice outside the realm of real estate brokerage.
                         </p>
                     </div>
 
-                    <div className="footer-links">
-                        <div className="footer-column">
-                            <h4>Quick Links</h4>
-                            <ul>
-                                <li><a href="#home">Home</a></li>
-                                <li><a href="#listings">Listings</a></li>
-                                <li><a href="#about">About</a></li>
-                                <li><a href="#contact">Contact</a></li>
-                            </ul>
+                    <div className="footer-bottom-logos">
+                        <div className="realtor-logos">
+                            <img src="https://colenelrealestate.com/wp-content/uploads/2021/04/equal-housing-opportunity-logo.png" alt="Equal Housing Opportunity" />
+                            <img src="https://colenelrealestate.com/wp-content/uploads/2021/04/realtor-logo.png" alt="Realtor" />
                         </div>
-
-                        <div className="footer-column">
-                            <h4>Services</h4>
-                            <ul>
-                                <li><a href="#listings">Buyer Representation</a></li>
-                                <li><a href="#listings">Seller Representation</a></li>
-                                <li><a href="#contact">Market Analysis</a></li>
-                                <li><a href="#contact">Investment Properties</a></li>
-                            </ul>
-                        </div>
-
-                        <div className="footer-column">
-                            <h4>Contact</h4>
-                            <ul>
-                                <li><a href={`mailto:${SITE_CONFIG.agentEmail}`}>{SITE_CONFIG.agentEmail}</a></li>
-                                <li>Dallas, Texas</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="footer-bottom">
-                    <p>&copy; {currentYear} {SITE_CONFIG.agentName}. All rights reserved.</p>
-                    <div className="footer-social">
-                        <a href="#" aria-label="LinkedIn">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                            </svg>
-                        </a>
-                        <a href="#" aria-label="Instagram">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                            </svg>
-                        </a>
-                        <a href="#" aria-label="Facebook">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
-                            </svg>
-                        </a>
                     </div>
                 </div>
             </div>

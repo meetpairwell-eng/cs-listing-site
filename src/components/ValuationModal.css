@@ -8,10 +8,9 @@
     bottom: 0;
     background: rgba(0, 0, 0, 0.75);
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     z-index: 10000;
-    padding: 20px;
     overflow-y: auto;
 }
 
@@ -19,9 +18,7 @@
     position: relative;
     background: #fff;
     width: 100%;
-    max-width: 1200px;
-    max-height: 90vh;
-    overflow-y: auto;
+    min-height: 100vh;
     border-radius: 0;
 }
 
@@ -50,7 +47,7 @@
 .valuation-modal-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    min-height: 600px;
+    min-height: 100vh;
 }
 
 @media (max-width: 968px) {
