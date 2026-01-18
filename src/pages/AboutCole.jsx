@@ -112,7 +112,6 @@ const AboutCole = () => {
                                 and a commitment to personalized service, I help clients navigate the market
                                 with confidence and achieve their real estate goals.
                             </p>
-                            <Link to="/contact" className="btn-primary">Let's Connect</Link>
                         </div>
                         <div className="cole-hero-image">
                             <img
@@ -151,7 +150,9 @@ const AboutCole = () => {
                                 I believe in transparent communication, strategic thinking, and going above and
                                 beyond to ensure your real estate journey is smooth and successful.
                             </p>
-                            <Link to="/contact" className="btn-secondary">Get in Touch</Link>
+                            <button onClick={() => window.location.href = '/contact'} className="cole-cta-button">
+                                GET IN TOUCH
+                            </button>
                         </div>
                         <div className="cole-about-image">
                             <img
