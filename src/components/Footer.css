@@ -230,6 +230,40 @@
     filter: grayscale(0) opacity(1);
 }
 
+.footer-pairwell {
+    text-align: center;
+    padding: 25px 0 0;
+    margin-top: 30px;
+    border-top: 1px solid #e5e5e5;
+    font-size: 0.85rem;
+    color: #999;
+}
+
+.pairwell-text {
+    color: #666;
+    font-weight: 500;
+}
+
+.footer-separator {
+    margin: 0 12px;
+    color: #ddd;
+}
+
+.copyright-text {
+    color: #999;
+}
+
+.privacy-link {
+    color: #666;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.privacy-link:hover {
+    color: #000;
+    text-decoration: underline;
+}
+
 @media (max-width: 768px) {
     .footer {
         padding: 60px 20px 30px;

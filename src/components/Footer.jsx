@@ -119,6 +119,14 @@ const Footer = () => {
                         </div>
                     </div>
                 </div>
+
+                <div className="footer-pairwell">
+                    <span className="pairwell-text">Powered by Pairwell</span>
+                    <span className="footer-separator">|</span>
+                    <span className="copyright-text">Copyright © {currentYear}</span>
+                    <span className="footer-separator">|</span>
+                    <Link to="/privacy-policy" className="privacy-link">Privacy Policy</Link>
+                </div>
             </div>
         </footer>
     );
