@@ -117,7 +117,7 @@
 /* Key Highlights Section */
 .cole-highlights {
     padding: 6rem 0;
-    background: linear-gradient(135deg, #f5f1e8 0%, #ffffff 100%);
+    background: #f5f1e8;
 }
 
 .section-title {
@@ -127,46 +127,69 @@
     letter-spacing: 0.1em;
     text-align: center;
     color: var(--color-text);
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
     text-transform: uppercase;
 }
 
 .highlights-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 3rem;
+    gap: 0;
     max-width: 1200px;
     margin: 0 auto;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .highlight-card {
     text-align: center;
-    padding: 2rem;
-    transition: transform var(--transition-base);
+    padding: 2.5rem 2rem;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    transition: all var(--transition-base);
+    background: transparent;
+}
+
+.highlight-card:nth-child(3n) {
+    border-right: none;
+}
+
+.highlight-card:nth-child(4),
+.highlight-card:nth-child(5),
+.highlight-card:nth-child(6) {
+    border-bottom: none;
 }
 
 .highlight-card:hover {
-    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
 }
 
 .highlight-icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 1.25rem;
+    color: var(--color-primary);
+    stroke-width: 1.5;
+}
+
+.highlight-icon svg {
+    width: 100%;
+    height: 100%;
 }
 
 .highlight-title {
     font-family: var(--font-body);
-    font-size: 1.125rem;
+    font-size: 0.95rem;
     font-weight: 600;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.1em;
     color: var(--color-text);
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
     text-transform: uppercase;
 }
 
 .highlight-description {
-    font-size: 0.95rem;
-    line-height: 1.6;
+    font-size: 0.875rem;
+    line-height: 1.5;
     color: var(--color-text-light);
 }
 
