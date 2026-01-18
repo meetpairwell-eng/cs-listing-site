@@ -164,7 +164,7 @@
 .contact-label {
     font-size: 0.875rem;
     letter-spacing: 0.15em;
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.1rem;
     color: rgba(255, 255, 255, 0.8);
     font-weight: 700;
 }
@@ -185,6 +185,7 @@
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
+    white-space: pre-line;
 }
 
 .contact-value:focus,
