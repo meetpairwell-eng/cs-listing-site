@@ -14,6 +14,7 @@ import FeaturedProperties from './pages/FeaturedProperties';
 import Favorites from './pages/Favorites';
 import HomeValuation from './pages/HomeValuation';
 import PrivacyPolicy from './pages/PrivacyPolicy';
+import AboutCole from './pages/AboutCole';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import './App.css';
@@ -93,6 +94,17 @@ function App() {
             element={
               <>
                 <PrivacyPolicy />
+                <Footer />
+              </>
+            }
+          />
+
+          {/* About Cole */}
+          <Route
+            path="/about-cole"
+            element={
+              <>
+                <AboutCole />
                 <Footer />
               </>
             }

@@ -1,0 +1,271 @@
+/* About Cole Page Styles */
+
+.about-cole-page {
+    background: var(--color-bg);
+}
+
+/* Hero Section */
+.cole-hero {
+    background: linear-gradient(135deg, #f5f1e8 0%, #ffffff 100%);
+    padding: 8rem 0 6rem;
+}
+
+.cole-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.cole-hero-content {
+    padding-right: 2rem;
+}
+
+.cole-hero-title {
+    font-family: var(--font-heading);
+    font-size: 4rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    color: var(--color-text);
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+}
+
+.cole-hero-subtitle {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: var(--color-text-light);
+    margin-bottom: 2rem;
+}
+
+.cole-hero-image {
+    position: relative;
+    height: 600px;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.cole-hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+}
+
+.cole-hero-image:hover img {
+    transform: scale(1.02);
+}
+
+/* About Content Section */
+.cole-about-content {
+    padding: 8rem 0;
+    background: var(--color-bg);
+}
+
+.cole-about-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 5rem;
+    align-items: center;
+}
+
+.cole-about-text h2 {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    color: var(--color-text);
+    margin-bottom: 2rem;
+}
+
+.cole-about-text p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--color-text-light);
+    margin-bottom: 1.5rem;
+}
+
+.cole-about-text .btn-secondary {
+    margin-top: 1rem;
+}
+
+.cole-about-image {
+    position: relative;
+    height: 500px;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.cole-about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+}
+
+.cole-about-image:hover img {
+    transform: scale(1.02);
+}
+
+/* Key Highlights Section */
+.cole-highlights {
+    padding: 6rem 0;
+    background: linear-gradient(135deg, #f5f1e8 0%, #ffffff 100%);
+}
+
+.section-title {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-align: center;
+    color: var(--color-text);
+    margin-bottom: 4rem;
+    text-transform: uppercase;
+}
+
+.highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.highlight-card {
+    text-align: center;
+    padding: 2rem;
+    transition: transform var(--transition-base);
+}
+
+.highlight-card:hover {
+    transform: translateY(-5px);
+}
+
+.highlight-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.highlight-title {
+    font-family: var(--font-body);
+    font-size: 1.125rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: var(--color-text);
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+}
+
+.highlight-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--color-text-light);
+}
+
+/* Gallery Section */
+.cole-gallery {
+    padding: 8rem 0;
+    background: var(--color-bg);
+}
+
+.gallery-subtitle {
+    text-align: center;
+    font-size: 1.125rem;
+    color: var(--color-text-light);
+    margin-bottom: 4rem;
+    font-style: italic;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+
+    .cole-hero-grid,
+    .cole-about-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .cole-hero-content {
+        padding-right: 0;
+    }
+
+    .cole-hero-title {
+        font-size: 3rem;
+    }
+
+    .cole-about-text h2 {
+        font-size: 2.5rem;
+    }
+
+    .highlights-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .cole-hero {
+        padding: 6rem 0 4rem;
+    }
+
+    .cole-hero-title {
+        font-size: 2.5rem;
+    }
+
+    .cole-hero-image,
+    .cole-about-image {
+        height: 350px;
+    }
+
+    .cole-about-content {
+        padding: 6rem 0;
+    }
+
+    .cole-about-text h2 {
+        font-size: 2rem;
+    }
+
+    .highlights-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .gallery-item {
+        height: 300px;
+    }
+}
