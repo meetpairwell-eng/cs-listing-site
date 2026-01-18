@@ -253,17 +253,17 @@
 
 .showcase-image {
     position: relative;
-    height: 400px;
-    overflow: hidden;
+    height: 450px;
+    overflow: visible;
     z-index: 2;
 }
 
 .showcase-item:not(.reverse) .showcase-image {
-    margin-right: -3rem;
+    margin-right: -2rem;
 }
 
 .showcase-item.reverse .showcase-image {
-    margin-left: -3rem;
+    margin-left: -2rem;
 }
 
 .showcase-image img {
@@ -278,10 +278,11 @@
 }
 
 .showcase-content {
-    padding: 3rem;
+    padding: 4rem 3rem;
     background: #f5f1e8;
     position: relative;
     z-index: 1;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
 }
 
 .showcase-title {
