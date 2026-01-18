@@ -84,8 +84,8 @@ const AboutCole = () => {
         {
             r2Path: 'about/showcase-1.jpg',
             fallback: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1000&q=80',
-            title: 'Luxury Property Marketing',
-            description: 'Expertly crafted marketing strategies that showcase your property\'s unique features and attract qualified buyers in the Dallas luxury market.'
+            title: 'Reliable. Honest. Proven.',
+            description: 'People trust Cole as a steady hand, especially when the market feels unpredictable. Whether interest rates are shifting or the economy is changing, he uses real data and honest, friendly communication to keep your home and your future safe. He is known for staying calm under pressure and being easy to work with, which makes a big difference when the process gets emotional. By staying closely connected to Dallas\' top agents, Cole makes sure his clients always have the best information and a clear advantage in our city\'s fast-moving market.'
         },
         {
             r2Path: 'about/showcase-2.jpg',
