@@ -96,8 +96,8 @@ const AboutCole = () => {
         {
             r2Path: 'about/showcase-3.jpg',
             fallback: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1000&q=80',
-            title: 'Market Expertise & Results',
-            description: 'Deep knowledge of Dallas neighborhoods combined with proven negotiation skills to achieve exceptional results for my clients.'
+            title: 'Exclusive Access & Insider Intelligence',
+            description: 'Cole\'s deep-rooted connections with Dallas\' most prominent figures and top-tier agents put him at the center of the local real estate conversation. By staying active in these elite circles, he understands the private trends of the market and the people driving them. Whether it\'s a new development in Frisco or a shift in the Park Cities, Cole provides his clients with insider knowledge that is clear and helpful. This connected approach gives his clients a real advantage by helping them understand where the luxury market is headed before everyone else.'
         }
     ];
 
