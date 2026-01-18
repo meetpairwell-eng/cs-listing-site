@@ -80,26 +80,24 @@ const AboutCole = () => {
         }
     ];
 
-    const galleryImages = [
+    const showcaseItems = [
         {
-            r2Path: 'about/gallery-1.jpg',
-            fallback: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80',
-            alt: 'Professional headshot'
+            r2Path: 'about/showcase-1.jpg',
+            fallback: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1000&q=80',
+            title: 'Luxury Property Marketing',
+            description: 'Expertly crafted marketing strategies that showcase your property\'s unique features and attract qualified buyers in the Dallas luxury market.'
         },
         {
-            r2Path: 'about/gallery-2.jpg',
-            fallback: 'https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=800&q=80',
-            alt: 'Luxury property showcase'
+            r2Path: 'about/showcase-2.jpg',
+            fallback: 'https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=1000&q=80',
+            title: 'White-Glove Client Service',
+            description: 'Personalized attention and seamless communication throughout every step of your real estate journey, ensuring a stress-free experience.'
         },
         {
-            r2Path: 'about/gallery-3.jpg',
-            fallback: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80',
-            alt: 'Client consultation'
-        },
-        {
-            r2Path: 'about/gallery-4.jpg',
-            fallback: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80',
-            alt: 'Property interior'
+            r2Path: 'about/showcase-3.jpg',
+            fallback: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1000&q=80',
+            title: 'Market Expertise & Results',
+            description: 'Deep knowledge of Dallas neighborhoods combined with proven negotiation skills to achieve exceptional results for my clients.'
         }
     ];
 
@@ -187,21 +185,27 @@ const AboutCole = () => {
                 </div>
             </section>
 
-            {/* Gallery Section */}
-            <section className="cole-gallery">
+            {/* Showcase Section */}
+            <section className="cole-showcase">
                 <div className="container">
                     <h2 className="section-title">A Glimpse Into My Work</h2>
                     <p className="gallery-subtitle">Showcasing excellence in every transaction</p>
-                    <div className="gallery-grid">
-                        {galleryImages.map((image, index) => (
-                            <div key={index} className="gallery-item">
-                                <img
-                                    src={getMediaUrl(image.r2Path, image.fallback)}
-                                    alt={image.alt}
-                                    onError={(e) => {
-                                        e.target.src = image.fallback;
-                                    }}
-                                />
+                    <div className="showcase-list">
+                        {showcaseItems.map((item, index) => (
+                            <div key={index} className={`showcase-item ${index % 2 === 1 ? 'reverse' : ''}`}>
+                                <div className="showcase-image">
+                                    <img
+                                        src={getMediaUrl(item.r2Path, item.fallback)}
+                                        alt={item.title}
+                                        onError={(e) => {
+                                            e.target.src = item.fallback;
+                                        }}
+                                    />
+                                </div>
+                                <div className="showcase-content">
+                                    <h3 className="showcase-title">{item.title}</h3>
+                                    <p className="showcase-description">{item.description}</p>
+                                </div>
                             </div>
                         ))}
                     </div>
