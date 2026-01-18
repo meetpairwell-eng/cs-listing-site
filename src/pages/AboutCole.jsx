@@ -84,10 +84,10 @@ const AboutCole = () => {
                         </div>
                         <div className="cole-hero-image">
                             <img
-                                src={getMediaUrl('about/hero-image.jpg', 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&q=80')}
-                                alt="Cole Swearingen"
+                                src={getMediaUrl('about/hero-image.jpg', 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1200&q=80')}
+                                alt="Luxury home"
                                 onError={(e) => {
-                                    e.target.src = 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&q=80';
+                                    e.target.src = 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1200&q=80';
                                 }}
                             />
                         </div>
