@@ -110,9 +110,7 @@ const AboutCole = () => {
                         <div className="cole-hero-content">
                             <h1 className="cole-hero-title">Meet Cole Swearingen</h1>
                             <p className="cole-hero-subtitle">
-                                Your trusted partner in Dallas luxury real estate. With a passion for excellence
-                                and a commitment to personalized service, I help clients navigate the market
-                                with confidence and achieve their real estate goals.
+                                A Dallas native with a deep-rooted passion for architecture and design, Cole Swearingen brings a sophisticated, hospitality-driven approach to the DFW real estate market. From scouting off-market opportunities to consulting on award-winning builds, Cole is a strategic partner for those who value detail as much as the deal.
                             </p>
                         </div>
                         <div className="cole-hero-image">
