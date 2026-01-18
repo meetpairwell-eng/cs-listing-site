@@ -133,10 +133,10 @@ h6 {
   font-size: 0.9375rem;
 }
 
-/* Body Text: 16px, Regular (400), Line height 1.6 */
+/* Body Text: 15px, Regular (400), Line height 1.6 */
 p {
   font-family: var(--font-body);
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 500;
   line-height: 1.6;
   color: var(--color-text-light);
