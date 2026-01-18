@@ -65,7 +65,7 @@ body {
   font-family: var(--font-body);
   color: var(--color-text);
   background-color: var(--color-bg);
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 500;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -85,28 +85,28 @@ h6 {
   margin: 0;
 }
 
-/* H1: 72px, Uppercase, Letter spacing 0.15em */
+/* H1: 68px, Uppercase, Letter spacing 0.15em */
 h1 {
-  font-size: clamp(2.5rem, 6vw, 72px);
+  font-size: clamp(2.25rem, 6vw, 68px);
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.15em;
   margin-bottom: var(--spacing-lg);
 }
 
-/* H2: 42px, Uppercase, Letter spacing 0.1em */
+/* H2: 40px, Uppercase, Letter spacing 0.1em */
 h2 {
-  font-size: clamp(1.75rem, 4vw, 42px);
+  font-size: clamp(1.625rem, 4vw, 40px);
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: var(--spacing-md);
 }
 
-/* H3 (Sub-labels): 18px, Uppercase, Bold (700), Letter spacing 0.2em */
+/* H3 (Sub-labels): 17px, Uppercase, Bold (700), Letter spacing 0.2em */
 h3 {
   font-family: var(--font-body);
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.2em;
@@ -122,15 +122,15 @@ h6 {
 }
 
 h4 {
-  font-size: 1.25rem;
-}
-
-h5 {
   font-size: 1.125rem;
 }
 
-h6 {
+h5 {
   font-size: 1rem;
+}
+
+h6 {
+  font-size: 0.9375rem;
 }
 
 /* Body Text: 16px, Regular (400), Line height 1.6 */
