@@ -3,18 +3,16 @@ import { SITE_CONFIG } from '../config';
 import defaultFairHousingLogo from '../assets/realtor-equal-housing.png';
 import './Footer.css';
 
-// Helper to resolve asset paths (handles local imports vs URLs vs config overrides)
+// Helper to resolve asset paths (handles local imports vs URLs vs R2 paths)
 const getAssetUrl = (path, defaultAsset) => {
     if (!path) return defaultAsset;
     if (path.startsWith('http')) return path;
-    // For local assets in public/ or if we had dynamic imports (complex in Vite without glob),
-    // but here we are simplifying. If it's a specific known override name, we could map it.
-    // Ideally, for useruploaded files, they might just put a URL.
-    // For now, if it's the default filename, use the imported one.
+
+    // If it's the default local asset filename, use the imported one
     if (path === 'realtor-equal-housing.png') return defaultFairHousingLogo;
 
-    // Fallback: assume it's a URL or relative public path
-    return path;
+    // Otherwise, prepend the R2 mediaBaseUrl (same pattern as headshot, hero video, etc.)
+    return `${SITE_CONFIG.mediaBaseUrl}/${path}`;
 };
 
 const Footer = () => {
