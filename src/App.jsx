@@ -13,6 +13,7 @@ import PropertySearch from './modules/property-search/PropertySearch';
 import FeaturedProperties from './pages/FeaturedProperties';
 import Favorites from './pages/Favorites';
 import HomeValuation from './pages/HomeValuation';
+import PrivacyPolicy from './pages/PrivacyPolicy';
 import Footer from './components/Footer';
 import './App.css';
 
@@ -79,6 +80,17 @@ function App() {
             element={
               <>
                 <HomeValuation onContactClick={() => setIsContactModalOpen(true)} />
+                <Footer />
+              </>
+            }
+          />
+
+          {/* Privacy Policy */}
+          <Route
+            path="/privacy-policy"
+            element={
+              <>
+                <PrivacyPolicy />
                 <Footer />
               </>
             }
