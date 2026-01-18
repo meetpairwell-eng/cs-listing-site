@@ -46,8 +46,13 @@
 .footer-main-content {
     display: grid;
     grid-template-columns: 1fr 2fr;
-    gap: 60px;
+    gap: 50px;
     margin-bottom: 40px;
+}
+
+.footer-agent-info {
+    border-right: 1px solid #e5e5e5;
+    padding-right: 50px;
 }
 
 .footer-agent-info h3 {
@@ -70,7 +75,7 @@
 .footer-info-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
+    gap: 35px;
     align-items: start;
 }
 
