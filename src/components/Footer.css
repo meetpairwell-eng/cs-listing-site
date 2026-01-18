@@ -61,6 +61,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 40px;
+    align-items: start;
 }
 
 .footer-info-col h4 {
@@ -69,6 +70,7 @@
     letter-spacing: 0.15em;
     color: #000;
     margin-bottom: 12px;
+    margin-top: 0;
     text-transform: uppercase;
 }
 
@@ -89,15 +91,13 @@
     color: #666;
     font-size: 0.95rem;
     line-height: 1.5;
-    margin: 0 auto;
-    max-width: 200px;
+    margin: 0;
 }
 
 .footer-social-icons {
     display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 5px;
+    gap: 12px;
+    margin-top: 0;
 }
 
 .social-icon {
