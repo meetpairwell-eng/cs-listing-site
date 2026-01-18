@@ -1,8 +1,12 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { SITE_CONFIG } from '../config';
+import ContactModal from '../components/ContactModal';
 import './AboutCole.css';
 
 const AboutCole = () => {
+    const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+
     // Helper to get media URL - supports both R2 and fallback URLs
     const getMediaUrl = (r2Path, fallbackUrl) => {
         if (r2Path && SITE_CONFIG.mediaBaseUrl) {
@@ -150,7 +154,7 @@ const AboutCole = () => {
                                 I believe in transparent communication, strategic thinking, and going above and
                                 beyond to ensure your real estate journey is smooth and successful.
                             </p>
-                            <button onClick={() => window.location.href = '/contact'} className="cole-cta-button">
+                            <button onClick={() => setIsContactModalOpen(true)} className="cole-cta-button">
                                 GET IN TOUCH
                             </button>
                         </div>
@@ -203,6 +207,11 @@ const AboutCole = () => {
                     </div>
                 </div>
             </section>
+
+            <ContactModal
+                isOpen={isContactModalOpen}
+                onClose={() => setIsContactModalOpen(false)}
+            />
         </div>
     );
 };
