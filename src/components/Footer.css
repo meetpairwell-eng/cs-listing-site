@@ -51,6 +51,12 @@
     padding-top: 10px;
 }
 
+.broker-logo-img {
+    height: 35px;
+    width: auto;
+    margin-bottom: 30px;
+}
+
 .footer-info-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
