@@ -27,16 +27,22 @@ const ValuationModal = ({ isOpen, onClose, propertyAddress }) => {
                                 {
                                     "featureType": "all",
                                     "elementType": "labels.text.fill",
-                                    "stylers": [{ "color": "#7c93a3" }]
+                                    "stylers": [{ "color": "#999999" }, { "weight": 0.3 }]
                                 },
                                 {
                                     "featureType": "all",
                                     "elementType": "labels.text.stroke",
-                                    "stylers": [
-                                        { "visibility": "on" },
-                                        { "color": "#1a1a1a" },
-                                        { "lightness": 16 }
-                                    ]
+                                    "stylers": [{ "visibility": "off" }]
+                                },
+                                {
+                                    "featureType": "road",
+                                    "elementType": "labels.text.fill",
+                                    "stylers": [{ "color": "#666666" }, { "weight": 0.4 }]
+                                },
+                                {
+                                    "featureType": "road.local",
+                                    "elementType": "labels.text",
+                                    "stylers": [{ "weight": 0.2 }]
                                 }
                             ],
                             disableDefaultUI: true,
