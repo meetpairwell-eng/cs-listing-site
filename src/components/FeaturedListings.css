@@ -6,6 +6,7 @@
 .section-header {
     margin-bottom: var(--spacing-3xl);
     text-align: center;
+    width: 100%;
 }
 
 .section-header h2 {
