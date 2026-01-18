@@ -278,11 +278,9 @@
 }
 
 .showcase-content {
-    padding: 4rem 3rem;
-    background: #f5f1e8;
+    padding: 2rem;
     position: relative;
     z-index: 1;
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
 }
 
 .showcase-title {
