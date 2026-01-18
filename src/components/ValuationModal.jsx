@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
+import { SITE_CONFIG } from '../config';
 import './ValuationModal.css';
 
 const ValuationModal = ({ isOpen, onClose, propertyAddress }) => {
@@ -143,8 +145,9 @@ const ValuationModal = ({ isOpen, onClose, propertyAddress }) => {
                                         required
                                     />
                                     <span>
-                                        I agree to be contacted via call, email, and text for real estate services.
-                                        To opt out, you can reply 'stop' at any time. Message and data rates may apply.
+                                        I agree to be contacted by {SITE_CONFIG.agentName} via call, email, and text for real estate services.
+                                        To opt out, reply 'stop' at any time or reply 'help' for assistance. You can also click the unsubscribe link in the emails.
+                                        Message and data rates may apply. Message frequency may vary. <Link to="/privacy-policy" className="privacy-policy-link">Privacy Policy</Link>.
                                     </span>
                                 </label>
                             </div>

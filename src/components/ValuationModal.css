@@ -159,6 +159,16 @@
     color: #666;
 }
 
+.valuation-form-checkbox .privacy-policy-link {
+    color: #4A5D4F;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.valuation-form-checkbox .privacy-policy-link:hover {
+    color: #000;
+}
+
 .valuation-submit-btn {
     width: 100%;
     padding: 1rem 2rem;

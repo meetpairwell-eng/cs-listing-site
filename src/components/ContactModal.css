@@ -81,7 +81,7 @@
     background: #1a1a1a;
     color: white;
     padding: 3rem 2.5rem;
-    overflow-y: auto;
+    overflow: hidden;
     position: relative;
 }
 
@@ -202,7 +202,7 @@ a.contact-value:hover {
 .modal-form-section {
     background: #f5f5f5;
     padding: 3rem 2.5rem;
-    overflow-y: auto;
+    overflow: hidden;
 }
 
 .contact-form {
@@ -266,6 +266,16 @@ a.contact-value:hover {
     line-height: 1.6;
     color: #666;
     cursor: pointer;
+}
+
+.privacy-policy-link {
+    color: #4A5D4F;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.privacy-policy-link:hover {
+    color: #000;
 }
 
 .btn-submit-form {
