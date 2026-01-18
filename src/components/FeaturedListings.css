@@ -4,7 +4,7 @@
 }
 
 .section-header {
-    margin-bottom: var(--spacing-3xl);
+    margin-bottom: 4rem;
     text-align: center;
     width: 100%;
 }
@@ -14,7 +14,9 @@
     font-family: var(--font-heading);
     font-size: 2.4rem;
     letter-spacing: 0.1em;
-    text-align: center;
+    text-align: center !important;
+    display: block;
+    width: 100%;
 }
 
 .listings-grid {
