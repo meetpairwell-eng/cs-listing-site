@@ -135,22 +135,19 @@ const AboutCole = () => {
                         <div className="cole-about-text">
                             <h2>About Cole</h2>
                             <p>
-                                As a dedicated real estate professional with Compass, I bring a unique blend of
-                                market expertise, innovative marketing strategies, and unwavering commitment to
-                                client success. My approach is built on understanding your unique needs and
-                                delivering results that exceed expectations.
+                                Born and raised in Dallas, Cole Swearingen offers an insider's mastery of the DFW Metroplex that few can match. His professional foundation as a Sales Director for the nation's largest hospitality firm instilled in him a client-first philosophy, but his performance over the last several years has cemented his reputation as one of the region's most resilient and sought-after advisors.
                             </p>
                             <p>
-                                With years of experience in the Dallas luxury market, I've developed deep
-                                relationships within the community and an intimate knowledge of the area's most
-                                desirable neighborhoods. Whether you're buying your dream home or selling a
-                                cherished property, I provide the guidance and support you need every step of
-                                the way.
+                                Since joining Compass and the Laguna Residential Group in 2018, Cole has excelled in market conditions that many found insurmountable. While the industry navigated the volatility of the pandemic and the pressure of shifting interest rates, Cole's business thrived. He became a trusted anchor for his clients during these challenging cycles, proving that a disciplined, data-driven approach yields results regardless of the economic climate.
                             </p>
                             <p>
-                                My commitment to excellence has earned recognition from clients and peers alike.
-                                I believe in transparent communication, strategic thinking, and going above and
-                                beyond to ensure your real estate journey is smooth and successful.
+                                His track record speaks for itself, with a portfolio of record-breaking sales that spans the most prestigious enclaves of the city, from the timeless estates of Highland Park and Lakewood to the rapidly expanding luxury landscapes of Frisco and Richardson. Cole's ability to identify value in both established and emerging markets allows him to guide his clients toward opportunities that others might overlook.
+                            </p>
+                            <p>
+                                Beyond the transaction, Cole's technical expertise is bolstered by deep-rooted connections with Dallas' most respected builders and award-winning designers. This knowledge allows him to see beyond the aesthetic, understanding the craftsmanship and structural integrity that define a truly elite property.
+                            </p>
+                            <p>
+                                In a market where information is the ultimate advantage, Cole's collaboration with a tight-knit circle of top-producing agents ensures his clients have a front-row seat to the exclusive, off-market landscape. Whether he is navigating a high-stakes negotiation or consulting on a custom new build, Cole remains a tenacious advocate and a sophisticated guide in the Dallas market.
                             </p>
                             <button onClick={() => setIsContactModalOpen(true)} className="cole-cta-button">
                                 GET IN TOUCH

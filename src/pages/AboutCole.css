@@ -233,10 +233,9 @@
 .showcase-item {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 0;
+    gap: 4rem;
     align-items: center;
     margin-bottom: 6rem;
-    position: relative;
 }
 
 .showcase-item:last-child {
@@ -253,17 +252,8 @@
 
 .showcase-image {
     position: relative;
-    height: 450px;
-    overflow: visible;
-    z-index: 2;
-}
-
-.showcase-item:not(.reverse) .showcase-image {
-    margin-right: -2rem;
-}
-
-.showcase-item.reverse .showcase-image {
-    margin-left: -2rem;
+    height: 400px;
+    overflow: hidden;
 }
 
 .showcase-image img {
@@ -279,8 +269,6 @@
 
 .showcase-content {
     padding: 2rem;
-    position: relative;
-    z-index: 1;
 }
 
 .showcase-title {
