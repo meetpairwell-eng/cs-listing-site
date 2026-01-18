@@ -15,6 +15,7 @@ import Favorites from './pages/Favorites';
 import HomeValuation from './pages/HomeValuation';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 import './App.css';
 
 // Home Page Component
@@ -35,6 +36,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <div className="App">
         <Navbar onContactClick={() => setIsContactModalOpen(true)} />
 

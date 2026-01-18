@@ -1,15 +1,16 @@
 .privacy-policy-page {
     min-height: 100vh;
-    padding: 120px 0 80px;
     background: #fff;
 }
 
-.privacy-content {
-    max-width: 900px;
-    margin: 0 auto;
+.privacy-hero {
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    padding: 140px 0 60px;
+    text-align: center;
+    border-bottom: 1px solid #e5e5e5;
 }
 
-.privacy-content h1 {
+.privacy-hero h1 {
     font-family: var(--font-heading);
     font-size: 2.5rem;
     font-weight: 400;
@@ -18,11 +19,17 @@
     letter-spacing: 0.05em;
 }
 
-.last-updated {
+.privacy-hero .last-updated {
     font-size: 0.9rem;
     color: #999;
-    margin-bottom: 50px;
     font-style: italic;
+    margin: 0;
+}
+
+.privacy-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 0 80px;
 }
 
 .privacy-section {

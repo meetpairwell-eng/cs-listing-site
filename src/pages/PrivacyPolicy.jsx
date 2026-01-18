@@ -3,10 +3,15 @@ import './PrivacyPolicy.css';
 const PrivacyPolicy = () => {
     return (
         <div className="privacy-policy-page">
-            <div className="container">
-                <div className="privacy-content">
+            <div className="privacy-hero">
+                <div className="container">
                     <h1>Privacy & Data Transparency</h1>
                     <p className="last-updated">Last Updated: January 18, 2026</p>
+                </div>
+            </div>
+
+            <div className="container">
+                <div className="privacy-content">
 
                     <section className="privacy-section">
                         <h2>1. The Information We Collect</h2>
