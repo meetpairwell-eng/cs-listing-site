@@ -201,8 +201,7 @@ const ContactModal = ({ isOpen, onClose }) => {
                                     name="message"
                                     value={formData.message}
                                     onChange={handleChange}
-                                    rows="5"
-                                    required
+                                    rows="4"
                                 ></textarea>
                             </div>
 
