@@ -100,6 +100,15 @@
     z-index: 1;
 }
 
+.modal-form-section h2 {
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    letter-spacing: 0.15em;
+    margin-bottom: 2rem;
+    font-weight: 400;
+    color: var(--color-text) !important;
+}
+
 .modal-section-title {
     font-family: var(--font-heading);
     font-size: 1.75rem;
@@ -159,16 +168,28 @@
 
 .contact-value {
     font-size: 1.125rem;
-    color: white;
+    color: white !important;
     text-decoration: none;
     display: block;
     transition: color 0.2s ease;
     line-height: 1.6;
     font-weight: 500;
     background: transparent !important;
+    background-color: transparent !important;
     padding: 0.75rem 1rem;
     border: none !important;
     box-shadow: none !important;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.contact-value:focus,
+.contact-value:active,
+.contact-value:visited {
+    background: transparent !important;
+    background-color: transparent !important;
+    color: white !important;
 }
 
 /* Prevent autofill styling */
