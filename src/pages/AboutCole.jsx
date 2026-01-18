@@ -90,8 +90,8 @@ const AboutCole = () => {
         {
             r2Path: 'about/showcase-2.jpg',
             fallback: 'https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=1000&q=80',
-            title: 'White-Glove Client Service',
-            description: 'Personalized attention and seamless communication throughout every step of your real estate journey, ensuring a stress-free experience.'
+            title: 'Strategic Builder & Developer Partnerships',
+            description: 'Cole acts as a technical partner in the new construction and luxury renovation space across the Dallas Metroplex. With extensive experience in ground-up development, he collaborates with builders on floor plan optimization to ensure every square foot aligns with current market demands. From interior design and landscaping to complex renovations, Cole provides the on-the-ground insight needed to curate a product that sells. For developers, he is a strategic asset who understands how to bridge the gap between architectural vision and a successful, high-yield closing.'
         },
         {
             r2Path: 'about/showcase-3.jpg',
