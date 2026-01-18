@@ -17,8 +17,10 @@ export const SITE_CONFIG = {
   contactHeroBg: "contact-bg.png",
   // Modal background (Unsplash or R2)
   modalBg: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80",
-  // Testimonials section background
   testimonialsBg: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80",
+  // Footer Logos
+  fairHousingLogo: "realtor-equal-housing.png", // In src/assets
+  brokerLogo: null, // Set to a filename in src/assets/ or a URL
   // Social Media Links (update with real URLs or set to null to hide)
   socialMedia: {
     facebook: null,

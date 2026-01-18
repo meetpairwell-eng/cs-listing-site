@@ -1,7 +1,21 @@
 import { Link } from 'react-router-dom';
 import { SITE_CONFIG } from '../config';
-import realtorLogos from '../assets/realtor-equal-housing.png';
+import defaultFairHousingLogo from '../assets/realtor-equal-housing.png';
 import './Footer.css';
+
+// Helper to resolve asset paths (handles local imports vs URLs vs config overrides)
+const getAssetUrl = (path, defaultAsset) => {
+    if (!path) return defaultAsset;
+    if (path.startsWith('http')) return path;
+    // For local assets in public/ or if we had dynamic imports (complex in Vite without glob),
+    // but here we are simplifying. If it's a specific known override name, we could map it.
+    // Ideally, for useruploaded files, they might just put a URL.
+    // For now, if it's the default filename, use the imported one.
+    if (path === 'realtor-equal-housing.png') return defaultFairHousingLogo;
+
+    // Fallback: assume it's a URL or relative public path
+    return path;
+};
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
@@ -19,7 +33,11 @@ const Footer = () => {
                         <div className="agent-name-logo">{SITE_CONFIG.agentName}</div>
                     </div>
                     <div className="footer-compass-logo">
-                        <h1>COMPASS</h1>
+                        {SITE_CONFIG.brokerLogo ? (
+                            <img src={getAssetUrl(SITE_CONFIG.brokerLogo)} alt={SITE_CONFIG.agency} className="broker-logo-img" />
+                        ) : (
+                            <h1>{SITE_CONFIG.agency === 'Compass' || SITE_CONFIG.agency === 'Compass Real Estate' ? 'COMPASS' : SITE_CONFIG.agency}</h1>
+                        )}
                     </div>
 
                     <div className="footer-info-grid">
@@ -90,7 +108,10 @@ const Footer = () => {
 
                     <div className="footer-bottom-logos">
                         <div className="realtor-logos">
-                            <img src={realtorLogos} alt="Realtor and Equal Housing Opportunity" />
+                            <img
+                                src={getAssetUrl(SITE_CONFIG.fairHousingLogo, defaultFairHousingLogo)}
+                                alt="Realtor and Equal Housing Opportunity"
+                            />
                         </div>
                     </div>
                 </div>
