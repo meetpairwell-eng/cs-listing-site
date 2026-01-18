@@ -133,19 +133,13 @@ const AboutCole = () => {
                         <div className="cole-about-text">
                             <h2>About Cole</h2>
                             <p>
-                                Born and raised in Dallas, Cole Swearingen offers an insider's mastery of the DFW Metroplex that few can match. His professional foundation as a Sales Director for the nation's largest hospitality firm instilled in him a client-first philosophy, but his performance over the last several years has cemented his reputation as one of the region's most resilient and sought-after advisors.
+                                A Dallas native with an insider's mastery of the DFW Metroplex, Cole Swearingen brings a sophisticated, hospitality-driven approach to every transaction. His professional foundation as a Sales Director for the nation's largest hospitality firm instilled in him a client-first philosophy that remains the bedrock of his business. Since joining Compass and the Laguna Residential Group in 2018, Cole has meticulously cultivated a reputation for precision and resilience, becoming a trusted advisor for those navigating the city's most prestigious markets.
                             </p>
                             <p>
-                                Since joining Compass and the Laguna Residential Group in 2018, Cole has excelled in market conditions that many found insurmountable. While the industry navigated the volatility of the pandemic and the pressure of shifting interest rates, Cole's business thrived. He became a trusted anchor for his clients during these challenging cycles, proving that a disciplined, data-driven approach yields results regardless of the economic climate.
+                                Cole's technical expertise is bolstered by deep-rooted connections with Dallas' most respected builders and award-winning designers, allowing him to see beyond the aesthetic to the craftsmanship of a truly elite property. In a market where information is the ultimate advantage, his collaboration with a tight-knit circle of top-producing agents ensures his clients have a front-row seat to the exclusive, off-market landscape. Whether navigating a high-stakes negotiation or consulting on a custom new build, Cole remains a tenacious advocate and a sophisticated guide.
                             </p>
                             <p>
-                                His track record speaks for itself, with a portfolio of record-breaking sales that spans the most prestigious enclaves of the city, from the timeless estates of Highland Park and Lakewood to the rapidly expanding luxury landscapes of Frisco and Richardson. Cole's ability to identify value in both established and emerging markets allows him to guide his clients toward opportunities that others might overlook.
-                            </p>
-                            <p>
-                                Beyond the transaction, Cole's technical expertise is bolstered by deep-rooted connections with Dallas' most respected builders and award-winning designers. This knowledge allows him to see beyond the aesthetic, understanding the craftsmanship and structural integrity that define a truly elite property.
-                            </p>
-                            <p>
-                                In a market where information is the ultimate advantage, Cole's collaboration with a tight-knit circle of top-producing agents ensures his clients have a front-row seat to the exclusive, off-market landscape. Whether he is navigating a high-stakes negotiation or consulting on a custom new build, Cole remains a tenacious advocate and a sophisticated guide in the Dallas market.
+                                When he isn't scouting the next record-breaking estate, Cole is often found exploring Dallas' ever-evolving food scene, which he finds as fresh and dynamic as the local real estate market. An avid traveler, he frequently ventures across the globe to immerse himself in new cultures and architectural styles. This international perspective continuously expands his mindset, allowing him to bring fresh, innovative ideas back to his clients and the city he calls home.
                             </p>
                             <button onClick={() => setIsContactModalOpen(true)} className="cole-cta-button">
                                 GET IN TOUCH
