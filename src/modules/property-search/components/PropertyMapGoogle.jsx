@@ -82,6 +82,21 @@ const PropertyMapGoogle = ({ listings, onMapMove, onMarkerClick, selectedListing
                         featureType: 'poi',
                         elementType: 'labels',
                         stylers: [{ visibility: 'off' }]
+                    },
+                    {
+                        featureType: 'road',
+                        elementType: 'labels.text.fill',
+                        stylers: [{ color: '#666666' }, { weight: 0.5 }]
+                    },
+                    {
+                        featureType: 'road',
+                        elementType: 'labels.text.stroke',
+                        stylers: [{ visibility: 'off' }]
+                    },
+                    {
+                        featureType: 'road.local',
+                        elementType: 'labels.text',
+                        stylers: [{ weight: 0.3 }]
                     }
                 ],
                 disableDefaultUI: false,
