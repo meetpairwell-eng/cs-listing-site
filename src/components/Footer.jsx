@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { SITE_CONFIG } from '../config';
+import realtorLogos from '../assets/realtor-equal-housing.png';
 import './Footer.css';
 
 const Footer = () => {
@@ -89,8 +90,7 @@ const Footer = () => {
 
                     <div className="footer-bottom-logos">
                         <div className="realtor-logos">
-                            <img src="https://colenelrealestate.com/wp-content/uploads/2021/04/equal-housing-opportunity-logo.png" alt="Equal Housing Opportunity" />
-                            <img src="https://colenelrealestate.com/wp-content/uploads/2021/04/realtor-logo.png" alt="Realtor" />
+                            <img src={realtorLogos} alt="Realtor and Equal Housing Opportunity" />
                         </div>
                     </div>
                 </div>

@@ -201,7 +201,7 @@
 }
 
 .realtor-logos img {
-    height: 35px;
+    height: 40px;
     width: auto;
     filter: grayscale(1) opacity(0.5);
     transition: all 0.3s ease;
