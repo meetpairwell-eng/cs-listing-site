@@ -26,7 +26,6 @@ const PropertySearchHeader = ({ filters, onFiltersChange }) => {
         autocomplete.addListener('place_changed', () => {
             const place = autocomplete.getPlace();
             console.log('Selected place:', place);
-            // TODO: Use place data to filter listings
         });
     }, []);
 
