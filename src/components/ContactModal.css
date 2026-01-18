@@ -164,6 +164,16 @@
     transition: color 0.2s ease;
     line-height: 1.6;
     font-weight: 500;
+    background: transparent !important;
+}
+
+/* Prevent autofill styling */
+.contact-value:-webkit-autofill,
+.contact-value:-webkit-autofill:hover,
+.contact-value:-webkit-autofill:focus {
+    -webkit-text-fill-color: white !important;
+    -webkit-box-shadow: 0 0 0px 1000px #1a1a1a inset !important;
+    transition: background-color 5000s ease-in-out 0s;
 }
 
 a.contact-value:hover {

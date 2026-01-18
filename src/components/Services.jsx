@@ -14,7 +14,8 @@ const Services = ({ onContactClick }) => {
             id: 2,
             title: 'HOME VALUATION',
             image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80',
-            type: 'modal'
+            type: 'link',
+            path: '/home-valuation'
         },
         {
             id: 3,
