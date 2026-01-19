@@ -83,18 +83,18 @@
 
 .featured-section-title {
     font-family: var(--font-heading);
-    font-size: 32px;
+    font-size: 2.4rem;
     font-weight: 400;
     text-align: center;
     margin-bottom: 60px;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #707070;
+    letter-spacing: 0.1em;
+    color: var(--color-text);
 }
 
 @media (max-width: 768px) {
     .featured-section-title {
-        font-size: 24px;
+        font-size: 2rem;
         margin-bottom: 40px;
     }
 }
