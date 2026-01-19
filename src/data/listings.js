@@ -37,6 +37,19 @@ export const listings = [
             "baths": 6,
             "sqft": "6,293"
         }
+    },
+    {
+        "id": "notable-sale-03",
+        "status": "Sold",
+        "title": "LUXURY ESTATE",
+        "address": "Dallas, TX",
+        "price": "$8,500,000",
+        "heroImage": "house-thumb.jpg",
+        "specs": {
+            "beds": 5,
+            "baths": 7,
+            "sqft": "8,500"
+        }
     }
 ];
 

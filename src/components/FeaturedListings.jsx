@@ -4,7 +4,8 @@ import { SITE_CONFIG } from '../config';
 import './FeaturedListings.css';
 
 const FeaturedListings = () => {
-    const listings = getSoldListings();
+    // Get sold listings and limit to 4 for display
+    const listings = getSoldListings().slice(0, 4);
 
     const getMediaUrl = (filename) => {
         return `${SITE_CONFIG.mediaBaseUrl}/${filename}`;
