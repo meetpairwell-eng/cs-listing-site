@@ -1,0 +1,481 @@
+.property-details-page {
+    background-color: #fff;
+    min-height: 100vh;
+    padding-top: 0;
+}
+
+/* Loading & Error States */
+.property-details-loading,
+.property-details-error {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.loader {
+    width: 40px;
+    height: 40px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #000;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.property-gallery {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+}
+
+/* Content Layout */
+.property-content-container {
+    max-width: 1100px;
+    /* Focused width */
+    margin: 0 auto 100px;
+    padding: 0 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.property-main-content-layout {
+    display: block;
+    /* Single column */
+    margin-top: 60px;
+}
+
+.gallery-main {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-color: #000;
+    overflow: hidden;
+}
+
+.gallery-main::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 15vh;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, transparent 100%);
+    z-index: 2;
+    pointer-events: none;
+}
+
+.hero-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 150px 80px 80px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.45) 40%, transparent 100%);
+    color: #ffffff;
+    display: flex;
+    align-items: flex-end;
+    z-index: 5;
+}
+
+.hero-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    text-align: center;
+}
+
+.hero-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 400;
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin: 0;
+    color: #ffffff !important;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.gallery-main img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Content Header */
+.property-content-header {
+    margin-top: 40px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #eee;
+}
+
+.header-main-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.address-block {
+    flex: 1;
+}
+
+.full-address-line1 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--color-text);
+    margin: 0 0 5px 0;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+}
+
+.full-address-line2 {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #666;
+    margin: 0;
+    letter-spacing: 0.02em;
+}
+
+.property-price-main {
+    font-family: var(--font-body);
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--color-primary);
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+}
+
+/* Stats Bar */
+.property-stats-bar {
+    padding: 25px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.header-top {
+    display: none;
+}
+
+.property-title {
+    font-family: var(--font-heading);
+    font-size: 2.8rem;
+    font-weight: 400;
+    line-height: 1.2;
+    max-width: 70%;
+}
+
+.property-price-tag {
+    font-family: var(--font-body);
+    font-size: 2.4rem;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+}
+
+.property-badges {
+    display: flex;
+    gap: 0;
+}
+
+.badge-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-right: 40px;
+    border-right: 1px solid #eee;
+    margin-right: 40px;
+}
+
+.badge-item:last-child {
+    border-right: none;
+    margin-right: 0;
+    padding-right: 0;
+}
+
+.badge-item svg {
+    width: 20px;
+    height: 20px;
+    stroke: var(--color-primary);
+    margin-bottom: 8px;
+}
+
+.badge-item span {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+}
+
+.badge-item span span {
+    font-weight: 400;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: #666;
+    margin-left: 4px;
+}
+
+/* Sections Common */
+section h3 {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #888;
+}
+
+.property-description {
+    padding: 35px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.property-description p {
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    /* Reduced from 1.2rem */
+    line-height: 1.8;
+    color: #444;
+    max-width: 800px;
+    /* Keep it readable */
+}
+
+.property-features {
+    padding: 35px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* Features Grid */
+.features-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+}
+
+.feature-group h4 {
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.2em;
+    color: #333;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.feature-group h4::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #eee;
+}
+
+.feature-group ul {
+    list-style: none;
+    padding: 0;
+}
+
+.feature-group li {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+    color: #444;
+}
+
+/* MLS Info Table */
+.property-mls-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 60px;
+    padding: 30px;
+    background: #f9f9f9;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.mls-data-item {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.mls-data-item span:first-child {
+    color: #888;
+}
+
+.mls-data-item span:last-child {
+    font-weight: 500;
+}
+
+.mls-disclaimer {
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: #999;
+    font-style: italic;
+}
+
+/* Contact Banner */
+.contact-banner {
+    margin: 50px 0;
+    background: #000;
+    color: #fff;
+    padding: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+}
+
+.banner-content {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.banner-thumb {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.banner-text h3 {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 300;
+    margin: 0 0 5px;
+    letter-spacing: 0.05em;
+}
+
+.banner-text p {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    margin: 0;
+}
+
+.banner-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 15px;
+}
+
+.banner-btn {
+    background: #fff;
+    color: #000;
+    border: none;
+    padding: 15px 40px;
+    font-family: var(--font-body);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.banner-btn:hover {
+    background: #e0e0e0;
+}
+
+.banner-links {
+    display: flex;
+    gap: 20px;
+}
+
+.banner-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.banner-links a:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+.property-sidebar {
+    display: none;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .property-content-container {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+
+    .property-sidebar {
+        order: -1;
+    }
+
+    .sidebar-card {
+        position: static;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .gallery-main {
+        aspect-ratio: 4 / 3;
+    }
+
+    .property-gallery {
+        padding: 0 15px;
+    }
+
+    .property-content-container {
+        padding: 0 20px;
+    }
+
+    .header-top {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .property-title {
+        font-size: 2rem;
+        max-width: 100%;
+    }
+
+    .property-price-tag {
+        font-size: 2rem;
+    }
+
+    .property-badges {
+        flex-wrap: wrap;
+        gap: 20px 30px;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .property-mls-info {
+        grid-template-columns: 1fr;
+    }
+}

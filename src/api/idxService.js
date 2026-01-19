@@ -229,11 +229,6 @@ const formatAddress = (address) => {
  */
 const formatPrice = (price) => {
     if (!price) return '$0';
-
-    if (price >= 1000000) {
-        return `$${(price / 1000000).toFixed(2)}M`;
-    }
-
     return `$${price.toLocaleString()}`;
 };
 

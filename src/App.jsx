@@ -16,6 +16,7 @@ import HomeValuation from './pages/HomeValuation';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import AboutCole from './pages/AboutCole';
 import APITestPage from './pages/APITestPage';
+import PropertyDetails from './pages/PropertyDetails';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import './App.css';
@@ -106,6 +107,17 @@ function App() {
             element={
               <>
                 <AboutCole />
+                <Footer />
+              </>
+            }
+          />
+
+          {/* Property Details */}
+          <Route
+            path="/property/:id"
+            element={
+              <>
+                <PropertyDetails />
                 <Footer />
               </>
             }

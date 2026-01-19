@@ -291,6 +291,25 @@
     /* Tighter spacing */
 }
 
+.property-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.view-details-link {
+    font-size: 0.65rem;
+    color: #4A5D4F;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.view-details-link:hover {
+    color: #000;
+    text-decoration: underline;
+}
+
 /* Price - Bold and prominent */
 .property-price {
     font-family: var(--font-body) !important;

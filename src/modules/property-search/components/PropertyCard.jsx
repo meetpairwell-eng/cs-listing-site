@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import useFavorites from '../../../hooks/useFavorites';
 
 const PropertyCard = ({ listing, onClick, isSelected }) => {
@@ -28,7 +29,16 @@ const PropertyCard = ({ listing, onClick, isSelected }) => {
             </div>
 
             <div className="property-details">
-                <div className="property-price">{listing.priceFormatted}</div>
+                <div className="property-header-row">
+                    <div className="property-price">{listing.priceFormatted}</div>
+                    <Link
+                        to={`/property/${listing.id}`}
+                        className="view-details-link"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        View Details →
+                    </Link>
+                </div>
                 <div className="property-specs">
                     {listing.beds} bd · {listing.baths} ba · {listing.sqftFormatted} sqft
                 </div>
