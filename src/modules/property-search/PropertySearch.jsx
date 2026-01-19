@@ -2,14 +2,16 @@ import { useState, useCallback, useEffect } from 'react';
 import PropertyList from './components/PropertyList';
 import PropertyMapGoogle from './components/PropertyMapGoogle';
 import PropertySearchHeader from './components/PropertySearchHeader';
-import { mockListings, filterListingsByBounds } from './api/mockData';
+import { fetchProperties } from '../../api/idxService';
 import './PropertySearch.css';
 
 const PropertySearch = () => {
-    const [allListings] = useState(mockListings);
-    const [filteredListings, setFilteredListings] = useState(mockListings);
+    const [allListings, setAllListings] = useState([]);
+    const [filteredListings, setFilteredListings] = useState([]);
     const [selectedListing, setSelectedListing] = useState(null);
     const [showMobileMap, setShowMobileMap] = useState(false);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     // Filter state
     const [filters, setFilters] = useState({
@@ -21,8 +23,43 @@ const PropertySearch = () => {
         propertyTypes: []
     });
 
+    // Load properties from SimplyRETS on mount
+    useEffect(() => {
+        const loadProperties = async () => {
+            try {
+                setLoading(true);
+                setError(null);
+
+                console.log('🔍 Fetching properties from SimplyRETS...');
+
+                // Fetch active properties (you can adjust these parameters)
+                const properties = await fetchProperties({
+                    status: 'Active',
+                    limit: 100, // Get more properties for better search results
+                    // You can add more filters here:
+                    // cities: 'Dallas,Highland Park,University Park',
+                    // minprice: 100000,
+                    // maxprice: 10000000,
+                });
+
+                console.log('✅ Loaded', properties.length, 'properties from SimplyRETS');
+                setAllListings(properties);
+                setFilteredListings(properties);
+            } catch (err) {
+                console.error('❌ Error loading properties:', err);
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        loadProperties();
+    }, []); // Only run once on mount
+
     // Apply filters whenever they change
     useEffect(() => {
+        if (allListings.length === 0) return;
+
         console.log('Applying filters:', filters);
         let filtered = [...allListings];
         console.log('Starting with', filtered.length, 'listings');
@@ -88,6 +125,84 @@ const PropertySearch = () => {
             element.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
     }, []);
+
+    // Loading state
+    if (loading) {
+        return (
+            <section className="property-search-section">
+                <PropertySearchHeader
+                    filters={filters}
+                    onFiltersChange={setFilters}
+                />
+                <div className="property-search-container" style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    minHeight: '500px',
+                    fontSize: '18px',
+                    color: '#666'
+                }}>
+                    <div style={{ textAlign: 'center' }}>
+                        <div style={{ marginBottom: '1rem' }}>🔄 Loading properties from SimplyRETS...</div>
+                        <div style={{ fontSize: '14px' }}>This may take a few moments</div>
+                    </div>
+                </div>
+            </section>
+        );
+    }
+
+    // Error state
+    if (error) {
+        return (
+            <section className="property-search-section">
+                <PropertySearchHeader
+                    filters={filters}
+                    onFiltersChange={setFilters}
+                />
+                <div className="property-search-container" style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    minHeight: '500px',
+                    padding: '2rem'
+                }}>
+                    <div style={{
+                        maxWidth: '600px',
+                        padding: '2rem',
+                        background: '#ffebee',
+                        borderRadius: '8px',
+                        border: '1px solid #f44336'
+                    }}>
+                        <h3 style={{ color: '#d32f2f', marginBottom: '1rem' }}>❌ Error Loading Properties</h3>
+                        <p style={{ marginBottom: '1rem' }}>{error}</p>
+                        <div style={{ fontSize: '14px', color: '#666' }}>
+                            <strong>Troubleshooting:</strong>
+                            <ul style={{ marginTop: '0.5rem', paddingLeft: '1.5rem' }}>
+                                <li>Check that your SimplyRETS API credentials are correct in .env.local</li>
+                                <li>Verify you restarted the dev server after adding credentials</li>
+                                <li>Try the demo credentials: simplyrets / simplyrets</li>
+                                <li>Check the browser console for more details</li>
+                            </ul>
+                        </div>
+                        <button
+                            onClick={() => window.location.reload()}
+                            style={{
+                                marginTop: '1rem',
+                                padding: '0.5rem 1rem',
+                                background: '#4A5D4F',
+                                color: 'white',
+                                border: 'none',
+                                borderRadius: '4px',
+                                cursor: 'pointer'
+                            }}
+                        >
+                            Retry
+                        </button>
+                    </div>
+                </div>
+            </section>
+        );
+    }
 
     return (
         <section className="property-search-section">
