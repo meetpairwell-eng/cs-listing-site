@@ -1,15 +1,15 @@
 .listings-section {
     background: var(--color-bg);
-    padding: 6rem 0 var(--spacing-3xl) 0;
+    padding: 4rem 0 var(--spacing-3xl) 0;
 }
 
-.section-header {
+.listings-section .section-header {
     margin-bottom: 6rem;
     text-align: center;
     width: 100%;
 }
 
-.section-header h2 {
+.listings-section .section-header h2 {
     margin-bottom: 0;
     font-family: var(--font-heading);
     font-size: 2.4rem;
@@ -68,6 +68,21 @@
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.1em;
+}
+
+.listing-badge {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    background: rgba(0, 0, 0, 0.85);
+    color: #fff;
+    padding: 0.4rem 0.9rem;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(4px);
 }
 
 .listing-content {

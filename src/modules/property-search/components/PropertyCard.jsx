@@ -1,20 +1,30 @@
 import { Link } from 'react-router-dom';
 import useFavorites from '../../../hooks/useFavorites';
 
-const PropertyCard = ({ listing, onClick, isSelected }) => {
+const PropertyCard = ({ listing, onSelect, isSelected }) => {
     const { isFavorite, toggleFavorite } = useFavorites();
     const favorite = isFavorite(listing.id);
 
     const handleFavoriteClick = (e) => {
+        e.preventDefault();
         e.stopPropagation();
         toggleFavorite(listing.id);
     };
 
+    const handleCardClick = () => {
+        if (onSelect) {
+            onSelect(listing);
+        }
+    };
+
+    const isMLSProperty = listing.source === 'mls';
+    const isOffMarket = listing.isOffMarket === true;
+
     return (
-        <div
+        <Link
+            to={`/properties/${listing.id}`}
             className={`property-card ${isSelected ? 'selected' : ''}`}
-            onClick={() => onClick(listing)}
-            id={`property-${listing.id}`}
+            onClick={handleCardClick}
         >
             <div className="property-image">
                 <img src={listing.image} alt={listing.address} />
@@ -23,33 +33,30 @@ const PropertyCard = ({ listing, onClick, isSelected }) => {
                     onClick={handleFavoriteClick}
                     aria-label={favorite ? 'Remove from favorites' : 'Add to favorites'}
                 >
-                    ♥
+                    <svg viewBox="0 0 24 24" fill={favorite ? 'currentColor' : 'none'} stroke="currentColor">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                    </svg>
                 </button>
-                <div className="property-status">{listing.status}</div>
+                {listing.status === 'Sold' && (
+                    <div className="property-status-badge">SOLD</div>
+                )}
+                {isOffMarket && (
+                    <div className="property-off-market-badge">OFF-MARKET</div>
+                )}
             </div>
-
             <div className="property-details">
-                <div className="property-header-row">
-                    <div className="property-price">{listing.priceFormatted}</div>
-                    <Link
-                        to={`/property/${listing.id}`}
-                        className="view-details-link"
-                        onClick={(e) => e.stopPropagation()}
-                    >
-                        View Details →
-                    </Link>
-                </div>
+                <div className="property-price">{listing.priceFormatted || listing.price}</div>
+                <div className="property-address">{listing.address}</div>
                 <div className="property-specs">
-                    {listing.beds} bd · {listing.baths} ba · {listing.sqftFormatted} sqft
+                    {listing.beds} bd | {listing.baths} ba | {listing.sqftFormatted || listing.sqft} sqft
                 </div>
-                <div className="property-address">
-                    {listing.address}
-                </div>
-                <div className="property-mls">
-                    MLS®: {listing.mlsId || 'N/A'}
-                </div>
+                {isMLSProperty && listing.mlsId && (
+                    <div className="property-mls">
+                        MLS®: {listing.mlsId}
+                    </div>
+                )}
             </div>
-        </div>
+        </Link>
     );
 };
 

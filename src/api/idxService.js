@@ -158,6 +158,7 @@ const mapSimplyRETSProperty = (property) => {
 
     return {
         id: property.mlsId || property.listingId,
+        source: "mls", // Differentiate from manual entries
         mlsId: property.mlsId,
         listingId: property.listingId,
 

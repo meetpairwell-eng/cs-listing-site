@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
-import { getSoldListings } from '../data/listings';
+import { getNotableSales } from '../data/listingsService';
 import { SITE_CONFIG } from '../config';
 import './FeaturedListings.css';
 
 const FeaturedListings = () => {
-    // Get sold listings and limit to 4 for display
-    const listings = getSoldListings().slice(0, 4);
+    // Get notable sales (manually curated featured properties)
+    const listings = getNotableSales(4);
+    console.log('Featured listings loaded:', listings.length); // Force rebuild detection
 
     const getMediaUrl = (filename) => {
         return `${SITE_CONFIG.mediaBaseUrl}/${filename}`;
@@ -30,6 +31,9 @@ const FeaturedListings = () => {
                                     }}
                                 />
                                 <div className="listing-status">{listing.status}</div>
+                                {listing.customBadge && (
+                                    <div className="listing-badge">{listing.customBadge}</div>
+                                )}
                             </div>
 
                             <div className="listing-content">
