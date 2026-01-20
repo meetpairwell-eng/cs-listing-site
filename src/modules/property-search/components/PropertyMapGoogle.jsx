@@ -122,7 +122,7 @@ const PropertyMapGoogle = ({ listings, onMapMove, onMarkerClick, selectedListing
                     icon={{
                         path: window.google.maps.SymbolPath.CIRCLE,
                         scale: selectedListing?.id === listing.id ? 12 : 8,
-                        fillColor: selectedListing?.id === listing.id ? '#4A5D4F' : '#1A1A1A',
+                        fillColor: selectedListing?.id === listing.id ? '#000000' : '#1A1A1A',
                         fillOpacity: 1,
                         strokeColor: '#FFFFFF',
                         strokeWeight: 2

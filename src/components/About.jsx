@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { SITE_CONFIG } from '../config';
 import './About.css';
 
@@ -30,11 +31,9 @@ const About = () => {
                             success requires more than expertise—it demands assembling the right team to bring your vision to life.
                         </p>
 
-
-
-                        <a href="#contact" className="btn-minimal">
+                        <Link to="/about-cole" className="btn-minimal">
                             LEARN MORE
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>

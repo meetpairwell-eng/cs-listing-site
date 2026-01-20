@@ -189,7 +189,7 @@ const PropertySearch = () => {
                             style={{
                                 marginTop: '1rem',
                                 padding: '0.5rem 1rem',
-                                background: '#4A5D4F',
+                                background: '#1a1a1a',
                                 color: 'white',
                                 border: 'none',
                                 borderRadius: '4px',

@@ -3,10 +3,10 @@
 
 :root {
   /* ... existing colors ... */
-  --color-primary: #4A5D4F;
-  --color-primary-light: #5C6F5F;
-  --color-primary-dark: #3A4D3F;
-  --color-accent: #4A5D4F;
+  --color-primary: #1a1a1a;
+  --color-primary-light: #444444;
+  --color-primary-dark: #000000;
+  --color-accent: #1a1a1a;
   --color-gold: #C9A961;
 
   --color-bg: #FFFFFF;
@@ -103,7 +103,8 @@ h6 {
 /* H1: 68px, Uppercase, Letter spacing 0.15em */
 h1 {
   font-size: clamp(2.25rem, 6vw, 68px);
-  font-weight: 500;
+  font-weight: 300;
+  /* Luxury thinness */
   text-transform: uppercase;
   letter-spacing: 0.15em;
   margin-bottom: var(--spacing-lg);
@@ -112,7 +113,7 @@ h1 {
 /* H2: 40px, Uppercase, Letter spacing 0.1em */
 h2 {
   font-size: clamp(1.625rem, 4vw, 40px);
-  font-weight: 500;
+  font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: var(--spacing-md);
