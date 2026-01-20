@@ -1,3 +1,4 @@
+/* Hero Section Styles */
 .hero {
     position: relative;
     height: 100vh;
@@ -22,6 +23,17 @@
     z-index: 0;
 }
 
+/* Fallback gradient if video fails */
+.hero-video-fallback {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    z-index: 0;
+}
+
 /* Dark Overlay for Text Readability */
 .hero-overlay {
     position: absolute;
@@ -29,95 +41,116 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.4);
-    z-index: 1;
+    background: rgba(0, 0, 0, 0.45);
+    /* Darken video for contrast */
+    z-index: 1 !important;
+    /* Ensure it stays behind text */
 }
 
+/* Container & Content Layout */
 .hero-container {
     position: relative;
-    z-index: 2;
+    z-index: 10 !important;
+    /* MOVE ABOVE OVERLAY */
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    min-height: calc(100vh - 80px);
+    /* Height minus navbar */
+    margin-top: 80px;
 }
 
-.hero-content {
-    text-align: center;
-    color: var(--color-text-inverse);
-    max-width: 900px;
-    width: 100%;
+.hero-main-stack {
+    text-align: center !important;
+    max-width: 1200px !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 11 !important;
+    /* Double check layering */
 }
 
+/* Typography - REFINED WHITE */
 .hero-name {
-    font-family: var(--font-heading);
-    font-size: clamp(2.4rem, 6.4vw, 4.8rem);
-    /* 20% smaller than previous */
-    font-weight: 400;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 6.4vw, 4.4rem);
+    /* Reduced by 20% */
+    font-weight: 500;
+    text-transform: uppercase;
     letter-spacing: 0.15em;
-    margin-bottom: var(--spacing-md);
+    margin-bottom: 0.5rem;
     line-height: 1.1;
-    color: var(--color-text-inverse);
+    color: #ffffff !important;
+    /* ABSOLUTE WHITE */
+    text-shadow: none !important;
+    /* Remove any shadows muddying the white */
+    z-index: 12 !important;
 }
 
 .hero-subtitle {
-    font-size: clamp(0.875rem, 1.5vw, 1.125rem);
-    letter-spacing: 0.2em;
-    font-weight: 400;
-    margin-bottom: var(--spacing-sm);
-    color: var(--color-text-inverse);
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(0.75rem, 1.2vw, 0.9rem);
+    letter-spacing: 0.45em;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    color: #ffffff !important;
+    /* ABSOLUTE WHITE */
     text-transform: uppercase;
+    opacity: 1;
+    text-shadow: none !important;
+    z-index: 12 !important;
 }
 
-.hero-license {
-    font-size: clamp(0.75rem, 1.2vw, 0.95rem);
-    letter-spacing: 0.15em;
-    font-weight: 300;
-    margin-bottom: var(--spacing-xl);
-    color: rgba(255, 255, 255, 0.9);
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 
-/* Minimal Border Button */
+/* Minimalist Button */
 .btn-hero {
     display: inline-block;
-    padding: 1rem 2.5rem;
-    font-size: 0.875rem;
-    font-weight: 500;
-    letter-spacing: 0.15em;
+    padding: 0.88rem 2.4rem;
+    /* 20% smaller than 1.1rem 3rem */
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.65rem;
+    /* 20% smaller than 0.8rem */
+    font-weight: 800;
+    /* Extra bold */
+    letter-spacing: 0.25em;
+    /* Spaced out for luxury feel */
     text-transform: uppercase;
-    color: var(--color-text-inverse);
-    border: 1px solid var(--color-text-inverse);
+    color: #ffffff !important;
+    border: 1px solid #ffffff;
     background: transparent;
     text-decoration: none;
-    transition: all var(--transition-base);
-    margin-top: var(--spacing-lg);
+    transition: all 0.3s ease;
+    z-index: 12 !important;
 }
 
 .btn-hero:hover {
-    background: var(--color-text-inverse);
-    color: var(--color-primary);
+    background: #ffffff;
+    color: #1a1a1a !important;
 }
 
+/* Mobile Adjustments */
 @media (max-width: 768px) {
-    .hero {
-        height: 100vh;
-    }
-
     .hero-name {
-        font-size: 2.5rem;
-        letter-spacing: 0.08em;
+        font-size: 2.2rem;
+        letter-spacing: 0.1em;
     }
 
     .hero-subtitle {
-        font-size: 0.75rem;
-    }
-
-    .hero-license {
         font-size: 0.7rem;
+        letter-spacing: 0.3em;
+        margin-bottom: 2rem;
     }
 
     .btn-hero {
-        padding: 0.875rem 2rem;
+        padding: 0.9rem 2rem;
         font-size: 0.75rem;
     }
 }

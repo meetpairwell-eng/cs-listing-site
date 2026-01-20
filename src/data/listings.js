@@ -4,7 +4,7 @@ export const listings = [
         "status": "Sold",
         "title": "3808 POTOMAC AVE",
         "address": "3808 POTOMAC AVE, HIGHLAND PARK, TX 75205",
-        "price": "$16,900,000",
+        "price": "Price Upon Request",
         "heroImage": "3808-Potomac-Hero.webp",
         "specs": {
             "beds": 6,
@@ -17,7 +17,7 @@ export const listings = [
         "status": "Sold",
         "title": "416 21ST PL",
         "address": "5609 Ursula Ln, Dallas, TX 75229",
-        "price": "$6,995,000",
+        "price": "Price Upon Request",
         "heroImage": "5609-Ursula-Hero.webp",
         "specs": {
             "beds": 5,

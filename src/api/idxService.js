@@ -14,8 +14,20 @@ const getAuthHeader = () => {
     const apiKey = import.meta.env.VITE_SIMPLYRETS_API_KEY;
     const apiSecret = import.meta.env.VITE_SIMPLYRETS_API_SECRET;
 
+    // Debug logging for production builds
+    if (import.meta.env.MODE === 'production') {
+        console.log('🔍 Environment Check:', {
+            mode: import.meta.env.MODE,
+            hasApiKey: !!apiKey,
+            hasApiSecret: !!apiSecret,
+            apiKeyValue: apiKey ? `${apiKey.substring(0, 3)}...` : 'undefined'
+        });
+    }
+
     if (!apiKey || !apiSecret) {
-        console.error('SimplyRETS API credentials not found in environment variables');
+        console.error('❌ SimplyRETS API credentials not found in environment variables');
+        console.error('Expected: VITE_SIMPLYRETS_API_KEY and VITE_SIMPLYRETS_API_SECRET');
+        console.error('Available env vars:', Object.keys(import.meta.env));
         return null;
     }
 
