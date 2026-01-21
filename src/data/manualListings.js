@@ -17,7 +17,13 @@ export const manualListings = [
         "heroImage": "3808-Potomac-Hero.webp",
         "photos": [
             "3808-Potomac-Hero.webp",
-            "house-thumb.jpg"
+            "3808-Potomac-Hero.webp",
+            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
+            "house-thumb.jpg",
+            "3808-Potomac-Hero.webp",
+            "https://images.unsplash.com/photo-1600210492493-0946911123ea?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1600566752355-35792bedcfe1?auto=format&fit=crop&w=800&q=80"
         ],
         "specs": {
             "beds": 6,

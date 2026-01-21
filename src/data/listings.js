@@ -1,0 +1,69 @@
+export const listings = [
+    {
+        "id": "potomac-3808",
+        "status": "Sold",
+        "title": "3808 POTOMAC AVE",
+        "address": "3808 POTOMAC AVE, HIGHLAND PARK, TX 75205",
+        "price": "Price Upon Request",
+        "heroImage": "3808-Potomac-Hero.webp",
+        "specs": {
+            "beds": 6,
+            "baths": 11,
+            "sqft": "10,000"
+        }
+    },
+    {
+        "id": "notable-sale-01",
+        "status": "Sold",
+        "title": "5609 URSULA LN",
+        "address": "5609 Ursula Ln, Dallas, TX 75229",
+        "price": "6,450,000",
+        "heroImage": "5609-Ursula-Hero.webp",
+        "specs": {
+            "beds": 5,
+            "baths": 8,
+            "sqft": "7,200"
+        }
+    },
+    {
+        "id": "notable-sale-02",
+        "status": "Sold",
+        "title": "1041 N HILLCREST RD",
+        "address": "1041 N HILLCREST ROAD, BEVERLY HILLS, CA 90210",
+        "price": "$12,400,000",
+        "heroImage": "house-thumb.jpg",
+        "specs": {
+            "beds": 5,
+            "baths": 6,
+            "sqft": "6,293"
+        }
+    },
+    {
+        "id": "notable-sale-03",
+        "status": "Sold",
+        "title": "LUXURY ESTATE",
+        "address": "Dallas, TX",
+        "price": "$8,500,000",
+        "heroImage": "house-thumb.jpg",
+        "specs": {
+            "beds": 5,
+            "baths": 7,
+            "sqft": "8,500"
+        }
+    }
+];
+
+// Helper function to get sold listings
+export const getSoldListings = () => {
+    return listings.filter(listing => listing.status === "Sold");
+};
+
+// Helper function to get active listings
+export const getActiveListings = () => {
+    return listings.filter(listing => listing.status === "Active");
+};
+
+// Helper function to get listing by ID
+export const getListingById = (id) => {
+    return listings.find(listing => listing.id === id);
+};

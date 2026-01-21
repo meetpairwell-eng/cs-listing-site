@@ -1,0 +1,274 @@
+/* Hero Overlay - Auto-hide after 2s */
+.hero-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 150px 80px 60px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.45) 40%, transparent 100%);
+    color: #ffffff;
+    display: flex;
+    align-items: flex-end;
+    z-index: 8;
+    transition: opacity 1s ease, visibility 1s ease;
+}
+
+.hero-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.hero-title {
+    font-family: var(--font-heading);
+    font-size: clamp(3.2rem, 6vw, 4.8rem);
+    font-weight: 400;
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin: 0;
+    color: #ffffff !important;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 10px;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.hero-price {
+    font-family: var(--font-body);
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 500;
+    color: #ffffff;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    text-align: center;
+}
+
+.hero-content {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+/* Main Gallery Image - Crossfade with animation */
+.gallery-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.gallery-image.current {
+    z-index: 2;
+    animation: fadeIn 0.8s ease-in-out forwards;
+}
+
+.gallery-image.previous {
+    z-index: 1;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Gallery Navigation Arrows */
+.gallery-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 56px;
+    height: 56px;
+    background: rgba(255, 255, 255, 0.95);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 10;
+    opacity: 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.property-gallery:hover .gallery-nav-btn {
+    opacity: 1;
+}
+
+.gallery-nav-btn svg {
+    width: 24px;
+    height: 24px;
+    color: #1a1a1a;
+    transition: transform 0.3s ease;
+}
+
+.gallery-nav-btn:hover {
+    background: white;
+    transform: translateY(-50%) scale(1.15);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.gallery-nav-btn:hover svg {
+    transform: scale(1.1);
+}
+
+.gallery-nav-btn.prev {
+    left: 30px;
+}
+
+.gallery-nav-btn.next {
+    right: 30px;
+}
+
+/* Thumbnail Gallery - Full Width */
+.gallery-thumbnails {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.7) 50%, transparent 100%);
+    padding: 40px 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 4;
+    opacity: 0;
+    animation: fadeInThumbnails 1s ease 3.5s forwards;
+}
+
+@keyframes fadeInThumbnails {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.thumbnails-track {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    max-width: 1400px;
+    padding: 0 60px;
+    position: relative;
+}
+
+.thumbnails-track::-webkit-scrollbar {
+    display: none;
+}
+
+/* Thumbnail Scroll Buttons */
+.thumb-scroll-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 5;
+    opacity: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-thumbnails:hover .thumb-scroll-btn {
+    opacity: 1;
+}
+
+.thumb-scroll-btn svg {
+    width: 18px;
+    height: 18px;
+    color: #1a1a1a;
+}
+
+.thumb-scroll-btn:hover {
+    background: white;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.thumb-scroll-btn.scroll-left {
+    left: 10px;
+}
+
+.thumb-scroll-btn.scroll-right {
+    right: 10px;
+}
+
+.thumbnail {
+    flex: 0 0 auto;
+    width: clamp(140px, 14vw, 200px);
+    aspect-ratio: 3/2;
+    border: 3px solid transparent;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: none;
+    padding: 0;
+    position: relative;
+}
+
+.thumbnail::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.thumbnail:hover::after,
+.thumbnail.active::after {
+    opacity: 0;
+}
+
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.thumbnail:hover {
+    border-color: rgba(255, 255, 255, 0.7);
+    transform: translateY(-4px);
+}
+
+.thumbnail:hover img {
+    transform: scale(1.08);
+}
+
+.thumbnail.active {
+    border-color: white;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+    transform: translateY(-6px);
+}

@@ -4,6 +4,8 @@ import { getListingById } from '../data/listingsService';
 import { SITE_CONFIG } from '../config';
 import ContactModal from '../components/ContactModal';
 import './PropertyDetails.css';
+import './PropertyMap.css';
+import './PropertyGallery.css';
 
 const PropertyDetails = () => {
     const { id } = useParams();
@@ -12,6 +14,63 @@ const PropertyDetails = () => {
     const [error, setError] = useState(null);
     const [activePhoto, setActivePhoto] = useState(0);
     const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+    const [highlightIndex, setHighlightIndex] = useState(1);
+    const [slideDirection, setSlideDirection] = useState('left');
+    const [showHeroOverlay, setShowHeroOverlay] = useState(true);
+    const [thumbnailTrackRef, setThumbnailTrackRef] = useState(null);
+
+    const photosLength = property?.photos?.length || 0;
+
+    const nextHighlight = () => {
+        setSlideDirection('left');
+        setHighlightIndex(prev => {
+            const next = prev + 1;
+            // Wraps back to 1 if we exceed the photos length minus 1? 
+            // Logic: index 0 is Hero. Valid indices are 1...photosLength-1.
+            return next >= photosLength ? 1 : next;
+        });
+    };
+
+    const prevHighlight = () => {
+        setSlideDirection('right');
+        setHighlightIndex(prev => {
+            const next = prev - 1;
+            // distinct photos are index 1 to photosLength-1 (skipping 0)
+            return next < 1 ? (photosLength - 1 || 1) : next;
+        });
+    };
+
+    // Helper to get the "Left" image index (next in queue)
+    const getLeftIndex = (currentIndex) => {
+        if (!photosLength) return 0;
+        const next = currentIndex + 1;
+        return next >= photosLength ? 1 : next;
+    };
+
+    // Auto-hide hero overlay after 2 seconds
+    // Auto-hide hero overlay after 3.5 seconds (starts when content is loaded)
+    useEffect(() => {
+        if (!loading) {
+            const timer = setTimeout(() => {
+                setShowHeroOverlay(false);
+            }, 3500);
+
+            return () => clearTimeout(timer);
+        }
+    }, [loading]);
+
+    // Thumbnail scroll handlers
+    const scrollThumbnails = (direction) => {
+        if (thumbnailTrackRef) {
+            const scrollAmount = 300;
+            thumbnailTrackRef.scrollBy({
+                left: direction === 'left' ? -scrollAmount : scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+    };
+
+
 
     useEffect(() => {
         const loadProperty = async () => {
@@ -35,8 +94,17 @@ const PropertyDetails = () => {
         };
 
         loadProperty();
-        window.scrollTo(0, 0);
     }, [id]);
+
+    // Ensure we scroll to top when content is ready
+    useEffect(() => {
+        if (!loading) {
+            // Small timeout to ensure DOM is fully rendered/stabilized
+            setTimeout(() => {
+                window.scrollTo(0, 0);
+            }, 10);
+        }
+    }, [loading]);
 
     if (loading) {
         return (
@@ -79,18 +147,106 @@ const PropertyDetails = () => {
             <section className="property-gallery">
                 <div className="gallery-main">
                     {photos.length > 0 ? (
-                        <img src={getPhotoUrl(photos[activePhoto])} alt={`${property.address} - view ${activePhoto + 1}`} />
+                        <>
+                            {/* Dual image setup for smooth crossfade */}
+                            <img
+                                className="gallery-image current"
+                                src={getPhotoUrl(photos[activePhoto])}
+                                alt={`${property.address} - view ${activePhoto + 1}`}
+                                key={`current-${activePhoto}`}
+                            />
+                            <img
+                                className="gallery-image previous"
+                                src={getPhotoUrl(photos[activePhoto === 0 ? photos.length - 1 : activePhoto - 1])}
+                                alt="Previous view"
+                                key={`prev-${activePhoto}`}
+                            />
+                        </>
                     ) : (
                         <div className="no-photo">No Photo Available</div>
                     )}
 
-                    {/* Overlay Header */}
-                    <div className="hero-overlay">
+                    {/* Overlay Header - fades out after 2s */}
+                    <div className={`hero-overlay ${!showHeroOverlay ? 'hidden' : ''}`}>
                         <div className="hero-content">
                             <h1 className="hero-title">{property.street || property.address}</h1>
                         </div>
                     </div>
+
+                    {/* Photo Navigation Arrows */}
+                    {photos.length > 1 && (
+                        <>
+                            <button
+                                className="gallery-nav-btn prev"
+                                onClick={() => setActivePhoto(prev => prev === 0 ? photos.length - 1 : prev - 1)}
+                                aria-label="Previous photo"
+                            >
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                    <path d="M15 19l-7-7 7-7" strokeLinecap="round" strokeLinejoin="round" />
+                                </svg>
+                            </button>
+                            <button
+                                className="gallery-nav-btn next"
+                                onClick={() => setActivePhoto(prev => prev === photos.length - 1 ? 0 : prev + 1)}
+                                aria-label="Next photo"
+                            >
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                    <path d="M9 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
+                                </svg>
+                            </button>
+                        </>
+                    )}
                 </div>
+
+                {/* Thumbnail Gallery */}
+                {photos.length > 1 && (
+                    <div className="gallery-thumbnails">
+                        {/* Scroll Left Button */}
+                        <button
+                            className="thumb-scroll-btn scroll-left"
+                            onClick={() => scrollThumbnails('left')}
+                            aria-label="Scroll thumbnails left"
+                        >
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                <path d="M15 19l-7-7 7-7" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </button>
+
+                        <div
+                            className="thumbnails-track"
+                            ref={(el) => {
+                                setThumbnailTrackRef(el);
+                                if (el && activePhoto !== null) {
+                                    const activeThumb = el.children[activePhoto];
+                                    if (activeThumb) {
+                                        activeThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                                    }
+                                }
+                            }}
+                        >
+                            {photos.map((photo, index) => (
+                                <button
+                                    key={index}
+                                    className={`thumbnail ${activePhoto === index ? 'active' : ''}`}
+                                    onClick={() => setActivePhoto(index)}
+                                >
+                                    <img src={getPhotoUrl(photo)} alt={`View ${index + 1}`} />
+                                </button>
+                            ))}
+                        </div>
+
+                        {/* Scroll Right Button */}
+                        <button
+                            className="thumb-scroll-btn scroll-right"
+                            onClick={() => scrollThumbnails('right')}
+                            aria-label="Scroll thumbnails right"
+                        >
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                <path d="M9 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </button>
+                    </div>
+                )}
             </section>
 
             <div className="property-content-container">
@@ -190,33 +346,50 @@ const PropertyDetails = () => {
                             Listing courtesy of {property.office?.name || raw.office?.name || 'MLS Participating Broker'}. Data provided by SimplyRETS. All information deemed reliable but not guaranteed.
                         </div>
 
-                        {/* Contact Banner - Solid and Wide */}
-                        <div className="contact-banner">
-                            <div className="banner-content">
-                                <img src={`${SITE_CONFIG.mediaBaseUrl}/${SITE_CONFIG.headshot}`} alt={SITE_CONFIG.agentName} className="banner-thumb" />
-                                <div className="banner-text">
-                                    <p>Presented by</p>
-                                    <h3>{SITE_CONFIG.agentName}</h3>
-                                    <p>{SITE_CONFIG.agency}</p>
-                                </div>
-                            </div>
-                            <div className="banner-cta">
-                                <button className="banner-btn" onClick={() => setIsContactModalOpen(true)}>Inquire about this home</button>
-                                <div className="banner-links">
-                                    <a href={`tel:${SITE_CONFIG.agentPhone?.replace(/\D/g, '')}`}>{SITE_CONFIG.agentPhone}</a>
-                                    <a href={`mailto:${SITE_CONFIG.agentEmail}`}>{SITE_CONFIG.agentEmail}</a>
-                                </div>
-                            </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Contact Banner - Full Width */}
+            <div className="contact-banner">
+                <div className="contact-banner-inner">
+                    <div className="banner-content">
+                        <img src={`${SITE_CONFIG.mediaBaseUrl}/${SITE_CONFIG.headshot}`} alt={SITE_CONFIG.agentName} className="banner-thumb" />
+                        <div className="banner-text">
+                            <p>Presented by</p>
+                            <h3>{SITE_CONFIG.agentName}</h3>
+                            <p>{SITE_CONFIG.agency}</p>
+                        </div>
+                    </div>
+                    <div className="banner-cta">
+                        <button className="banner-btn" onClick={() => setIsContactModalOpen(true)}>Inquire about this home</button>
+                        <div className="banner-links">
+                            <a href={`tel:${SITE_CONFIG.agentPhone?.replace(/\D/g, '')}`}>{SITE_CONFIG.agentPhone}</a>
+                            <a href={`mailto:${SITE_CONFIG.agentEmail}`}>{SITE_CONFIG.agentEmail}</a>
                         </div>
                     </div>
                 </div>
             </div>
 
+
+            {/* Property Location Map */}
+            <section className="property-map-section">
+                <iframe
+                    title="Property Location"
+                    width="100%"
+                    height="600"
+                    style={{ border: 0, display: 'block' }}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    src={`https://www.google.com/maps/embed/v1/place?key=${SITE_CONFIG.googleMaps.apiKey}&q=${encodeURIComponent(property.address)}&zoom=17&maptype=roadmap`}
+                />
+            </section>
+
             <ContactModal
                 isOpen={isContactModalOpen}
                 onClose={() => setIsContactModalOpen(false)}
             />
-        </div>
+        </div >
     );
 };
 

@@ -1,0 +1,11 @@
+/* Property Location Map Section */
+.property-map-section {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.property-map-section iframe {
+    display: block;
+    width: 100%;
+}
