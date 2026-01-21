@@ -16,7 +16,7 @@ const PropertyMapGoogle = ({ listings, onMapMove, onMarkerClick, selectedListing
     console.log('Google Maps API Key:', SITE_CONFIG.googleMaps.apiKey ? 'Loaded' : 'Missing');
     console.log('API Key value:', SITE_CONFIG.googleMaps.apiKey);
 
-    const { isLoaded } = useJsApiLoader({
+    const { isLoaded, loadError } = useJsApiLoader({
         id: 'google-map-script',
         googleMapsApiKey: SITE_CONFIG.googleMaps.apiKey
     });
@@ -63,6 +63,14 @@ const PropertyMapGoogle = ({ listings, onMapMove, onMarkerClick, selectedListing
             setActiveMarker(selectedListing.id);
         }
     }, [map, selectedListing]);
+
+    if (loadError) {
+        return (
+            <div className="map-error" style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#f0f0f0', color: '#666', padding: '20px', textAlign: 'center' }}>
+                <p>Map cannot be loaded.<br /><span style={{ fontSize: '0.8em' }}>Please check API configuration.</span></p>
+            </div>
+        );
+    }
 
     if (!isLoaded) {
         return <div className="map-loading">Loading map...</div>;

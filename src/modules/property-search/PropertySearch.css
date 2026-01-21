@@ -362,6 +362,7 @@
 }
 
 /* Favorite Button */
+/* Favorite Button */
 .favorite-btn {
     position: absolute !important;
     top: 0.5rem !important;
@@ -378,17 +379,21 @@
     font-size: 14px !important;
     cursor: pointer;
     transition: all var(--transition-base);
-    color: var(--color-text-light) !important;
+    color: #000 !important;
+    /* Black by default for better visibility */
     z-index: 3 !important;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .favorite-btn.active {
-    color: #e74c3c;
+    color: #e74c3c !important;
 }
 
 .favorite-btn:hover {
     transform: scale(1.1);
     background: white;
+    color: #e74c3c !important;
+    /* Red on hover */
 }
 
 

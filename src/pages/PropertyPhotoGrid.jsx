@@ -82,27 +82,28 @@ const PropertyPhotoGrid = () => {
                     ))}
                 </div>
 
-                {/* Contact Banner Reuse */}
-                <div className="contact-banner" style={{ marginTop: '80px', marginBottom: '0' }}>
-                    <div className="contact-banner-inner">
-                        <div className="banner-content">
-                            <img src={`${SITE_CONFIG.mediaBaseUrl}/${SITE_CONFIG.headshot}`} alt={SITE_CONFIG.agentName} className="banner-thumb" />
-                            <div className="banner-text">
-                                <p>Presented by</p>
-                                <h3>{SITE_CONFIG.agentName}</h3>
-                                <p>{SITE_CONFIG.agency}</p>
-                            </div>
+            </main>
+
+            {/* Contact Banner Reuse */}
+            <div className="contact-banner" style={{ marginTop: '80px', marginBottom: '0' }}>
+                <div className="contact-banner-inner">
+                    <div className="banner-content">
+                        <img src={`${SITE_CONFIG.mediaBaseUrl}/${SITE_CONFIG.headshot}`} alt={SITE_CONFIG.agentName} className="banner-thumb" />
+                        <div className="banner-text">
+                            <p>Presented by</p>
+                            <h3>{SITE_CONFIG.agentName}</h3>
+                            <p>{SITE_CONFIG.agency}</p>
                         </div>
-                        <div className="banner-cta">
-                            <button className="banner-btn" onClick={() => setIsContactModalOpen(true)}>Inquire about this home</button>
-                            <div className="banner-links">
-                                <a href={`tel:${SITE_CONFIG.agentPhone?.replace(/\D/g, '')}`}>{SITE_CONFIG.agentPhone}</a>
-                                <a href={`mailto:${SITE_CONFIG.agentEmail}`}>{SITE_CONFIG.agentEmail}</a>
-                            </div>
+                    </div>
+                    <div className="banner-cta">
+                        <button className="banner-btn" onClick={() => setIsContactModalOpen(true)}>Inquire about this home</button>
+                        <div className="banner-links">
+                            <a href={`tel:${SITE_CONFIG.agentPhone?.replace(/\D/g, '')}`}>{SITE_CONFIG.agentPhone}</a>
+                            <a href={`mailto:${SITE_CONFIG.agentEmail}`}>{SITE_CONFIG.agentEmail}</a>
                         </div>
                     </div>
                 </div>
-            </main>
+            </div>
 
             <ContactModal
                 isOpen={isContactModalOpen}

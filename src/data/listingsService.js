@@ -8,6 +8,26 @@
 import { manualListings } from './manualListings';
 import { fetchProperties } from '../api/idxService';
 
+// Normalize images and expand photos for testing/consistency
+const normalizeListing = (item) => {
+    if (!item) return item;
+
+    // Determine the best main image
+    // 1. item.image (from MLS map)
+    // 2. item.heroImage (from manual listings)
+    // 3. item.photos[0] (fallback)
+    const mainImage = item.image || item.heroImage || (item.photos && item.photos.length > 0 ? item.photos[0] : null);
+
+    // If we still don't have an image, use a placeholder
+    const finalImage = mainImage || '/placeholder-house.jpg';
+
+    return {
+        ...item,
+        image: finalImage, // Ensure 'image' property exists for Cards
+        photos: Array(8).fill(finalImage) // Create 8 copies for testing carousel
+    };
+};
+
 /**
  * Get all listings from both manual and MLS sources
  * @param {Object} filters - Filter options
@@ -95,18 +115,7 @@ export const getAllListings = async (filters = {}) => {
         return dateB - dateA; // Most recent first
     });
 
-    // Override photos for ALL listings as requested by user
-    const overridePhotos = (item) => {
-        if (!item) return item;
-        const testImage = '/properties/custom-listing.png';
-        return {
-            ...item,
-            image: testImage,
-            photos: Array(8).fill(testImage)
-        };
-    };
-
-    return combined.map(overridePhotos);
+    return combined.map(normalizeListing);
 };
 
 /**
@@ -133,11 +142,7 @@ export const getNotableSales = (limit = 4) => {
     return manualListings
         .filter(listing => listing.isFeatured && listing.status === 'Sold')
         .sort((a, b) => (a.displayPriority || 999) - (b.displayPriority || 999))
-        .slice(0, limit)
-        .map(item => ({
-            ...item,
-            photos: Array(8).fill('/properties/custom-listing.png')
-        }));
+        .slice(0, limit).map(normalizeListing);
 };
 
 /**
@@ -179,14 +184,7 @@ export const getListingById = async (id) => {
         }
     }
 
-    // Override photos
-    if (result) {
-        return {
-            ...result,
-            photos: Array(8).fill('/properties/custom-listing.png')
-        };
-    }
-    return null;
+    return result ? normalizeListing(result) : null;
 };
 
 /**

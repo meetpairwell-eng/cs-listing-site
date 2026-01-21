@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { SITE_CONFIG } from '../config';
 import ContactModal from '../components/ContactModal';
-import ContactModal from '../components/ContactModal';
 import './AboutCole.css';
 import './PropertyDetails.css'; // For contact-banner styles
 
