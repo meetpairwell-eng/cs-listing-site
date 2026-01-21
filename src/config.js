@@ -23,8 +23,8 @@ export const SITE_CONFIG = {
   brokerLogo: "main-page/compass-logo.webp", // Set to a filename in src/assets/ or a URL
   // Social Media Links (update with real URLs or set to null to hide)
   socialMedia: {
-    facebook: null,
-    instagram: null,
+    facebook: "https://www.facebook.com/cole.swearingen.35/",
+    instagram: "https://www.instagram.com/coleswear/?hl=en",
     linkedin: null,
     zillow: null
   },

@@ -17,6 +17,7 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import AboutCole from './pages/AboutCole';
 import APITestPage from './pages/APITestPage';
 import PropertyDetails from './pages/PropertyDetails';
+import PropertyPhotoGrid from './pages/PropertyPhotoGrid';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import './App.css';
@@ -118,6 +119,17 @@ function App() {
             element={
               <>
                 <PropertyDetails />
+                <Footer />
+              </>
+            }
+          />
+
+          {/* Property Photo Grid */}
+          <Route
+            path="/property/:id/photos"
+            element={
+              <>
+                <PropertyPhotoGrid />
                 <Footer />
               </>
             }

@@ -2,7 +2,9 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { SITE_CONFIG } from '../config';
 import ContactModal from '../components/ContactModal';
+import ContactModal from '../components/ContactModal';
 import './AboutCole.css';
+import './PropertyDetails.css'; // For contact-banner styles
 
 const AboutCole = () => {
     const [isContactModalOpen, setIsContactModalOpen] = useState(false);
@@ -110,13 +112,13 @@ const AboutCole = () => {
                         <div className="cole-about-text">
                             <h2>About Cole</h2>
                             <p>
-                                A Dallas native with an insider's mastery of the DFW Metroplex, Cole Swearingen brings a sophisticated, hospitality-driven approach to every transaction. His professional foundation as a Sales Director for the nation's largest hospitality firm instilled in him a client-first philosophy that remains the bedrock of his business. Since joining Compass and the Laguna Residential Group in 2018, Cole has meticulously cultivated a reputation for precision and resilience, becoming a trusted advisor for those navigating the city's most prestigious markets.
+                                As a Dallas native, Cole Swearingen offers his clients a genuine "insider" perspective on the DFW Metroplex. His background as a Sales Director in the hospitality industry shaped his client-first approach, ensuring that everyone he works with feels supported and heard. Since joining Compass and the Laguna Residential Group in 2018, Cole has built a reputation for being a reliable and resilient advisor, helping people find their way through the city's competitive real estate market with ease.
                             </p>
                             <p>
-                                Cole's technical expertise is bolstered by deep-rooted connections with Dallas' most respected builders and award-winning designers, allowing him to see beyond the aesthetic to the craftsmanship of a truly elite property. In a market where information is the ultimate advantage, his collaboration with a tight-knit circle of top-producing agents ensures his clients have a front-row seat to the exclusive, off-market landscape. Whether navigating a high-stakes negotiation or consulting on a custom new build, Cole remains a tenacious advocate and a sophisticated guide.
+                                Cole's local expertise is backed by strong relationships with respected builders and designers, giving him a great eye for quality construction and home potential. He stays connected with a close circle of top agents to make sure his clients get a first look at great properties, including those not yet on the market.
                             </p>
                             <p>
-                                When he isn't scouting the next record-breaking estate, Cole is often found exploring Dallas' ever-evolving food scene, which he finds as fresh and dynamic as the local real estate market. An avid traveler, he frequently ventures across the globe to immerse himself in new cultures and architectural styles. This international perspective continuously expands his mindset, allowing him to bring fresh, innovative ideas back to his clients and the city he calls home.
+                                When he isn't busy with real estate, Cole loves exploring the local Dallas food scene or traveling the world to gain inspiration from different cultures and architecture - experiences he uses to bring fresh, creative ideas back home to his clients.
                             </p>
                             <button onClick={() => setIsContactModalOpen(true)} className="cole-cta-button">
                                 GET IN TOUCH
@@ -156,7 +158,7 @@ const AboutCole = () => {
             <section className="cole-showcase">
                 <div className="container">
                     <h2 className="section-title">A Glimpse Into My Work</h2>
-                    <p className="gallery-subtitle">Showcasing excellence in every transaction</p>
+                    <h2 className="section-title">A Glimpse Into My Work</h2>
                     <div className="showcase-list">
                         {showcaseItems.map((item, index) => (
                             <div key={index} className={`showcase-item ${index % 2 === 1 ? 'reverse' : ''}`}>
@@ -178,6 +180,27 @@ const AboutCole = () => {
                     </div>
                 </div>
             </section>
+
+            {/* Contact Banner Reuse */}
+            <div className="contact-banner" style={{ marginTop: '0', marginBottom: '0' }}>
+                <div className="contact-banner-inner">
+                    <div className="banner-content">
+                        <img src={`${SITE_CONFIG.mediaBaseUrl}/${SITE_CONFIG.headshot}`} alt={SITE_CONFIG.agentName} className="banner-thumb" />
+                        <div className="banner-text">
+                            <p>Presented by</p>
+                            <h3>{SITE_CONFIG.agentName}</h3>
+                            <p>{SITE_CONFIG.agency}</p>
+                        </div>
+                    </div>
+                    <div className="banner-cta">
+                        <button className="banner-btn" onClick={() => setIsContactModalOpen(true)}>Inquire about this home</button>
+                        <div className="banner-links">
+                            <a href={`tel:${SITE_CONFIG.agentPhone?.replace(/\D/g, '')}`}>{SITE_CONFIG.agentPhone}</a>
+                            <a href={`mailto:${SITE_CONFIG.agentEmail}`}>{SITE_CONFIG.agentEmail}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <ContactModal
                 isOpen={isContactModalOpen}

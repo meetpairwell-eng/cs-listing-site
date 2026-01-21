@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useLayoutEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { getListingById } from '../data/listingsService';
 import { SITE_CONFIG } from '../config';
@@ -20,6 +20,76 @@ const PropertyDetails = () => {
     const [thumbnailTrackRef, setThumbnailTrackRef] = useState(null);
 
     const photosLength = property?.photos?.length || 0;
+
+    // Create looped photos array (x3) for infinite scroll illusion
+    const displayPhotos = property?.photos ? [...property.photos, ...property.photos, ...property.photos] : [];
+
+    // Auto-hide hero overlay after 1.5 seconds (fades out over 2s)
+    useEffect(() => {
+        if (!loading) {
+            const timer = setTimeout(() => {
+                setShowHeroOverlay(false);
+            }, 1500);
+
+            return () => clearTimeout(timer);
+        }
+    }, [loading]);
+
+    // Auto-scroll thumbnails to keep active one in view (handling the 3 loops smartly)
+    useEffect(() => {
+        if (!thumbnailTrackRef || !photosLength) return;
+
+        const track = thumbnailTrackRef;
+        const scrollLeft = track.scrollLeft;
+        const containerWidth = track.clientWidth;
+        const viewCenter = scrollLeft + containerWidth / 2;
+
+        // Find all DOM nodes for thumbnails
+        // Children: Left Button (0), Div Track (contains buttons), Right Button. 
+        // Wait, the ref is ON the track div. Children are the buttons.
+        const thumbs = Array.from(track.children);
+
+        // Candidates indices in the 'thumbs' array for the current activePhoto
+        // We have 3 sets. 
+        // activePhoto (0..N-1). Candidates: activePhoto, activePhoto + N, activePhoto + 2N
+        const candidates = [activePhoto, activePhoto + photosLength, activePhoto + 2 * photosLength];
+
+        let bestCandidate = null;
+        let minDiff = Infinity;
+
+        candidates.forEach(idx => {
+            const node = thumbs[idx];
+            if (!node) return;
+
+            const nodeCenter = node.offsetLeft + node.offsetWidth / 2;
+            const diff = Math.abs(nodeCenter - viewCenter);
+
+            if (diff < minDiff) {
+                minDiff = diff;
+                bestCandidate = node;
+            }
+        });
+
+        if (bestCandidate) {
+            bestCandidate.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+    }, [activePhoto, photosLength, thumbnailTrackRef]);
+
+    // Initial scroll to middle set on mount
+    useEffect(() => {
+        if (thumbnailTrackRef && photosLength) {
+            const track = thumbnailTrackRef;
+            // Scroll to middle set roughly
+            // total width estimate? 
+            // Just find the middle start index
+            const middleIndex = photosLength;
+            const node = track.children[middleIndex];
+            if (node) {
+                // Instant jump to center
+                node.scrollIntoView({ behavior: 'instant', block: 'nearest', inline: 'center' });
+            }
+        }
+    }, [thumbnailTrackRef, photosLength]);
 
     const nextHighlight = () => {
         setSlideDirection('left');
@@ -47,17 +117,7 @@ const PropertyDetails = () => {
         return next >= photosLength ? 1 : next;
     };
 
-    // Auto-hide hero overlay after 2 seconds
-    // Auto-hide hero overlay after 3.5 seconds (starts when content is loaded)
-    useEffect(() => {
-        if (!loading) {
-            const timer = setTimeout(() => {
-                setShowHeroOverlay(false);
-            }, 3500);
 
-            return () => clearTimeout(timer);
-        }
-    }, [loading]);
 
     // Thumbnail scroll handlers
     const scrollThumbnails = (direction) => {
@@ -71,6 +131,15 @@ const PropertyDetails = () => {
     };
 
 
+
+    // Scroll to top IMMEDIATELY before browser paint (synchronous)
+    useLayoutEffect(() => {
+        document.documentElement.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: "instant",
+        });
+    }, [id]);
 
     useEffect(() => {
         const loadProperty = async () => {
@@ -96,16 +165,6 @@ const PropertyDetails = () => {
         loadProperty();
     }, [id]);
 
-    // Ensure we scroll to top when content is ready
-    useEffect(() => {
-        if (!loading) {
-            // Small timeout to ensure DOM is fully rendered/stabilized
-            setTimeout(() => {
-                window.scrollTo(0, 0);
-            }, 10);
-        }
-    }, [loading]);
-
     if (loading) {
         return (
             <div className="property-details-loading">
@@ -127,7 +186,7 @@ const PropertyDetails = () => {
 
     const getPhotoUrl = (photo) => {
         if (!photo) return '';
-        if (photo.startsWith('http')) return photo;
+        if (photo.startsWith('http') || photo.startsWith('/')) return photo;
         // Check if SITE_CONFIG.mediaBaseUrl is defined, if not use a fallback or empty string
         const baseUrl = SITE_CONFIG.mediaBaseUrl || '';
         return `${baseUrl}/${photo}`;
@@ -166,8 +225,9 @@ const PropertyDetails = () => {
                         <div className="no-photo">No Photo Available</div>
                     )}
 
-                    {/* Overlay Header - fades out after 2s */}
+                    {/* Overlay Header - fades out after 3s */}
                     <div className={`hero-overlay ${!showHeroOverlay ? 'hidden' : ''}`}>
+                        {/* Black Filter / Gradient is in CSS */}
                         <div className="hero-content">
                             <h1 className="hero-title">{property.street || property.address}</h1>
                         </div>
@@ -198,55 +258,35 @@ const PropertyDetails = () => {
                     )}
                 </div>
 
-                {/* Thumbnail Gallery */}
-                {photos.length > 1 && (
-                    <div className="gallery-thumbnails">
-                        {/* Scroll Left Button */}
-                        <button
-                            className="thumb-scroll-btn scroll-left"
-                            onClick={() => scrollThumbnails('left')}
-                            aria-label="Scroll thumbnails left"
-                        >
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                <path d="M15 19l-7-7 7-7" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                        </button>
+                <div className="gallery-thumbnails">
+                    {/* View All Button */}
+                    <Link to={`/property/${id}/photos`} className="view-all-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <path d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                        </svg>
+                        <span>View All</span>
+                    </Link>
 
-                        <div
-                            className="thumbnails-track"
-                            ref={(el) => {
-                                setThumbnailTrackRef(el);
-                                if (el && activePhoto !== null) {
-                                    const activeThumb = el.children[activePhoto];
-                                    if (activeThumb) {
-                                        activeThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-                                    }
-                                }
-                            }}
-                        >
-                            {photos.map((photo, index) => (
+                    <div
+                        className="thumbnails-track"
+                        ref={setThumbnailTrackRef}
+                    >
+                        {displayPhotos.map((photo, i) => {
+                            // Original index mapping
+                            const originalIndex = i % photosLength;
+                            return (
                                 <button
-                                    key={index}
-                                    className={`thumbnail ${activePhoto === index ? 'active' : ''}`}
-                                    onClick={() => setActivePhoto(index)}
+                                    key={i}
+                                    className={`thumbnail ${activePhoto === originalIndex ? 'active' : ''}`}
+                                    onClick={() => setActivePhoto(originalIndex)}
                                 >
-                                    <img src={getPhotoUrl(photo)} alt={`View ${index + 1}`} />
+                                    <img src={getPhotoUrl(photo)} alt={`View ${originalIndex + 1}`} />
                                 </button>
-                            ))}
-                        </div>
-
-                        {/* Scroll Right Button */}
-                        <button
-                            className="thumb-scroll-btn scroll-right"
-                            onClick={() => scrollThumbnails('right')}
-                            aria-label="Scroll thumbnails right"
-                        >
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                <path d="M9 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                        </button>
+                            );
+                        })}
                     </div>
-                )}
+
+                </div>
             </section>
 
             <div className="property-content-container">

@@ -34,9 +34,6 @@ const Hero = () => {
                 <div className="hero-video-fallback"></div>
             )}
 
-            {/* Dark Overlay */}
-            <div className="hero-overlay"></div>
-
             {/* Content Area - Single Centered Column */}
             <div className="container hero-container">
                 <div className="hero-main-stack">

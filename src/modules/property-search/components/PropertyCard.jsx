@@ -22,7 +22,7 @@ const PropertyCard = ({ listing, onSelect, isSelected }) => {
 
     return (
         <Link
-            to={`/properties/${listing.id}`}
+            to={`/property/${listing.id}`}
             className={`property-card ${isSelected ? 'selected' : ''}`}
             onClick={handleCardClick}
         >

@@ -1,28 +1,36 @@
-/* Hero Overlay - Auto-hide after 2s */
+/* Hero Overlay - Starts fading at 3s, completes by 5s */
 .hero-overlay {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
     padding: 150px 80px 60px;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.45) 40%, transparent 100%);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.4) 60%, transparent 100%);
     color: #ffffff;
     display: flex;
     align-items: flex-end;
-    z-index: 8;
-    transition: opacity 1s ease, visibility 1s ease;
+    z-index: 100 !important;
+
+    /* Default State: Visible */
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto;
+    transition: opacity 0.3s ease;
 }
 
 .hero-overlay.hidden {
-    opacity: 0;
-    visibility: hidden;
+    opacity: 0 !important;
+    visibility: hidden !important;
     pointer-events: none;
+    /* When hiding: Fade opacity over 2s, then switch visibility after 2s */
+    transition: opacity 2s ease, visibility 0s linear 2s;
 }
 
 .hero-title {
     font-family: var(--font-heading);
-    font-size: clamp(3.2rem, 6vw, 4.8rem);
-    font-weight: 400;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    /* Reduced by 50% */
+    font-weight: 300;
     line-height: 1.1;
     text-transform: uppercase;
     letter-spacing: 0.15em;
@@ -31,16 +39,6 @@
     text-align: center;
     width: 100%;
     margin-bottom: 10px;
-    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-}
-
-.hero-price {
-    font-family: var(--font-body);
-    font-size: clamp(1.8rem, 3vw, 2.8rem);
-    font-weight: 500;
-    color: #ffffff;
-    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-    text-align: center;
 }
 
 .hero-content {
@@ -68,7 +66,7 @@
 
 .gallery-image.current {
     z-index: 2;
-    animation: fadeIn 0.8s ease-in-out forwards;
+    opacity: 1;
 }
 
 .gallery-image.previous {
@@ -140,14 +138,15 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.7) 50%, transparent 100%);
+    background: transparent;
     padding: 40px 0 30px;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
     z-index: 4;
     opacity: 0;
-    animation: fadeInThumbnails 1s ease 3.5s forwards;
+    /* Thumbnails start fading in at 2s for seamless crossfade with address fade-out */
+    animation: fadeInThumbnails 1s ease 2s forwards;
 }
 
 @keyframes fadeInThumbnails {
@@ -225,30 +224,18 @@
     flex: 0 0 auto;
     width: clamp(140px, 14vw, 200px);
     aspect-ratio: 3/2;
-    border: 3px solid transparent;
-    border-radius: 8px;
+    border: none;
+    border-radius: 0;
     overflow: hidden;
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     background: none;
     padding: 0;
     position: relative;
+    opacity: 0.5;
 }
 
-.thumbnail::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.3);
-    opacity: 1;
-    transition: opacity 0.3s ease;
-    pointer-events: none;
-}
 
-.thumbnail:hover::after,
-.thumbnail.active::after {
-    opacity: 0;
-}
 
 .thumbnail img {
     width: 100%;
@@ -259,16 +246,56 @@
 }
 
 .thumbnail:hover {
-    border-color: rgba(255, 255, 255, 0.7);
-    transform: translateY(-4px);
+    opacity: 1;
 }
 
-.thumbnail:hover img {
-    transform: scale(1.08);
-}
+
 
 .thumbnail.active {
-    border-color: white;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
-    transform: translateY(-6px);
+    opacity: 1;
+}
+
+/* View All Button */
+.view-all-btn {
+    position: absolute;
+    top: -35px;
+    /* Closer to thumbnails */
+    right: 40px;
+    background: rgba(255, 255, 255, 0.8);
+    /* Slightly more transparent/opaque feel */
+    padding: 6px 12px;
+    /* Smaller */
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    color: #1a1a1a;
+    font-family: var(--font-body);
+    font-size: 11px;
+    /* Smaller text */
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    z-index: 20;
+}
+
+.view-all-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+.view-all-btn:hover {
+    background: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+    .view-all-btn {
+        right: 20px;
+        top: -45px;
+    }
 }

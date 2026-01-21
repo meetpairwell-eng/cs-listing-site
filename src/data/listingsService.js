@@ -95,7 +95,18 @@ export const getAllListings = async (filters = {}) => {
         return dateB - dateA; // Most recent first
     });
 
-    return combined;
+    // Override photos for ALL listings as requested by user
+    const overridePhotos = (item) => {
+        if (!item) return item;
+        const testImage = '/properties/custom-listing.png';
+        return {
+            ...item,
+            image: testImage,
+            photos: Array(8).fill(testImage)
+        };
+    };
+
+    return combined.map(overridePhotos);
 };
 
 /**
@@ -122,7 +133,11 @@ export const getNotableSales = (limit = 4) => {
     return manualListings
         .filter(listing => listing.isFeatured && listing.status === 'Sold')
         .sort((a, b) => (a.displayPriority || 999) - (b.displayPriority || 999))
-        .slice(0, limit);
+        .slice(0, limit)
+        .map(item => ({
+            ...item,
+            photos: Array(8).fill('/properties/custom-listing.png')
+        }));
 };
 
 /**
@@ -147,20 +162,31 @@ export const getActiveListings = async () => {
  * @returns {Promise<Object|null>} Property or null if not found
  */
 export const getListingById = async (id) => {
+    let result = null;
+
     // Check manual listings first
     const manualListing = manualListings.find(listing => listing.id === id);
     if (manualListing) {
-        return manualListing;
+        result = manualListing;
+    } else {
+        // If not found in manual, try MLS
+        try {
+            const { fetchPropertyById } = await import('../api/idxService');
+            result = await fetchPropertyById(id);
+        } catch (error) {
+            console.error(`Property ${id} not found:`, error);
+            result = null;
+        }
     }
 
-    // If not found in manual, try MLS
-    try {
-        const { fetchPropertyById } = await import('../api/idxService');
-        return await fetchPropertyById(id);
-    } catch (error) {
-        console.error(`Property ${id} not found:`, error);
-        return null;
+    // Override photos
+    if (result) {
+        return {
+            ...result,
+            photos: Array(8).fill('/properties/custom-listing.png')
+        };
     }
+    return null;
 };
 
 /**
