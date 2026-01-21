@@ -21,7 +21,11 @@ const FeaturedListings = () => {
 
                 <div className="listings-grid">
                     {listings.map((listing) => (
-                        <div key={listing.id} className="listing-card">
+                        <Link
+                            key={listing.id}
+                            to={`/property/${listing.id}`}
+                            className="listing-card"
+                        >
                             <div className="listing-image">
                                 <img
                                     src={getMediaUrl(listing.heroImage)}
@@ -44,7 +48,7 @@ const FeaturedListings = () => {
                                 </p>
                                 <div className="listing-price">{listing.price}</div>
                             </div>
-                        </div>
+                        </Link>
                     ))}
                 </div>
 

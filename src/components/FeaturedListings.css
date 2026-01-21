@@ -33,6 +33,13 @@
     transition: all var(--transition-base);
     display: flex;
     flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.listing-card:hover {
+    transform: translateY(-4px);
 }
 
 .listing-card:hover .listing-image img {

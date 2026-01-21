@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { fetchPropertyById } from '../api/idxService';
+import { getListingById } from '../data/listingsService';
 import { SITE_CONFIG } from '../config';
 import ContactModal from '../components/ContactModal';
 import './PropertyDetails.css';
@@ -18,7 +18,7 @@ const PropertyDetails = () => {
             try {
                 setLoading(true);
                 setError(null);
-                const data = await fetchPropertyById(id);
+                const data = await getListingById(id);
                 if (!data) {
                     throw new Error('Property not found');
                 }
@@ -57,6 +57,14 @@ const PropertyDetails = () => {
         );
     }
 
+    const getPhotoUrl = (photo) => {
+        if (!photo) return '';
+        if (photo.startsWith('http')) return photo;
+        // Check if SITE_CONFIG.mediaBaseUrl is defined, if not use a fallback or empty string
+        const baseUrl = SITE_CONFIG.mediaBaseUrl || '';
+        return `${baseUrl}/${photo}`;
+    };
+
     const { raw } = property;
     const photos = property.photos || [];
 
@@ -71,7 +79,7 @@ const PropertyDetails = () => {
             <section className="property-gallery">
                 <div className="gallery-main">
                     {photos.length > 0 ? (
-                        <img src={photos[activePhoto]} alt={`${property.address} - view ${activePhoto + 1}`} />
+                        <img src={getPhotoUrl(photos[activePhoto])} alt={`${property.address} - view ${activePhoto + 1}`} />
                     ) : (
                         <div className="no-photo">No Photo Available</div>
                     )}

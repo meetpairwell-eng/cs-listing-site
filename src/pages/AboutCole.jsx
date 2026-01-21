@@ -86,23 +86,19 @@ const AboutCole = () => {
         <div className="about-cole-page">
             {/* Hero Section */}
             <section className="cole-hero">
-                <div className="container">
-                    <div className="cole-hero-grid">
-                        <div className="cole-hero-content">
-                            <h1 className="cole-hero-title">Meet Cole Swearingen</h1>
-                            <p className="cole-hero-subtitle">
-                                A Dallas native with a deep-rooted passion for architecture and design, Cole Swearingen brings a sophisticated, hospitality-driven approach to the DFW real estate market. From scouting off-market opportunities to consulting on award-winning builds, Cole is a strategic partner for those who value detail as much as the deal.
-                            </p>
-                        </div>
-                        <div className="cole-hero-image">
-                            <img
-                                src={getMediaUrl('about/hero-image.jpg', 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1200&q=80')}
-                                alt="Luxury home"
-                                onError={(e) => {
-                                    e.target.src = 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1200&q=80';
-                                }}
-                            />
-                        </div>
+                <div className="cole-hero-background">
+                    <img
+                        src={getMediaUrl('about/hero-image.jpg', 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1200&q=80')}
+                        alt="Luxury home"
+                        onError={(e) => {
+                            e.target.src = 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1200&q=80';
+                        }}
+                    />
+                    <div className="cole-hero-overlay"></div>
+                </div>
+                <div className="cole-hero-content">
+                    <div className="container">
+                        <h1 className="cole-hero-title">MEET COLE</h1>
                     </div>
                 </div>
             </section>
