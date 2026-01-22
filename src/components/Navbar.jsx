@@ -68,9 +68,10 @@ const Navbar = ({ onContactClick }) => {
 
     const isSearchPage = location.pathname === '/search';
     const isFavoritesPage = location.pathname === '/favorites';
+    const isPhotoGridPage = location.pathname.includes('/photos');
 
     return (
-        <nav className={`navbar ${scrolled || isSearchPage || isFavoritesPage ? 'scrolled' : ''}`}>
+        <nav className={`navbar ${scrolled || isSearchPage || isFavoritesPage || isPhotoGridPage ? 'scrolled' : ''}`}>
             <div className="container navbar-container">
                 {/* Logo - Agent Initials */}
                 <div className="navbar-logo" onClick={handleLogoClick} style={{ cursor: 'pointer' }}>

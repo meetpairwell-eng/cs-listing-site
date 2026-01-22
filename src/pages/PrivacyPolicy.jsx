@@ -1,3 +1,4 @@
+import { SITE_CONFIG } from '../config';
 import './PrivacyPolicy.css';
 
 const PrivacyPolicy = () => {
@@ -62,9 +63,9 @@ const PrivacyPolicy = () => {
                         <h2>6. Contact Us</h2>
                         <p>For questions regarding this policy or to exercise your data rights, please contact:</p>
                         <p className="contact-info">
-                            <strong>Cole Swearingen</strong><br />
-                            Email: <a href="mailto:cole.swearingen@compass.com">cole.swearingen@compass.com</a><br />
-                            Phone: <a href="tel:+12149271313">(214) 927-1313</a>
+                            <strong>{SITE_CONFIG.agentName}</strong><br />
+                            Email: <a href={`mailto:${SITE_CONFIG.agentEmail}`}>{SITE_CONFIG.agentEmail}</a><br />
+                            Phone: <a href={`tel:${SITE_CONFIG.agentPhone.replace(/\D/g, '')}`}>{SITE_CONFIG.agentPhone}</a>
                         </p>
                     </section>
                 </div>

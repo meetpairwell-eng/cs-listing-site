@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Services from './components/Services';
 import About from './components/About';
+import Awards from './components/Awards';
 import FeaturedListings from './components/FeaturedListings';
 import Testimonials from './components/Testimonials';
 import Contact from './components/Contact';
@@ -31,6 +32,9 @@ const HomePage = ({ onContactClick }) => (
     <FeaturedListings />
     <Testimonials />
     <Contact onContactClick={onContactClick} />
+
+
+    <Awards />
     <Footer />
   </>
 );
@@ -64,6 +68,7 @@ function App() {
             element={
               <>
                 <FeaturedProperties />
+                <Awards />
                 <Footer />
               </>
             }
@@ -75,6 +80,7 @@ function App() {
             element={
               <>
                 <Favorites />
+                <Awards />
                 <Footer />
               </>
             }
@@ -86,6 +92,7 @@ function App() {
             element={
               <>
                 <HomeValuation onContactClick={() => setIsContactModalOpen(true)} />
+                <Awards />
                 <Footer />
               </>
             }
@@ -97,6 +104,7 @@ function App() {
             element={
               <>
                 <PrivacyPolicy />
+                <Awards />
                 <Footer />
               </>
             }
@@ -108,6 +116,7 @@ function App() {
             element={
               <>
                 <AboutCole />
+                <Awards />
                 <Footer />
               </>
             }
@@ -119,6 +128,7 @@ function App() {
             element={
               <>
                 <PropertyDetails />
+                <Awards />
                 <Footer />
               </>
             }
@@ -130,6 +140,7 @@ function App() {
             element={
               <>
                 <PropertyPhotoGrid />
+                <Awards />
                 <Footer />
               </>
             }
@@ -141,6 +152,7 @@ function App() {
             element={
               <>
                 <APITestPage />
+                <Awards />
                 <Footer />
               </>
             }

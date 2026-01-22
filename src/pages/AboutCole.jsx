@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { SITE_CONFIG } from '../config';
 import ContactModal from '../components/ContactModal';
+import Contact from '../components/Contact';
 import './AboutCole.css';
 import './PropertyDetails.css'; // For contact-banner styles
 
@@ -200,6 +201,8 @@ const AboutCole = () => {
                     </div>
                 </div>
             </div>
+
+            <Contact onContactClick={() => setIsContactModalOpen(true)} />
 
             <ContactModal
                 isOpen={isContactModalOpen}
