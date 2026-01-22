@@ -10,7 +10,21 @@
 }
 
 /* Video Background */
+/* Video Background */
 .hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+/* Mobile Image Background */
+.hero-mobile-bg {
+    display: none;
+    /* Hidden by default on desktop */
     position: absolute;
     top: 0;
     left: 0;
@@ -135,7 +149,25 @@
 }
 
 /* Mobile Adjustments */
+/* Mobile Adjustments */
 @media (max-width: 768px) {
+
+    /* Hide video, show image */
+    .hero-video {
+        display: none;
+    }
+
+    /* Hide the blue fallback on mobile so the image is seen */
+    .hero-video-fallback {
+        display: none !important;
+    }
+
+    .hero-mobile-bg {
+        display: block;
+        z-index: 1;
+        /* Ensure it sits above any potential background */
+    }
+
     .hero-name {
         font-size: 2.2rem;
         letter-spacing: 0.1em;

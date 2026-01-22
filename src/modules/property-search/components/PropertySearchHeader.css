@@ -262,8 +262,60 @@
 }
 
 /* Filter Count Badge */
+/* Filter Count Badge */
 .filter-count-badge {
     color: var(--color-primary);
     font-size: 20px;
     margin-left: 4px;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 900px) {
+    .property-search-header {
+        padding: 0.75rem 1rem;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    .search-bar-container {
+        width: 100%;
+        /* Full width search on mobile */
+        order: 1;
+        /* Search bar on top */
+    }
+
+    .filter-pills {
+        display: none;
+        /* Hide pills on mobile/tablet */
+    }
+
+    .header-actions {
+        width: 100%;
+        order: 2;
+        /* Buttons below search */
+        justify-content: space-between;
+    }
+
+    .action-btn {
+        flex: 1;
+        /* Equal width buttons */
+        text-align: center;
+        padding: 0.75rem 0.5rem;
+    }
+
+    /* Hide less important buttons on very small screens if needed */
+    .action-btn.save,
+    .action-btn:nth-child(2),
+    /* List btn */
+    .action-btn:nth-child(3) {
+        /* Map btn */
+        /* Keep them for now, but Filters should be prominent */
+    }
+
+    .action-btn.primary {
+        flex: 2;
+        /* Make Filters button larger */
+        background: #000;
+        color: white;
+    }
 }

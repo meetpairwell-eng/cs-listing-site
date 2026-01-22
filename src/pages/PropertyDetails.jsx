@@ -204,7 +204,7 @@ const PropertyDetails = () => {
         <div className="property-details-page">
             {/* Gallery Section */}
             <section className="property-gallery">
-                <div className="gallery-main">
+                <div className="gallery-main desktop-only">
                     {photos.length > 0 ? (
                         <>
                             {/* Dual image setup for smooth crossfade */}
@@ -258,11 +258,31 @@ const PropertyDetails = () => {
                     )}
                 </div>
 
-                <div className="gallery-thumbnails">
+                {/* Mobile Header (TRG Style Grid) */}
+                <div className="mobile-property-header">
+                    <div className="mobile-hero-main">
+                        <img src={getPhotoUrl(photos[0])} alt="Main view" onClick={() => setActivePhoto(0)} />
+                    </div>
+                    {photos.length > 1 && (
+                        <div className="mobile-hero-grid">
+                            <div className="mobile-sub-img">
+                                <img src={getPhotoUrl(photos[1])} alt="View 2" />
+                            </div>
+                            <div className="mobile-sub-img view-all-trigger">
+                                <img src={getPhotoUrl(photos[2] || photos[1])} alt="View 3" />
+                                <Link to={`/property/${id}/photos`} className="mobile-view-all-overlay">
+                                    VIEW ALL
+                                </Link>
+                            </div>
+                        </div>
+                    )}
+                </div>
+
+                <div className="gallery-thumbnails desktop-only">
                     {/* View All Button */}
                     <Link to={`/property/${id}/photos`} className="view-all-btn">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                            <path d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                            <path d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
                         </svg>
                         <span>View All</span>
                     </Link>

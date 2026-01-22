@@ -270,12 +270,40 @@
     }
 
     .footer-compass-logo h1 {
-        font-size: 2.5rem;
+        font-size: 2rem;
+        /* Reduced from 2.5rem to fit better */
+    }
+
+    /* Stack the main content (Agent Left, Contact Right) vertically */
+    .footer-main-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .footer-agent-info {
+        border-right: none;
+        border-bottom: 1px solid #e5e5e5;
+        padding-right: 0;
+        padding-bottom: 30px;
+        text-align: center;
     }
 
     .footer-info-grid {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 30px;
+        text-align: center;
+        /* Center align for better mobile look */
+    }
+
+    /* Center align items in grid columns */
+    .footer-info-col {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-social-icons {
+        justify-content: center;
     }
 
     .footer-nav {

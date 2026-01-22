@@ -547,6 +547,11 @@ section h3 {
     display: none;
 }
 
+/* Default state for mobile header on desktop */
+.mobile-property-header {
+    display: none;
+}
+
 /* Responsive */
 @media (max-width: 1200px) {
     .property-content-container {
@@ -603,5 +608,147 @@ section h3 {
 
     .property-mls-info {
         grid-template-columns: 1fr;
+    }
+
+    /* Mobile Header Updates */
+    .header-main-info {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .address-block {
+        width: 100%;
+    }
+
+    .property-content-header {
+        margin-top: 20px;
+        /* Reduced from 40px */
+        padding-bottom: 20px;
+        /* Reduced from 30px */
+    }
+
+    .full-address-line1 {
+        font-size: 1.8rem;
+        /* Slightly smaller for mobile */
+        word-wrap: break-word;
+    }
+
+    .property-price-main {
+        font-size: 1.4rem;
+        /* Align price nicely */
+        width: 100%;
+        padding-top: 10px;
+        border-top: 1px solid #eee;
+    }
+
+    .property-main-content-layout {
+        margin-top: 0;
+        /* Removing the huge 60px gap */
+    }
+
+    .property-stats-bar {
+        padding: 20px 0;
+        /* Reduced padding */
+        border-top: none;
+    }
+
+    .property-badges {
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    .badge-item {
+        padding-right: 0;
+        margin-right: 0;
+        border-right: none;
+        align-items: center;
+        flex: 1;
+    }
+
+    .badge-item:not(:last-child) {
+        border-right: 1px solid #eee;
+    }
+
+    /* Reduce space before description */
+    .property-description {
+        padding: 20px 0;
+    }
+
+    /* Mobile Header Grid Logic */
+    .desktop-only {
+        display: none !important;
+    }
+
+    .mobile-property-header {
+        display: block;
+        width: 100%;
+    }
+
+    .mobile-hero-main img {
+        width: 100%;
+        height: 300px;
+        /* Or aspect-ratio */
+        object-fit: cover;
+        display: block;
+    }
+
+    .mobile-hero-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2px;
+        margin-top: 2px;
+    }
+
+    .mobile-sub-img {
+        position: relative;
+        height: 150px;
+    }
+
+    .mobile-sub-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .mobile-view-all-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-family: var(--font-body);
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-decoration: none;
+        font-size: 0.9rem;
+        backdrop-filter: blur(2px);
+    }
+
+    /* Stack Contact Footer on Mobile */
+    .contact-banner-inner {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .banner-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .banner-cta {
+        align-items: center;
+        width: 100%;
+    }
+
+    .banner-link {
+        align-items: center;
     }
 }

@@ -53,7 +53,7 @@ const Testimonials = () => {
 
             <div className="testimonials-header">
                 <h2>CLIENT TESTIMONIALS</h2>
-                <span className="testimonials-subtitle">TRUSTED BY DALLAS' ELITE</span>
+
             </div>
 
             <div className="testimonials-viewport">

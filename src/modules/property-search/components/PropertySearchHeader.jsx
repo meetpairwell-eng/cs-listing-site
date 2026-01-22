@@ -238,7 +238,7 @@ const PropertySearchHeader = ({ filters, onFiltersChange }) => {
                 <button className="action-btn">List</button>
                 <button className="action-btn">Map</button>
                 <button className="action-btn primary" onClick={() => setShowFilterModal(true)}>
-                    All filters
+                    Filters
                 </button>
                 <button className="action-btn save">Save search</button>
             </div>

@@ -29,10 +29,19 @@ const Hero = () => {
                 </video>
             )}
 
+            {/* Mobile Image (Visible on small screens via CSS) - ALways render */}
+            <img
+                src={`${SITE_CONFIG.mediaBaseUrl}/${SITE_CONFIG.heroMobileImage}`}
+                alt="Hero background"
+                className="hero-mobile-bg"
+                onError={(e) => {
+                    // Fallback to high-quality unsplash if custom image fails
+                    e.target.src = 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80';
+                }}
+            />
+
             {/* Fallback gradient if video fails */}
-            {videoError && (
-                <div className="hero-video-fallback"></div>
-            )}
+            {videoError && <div className="hero-video-fallback"></div>}
 
             {/* Content Area - Single Centered Column */}
             <div className="container hero-container">
