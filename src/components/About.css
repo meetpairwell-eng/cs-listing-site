@@ -1,77 +1,63 @@
 .about-section {
-    padding: 0;
     width: 100%;
+    background-color: #fff;
+    overflow: hidden;
 }
 
-.about-split-layout {
+.about-split-container {
     display: flex;
     width: 100%;
     min-height: 85vh;
-    /* Tall enough to see effect */
 }
 
-/* Left Side - Parallax Image */
+/* Left Side - Image Side with Parallax */
 .about-image-side {
     width: 50%;
     background-size: cover;
-    /* Start with cover */
-    background-position: left center;
-    /* Align to the left side of viewport */
+    background-position: center;
     background-attachment: fixed;
-    /* The Static/Parallax Magic */
     background-repeat: no-repeat;
     position: relative;
-    /* To approximate the zoom crop: slightly scale up background size. 
-       'cover' is basically 100% of the container (or height). 
-       Let's try a bit larger than cover to zoom in. */
-    background-size: auto 150%;
-    background-position: 25% -5%;
-    /* Center focus in left half and crop top 5% */
-    min-height: 500px;
-    /* Ensure height even if empty */
+    min-height: 100%;
 }
 
-/* Right Side - Content */
+/* Right Side - Content Side */
 .about-content-side {
     width: 50%;
-    background-color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 6rem;
+    background-color: #fff;
 }
 
-.about-content-wrapper {
-    max-width: 600px;
+.about-content-inner {
+    max-width: 550px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
 }
 
-.about-content-wrapper h2 {
+.about-eyebrow {
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+.about-content-inner h2 {
     font-family: var(--font-heading);
     font-size: clamp(2rem, 3.5vw, 3rem);
     font-weight: 400;
-    letter-spacing: 0.05em;
-    margin-bottom: var(--spacing-md);
+    margin-bottom: 2rem;
     color: var(--color-text);
 }
 
-.about-label {
-    font-size: 0.875rem;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--color-text-light);
-    margin-bottom: var(--spacing-lg);
-    border-bottom: 1px solid var(--color-border);
-    padding-bottom: var(--spacing-sm);
-    display: inline-block;
-    width: max-content;
-}
-
-.about-content-wrapper p {
-    margin-bottom: var(--spacing-md);
+.about-content-inner p {
+    margin-bottom: 1.5rem;
     line-height: 1.8;
     color: var(--color-text);
     font-size: 1rem;
@@ -80,7 +66,7 @@
 /* Minimal Button */
 .btn-minimal {
     display: inline-block;
-    padding: 0.875rem 2rem;
+    padding: 1rem 2.5rem;
     font-size: 0.8rem;
     font-weight: 500;
     letter-spacing: 0.15em;
@@ -90,8 +76,7 @@
     background: transparent;
     text-decoration: none;
     transition: all var(--transition-base);
-    margin-top: var(--spacing-md);
-    width: fit-content;
+    margin-top: 1rem;
 }
 
 .btn-minimal:hover {
@@ -99,9 +84,8 @@
     color: var(--color-text-inverse);
 }
 
-/* Responsive */
-@media (max-width: 968px) {
-    .about-split-layout {
+@media (max-width: 1024px) {
+    .about-split-container {
         flex-direction: column;
         min-height: auto;
     }
@@ -110,13 +94,16 @@
         width: 100%;
         height: 50vh;
         background-attachment: scroll;
-        /* Disable fixed on mobile */
-        background-position: center top;
-        background-size: cover;
+        /* Disable fixed parallax on mobile */
     }
 
     .about-content-side {
         width: 100%;
         padding: 4rem 2rem;
+    }
+
+    .about-content-inner {
+        align-items: center;
+        text-align: center;
     }
 }

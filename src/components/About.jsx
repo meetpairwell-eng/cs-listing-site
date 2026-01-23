@@ -4,20 +4,20 @@ import './About.css';
 
 const About = () => {
     return (
-        <section id="about" className="section about-section">
-            <div className="about-split-layout">
-                {/* Left Side - Parallax Image */}
+        <section id="about" className="about-section">
+            <div className="about-split-container">
+                {/* Left Side - Image Side with Parallax */}
                 <div
                     className="about-image-side"
-                    style={{ backgroundImage: `url(${SITE_CONFIG.mediaBaseUrl}/${SITE_CONFIG.headshot})` }}
-                ></div>
+                    style={{ backgroundImage: `url(${SITE_CONFIG.mediaBaseUrl}/${SITE_CONFIG.aboutCole?.headshot?.r2Path || SITE_CONFIG.headshot})` }}
+                >
+                </div>
 
-                {/* Right Side - Content */}
+                {/* Right Side - Content Side */}
                 <div className="about-content-side">
-                    <div className="about-content-wrapper">
-                        <h2>MEET {SITE_CONFIG.agentName.split(' ')[0].toUpperCase()}</h2>
-
-                        <p className="about-label">LUXURY ESTATES AGENT</p>
+                    <div className="about-content-inner">
+                        <span className="about-eyebrow">MEET {SITE_CONFIG.agentName.split(' ')[0].toUpperCase()}</span>
+                        <h2>Luxury Estates Agent</h2>
 
                         <p>
                             {SITE_CONFIG.agentName} brings a wealth of real estate expertise and a proven track record
