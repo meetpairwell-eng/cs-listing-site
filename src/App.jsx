@@ -28,8 +28,8 @@ import './App.css';
 const HomePage = ({ onContactClick }) => (
   <>
     <Hero />
-    <Services onContactClick={onContactClick} />
     <About />
+    <Services onContactClick={onContactClick} />
     <FeaturedListings />
     <Testimonials />
     <DesignEditorial />
