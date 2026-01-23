@@ -141,8 +141,8 @@ const AboutCole = () => {
                     <h2 className="section-title">DEFINING THE PROFESSIONAL STANDARD</h2>
                     <div className="showcase-list">
                         {showcaseItems.map((item, index) => (
-                            <div key={index} className={`showcase-item ${index % 2 === 1 ? 'reverse' : ''}`}>
-                                <div className="showcase-image">
+                            <div key={index} className="showcase-card">
+                                <div className="showcase-card-image">
                                     <img
                                         src={getMediaUrl(item.r2Path, item.fallback)}
                                         alt={item.title}
@@ -151,9 +151,9 @@ const AboutCole = () => {
                                         }}
                                     />
                                 </div>
-                                <div className="showcase-content">
-                                    <h3 className="showcase-title">{item.title}</h3>
-                                    <p className="showcase-description">{item.description}</p>
+                                <div className="showcase-card-content">
+                                    <h3 className="showcase-card-title">{item.title}</h3>
+                                    <p className="showcase-card-description">{item.description}</p>
                                 </div>
                             </div>
                         ))}
