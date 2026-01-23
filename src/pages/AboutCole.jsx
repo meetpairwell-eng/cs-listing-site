@@ -63,26 +63,7 @@ const AboutCole = () => {
         }
     ];
 
-    const showcaseItems = [
-        {
-            r2Path: 'about/showcase-1.jpg',
-            fallback: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1000&q=80',
-            title: 'Reliable. Honest. Proven.',
-            description: 'People trust Cole as a steady hand, especially when the market feels unpredictable. Whether interest rates are shifting or the economy is changing, he uses real data and honest, friendly communication to keep your home and your future safe. He is known for staying calm under pressure and being easy to work with, which makes a big difference when the process gets emotional. By staying closely connected to Dallas\' top agents, Cole makes sure his clients always have the best information and a clear advantage in our city\'s fast-moving market.'
-        },
-        {
-            r2Path: 'about/showcase-2.jpg',
-            fallback: 'https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=1000&q=80',
-            title: 'Strategic Builder & Developer Partnerships',
-            description: 'Cole acts as a technical partner in the new construction and luxury renovation space across the Dallas Metroplex. With extensive experience in ground-up development, he collaborates with builders on floor plan optimization to ensure every square foot aligns with current market demands. From interior design and landscaping to complex renovations, Cole provides the on-the-ground insight needed to curate a product that sells. For developers, he is a strategic asset who understands how to bridge the gap between architectural vision and a successful, high-yield closing.'
-        },
-        {
-            r2Path: 'about/showcase-3.jpg',
-            fallback: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1000&q=80',
-            title: 'Exclusive Access & Insider Intelligence',
-            description: 'Cole\'s deep-rooted connections with Dallas\' most prominent figures and top-tier agents put him at the center of the local real estate conversation. By staying active in these elite circles, he understands the private trends of the market and the people driving them. Whether it\'s a new development in Frisco or a shift in the Park Cities, Cole provides his clients with insider knowledge that is clear and helpful. This connected approach gives his clients a real advantage by helping them understand where the luxury market is headed before everyone else.'
-        }
-    ];
+    const showcaseItems = SITE_CONFIG.aboutCole?.showcaseImages || [];
 
     return (
         <div className="about-cole-page">
@@ -90,10 +71,10 @@ const AboutCole = () => {
             <section className="cole-hero">
                 <div className="cole-hero-background">
                     <img
-                        src={getMediaUrl('3808Potomac/3808Potomac-24.webp', 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1200&q=80')}
+                        src={getMediaUrl(SITE_CONFIG.aboutCole?.heroImage?.r2Path, SITE_CONFIG.aboutCole?.heroImage?.fallback)}
                         alt="Luxury home"
                         onError={(e) => {
-                            e.target.src = 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1200&q=80';
+                            e.target.src = SITE_CONFIG.aboutCole?.heroImage?.fallback;
                         }}
                     />
                     <div className="cole-hero-overlay"></div>
@@ -126,10 +107,10 @@ const AboutCole = () => {
                         </div>
                         <div className="cole-about-image">
                             <img
-                                src={getMediaUrl('cole-swearingen-headshot.webp', 'https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=800&q=80')}
+                                src={getMediaUrl(SITE_CONFIG.aboutCole?.headshot?.r2Path, SITE_CONFIG.aboutCole?.headshot?.fallback)}
                                 alt="Cole Swearingen professional"
                                 onError={(e) => {
-                                    e.target.src = 'https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=800&q=80';
+                                    e.target.src = SITE_CONFIG.aboutCole?.headshot?.fallback;
                                 }}
                             />
                         </div>
