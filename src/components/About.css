@@ -24,7 +24,9 @@
     /* To approximate the zoom crop: slightly scale up background size. 
        'cover' is basically 100% of the container (or height). 
        Let's try a bit larger than cover to zoom in. */
-    background-size: auto 115%;
+    background-size: auto 135%;
+    background-position: center -5vh;
+    /* Crop top 5% approx */
     min-height: 500px;
     /* Ensure height even if empty */
 }
