@@ -158,7 +158,6 @@ const AboutCole = () => {
             <section className="cole-showcase">
                 <div className="container">
                     <h2 className="section-title">DEFINING THE PROFESSIONAL STANDARD</h2>
-                    <p className="section-subtitle" style={{ marginBottom: '4rem', marginTop: '-0.5rem' }}>A PROVEN PROFESSIONAL</p>
                     <div className="showcase-list">
                         {showcaseItems.map((item, index) => (
                             <div key={index} className={`showcase-item ${index % 2 === 1 ? 'reverse' : ''}`}>
