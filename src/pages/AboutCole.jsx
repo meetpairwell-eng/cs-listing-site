@@ -170,12 +170,15 @@ const AboutCole = () => {
 
                 {showcaseItems.map((item, index) => (
                     <div key={index} className={`elevated-row ${index % 2 === 1 ? 'reverse' : ''}`}>
-                        <div
-                            className="elevated-image"
-                            style={{
-                                backgroundImage: `url(${getMediaUrl(item.r2Path, item.fallback)})`
-                            }}
-                        ></div>
+                        <div className="elevated-image">
+                            <img
+                                src={getMediaUrl(item.r2Path, item.fallback)}
+                                alt={item.title}
+                                onError={(e) => {
+                                    e.target.src = item.fallback;
+                                }}
+                            />
+                        </div>
                         <div className="elevated-text-panel">
                             <div className="elevated-content">
                                 <h3>{item.title}</h3>

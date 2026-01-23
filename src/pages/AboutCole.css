@@ -427,15 +427,18 @@
         /* Tall rows for parallax impact */
     }
 
-    /* Image Side with Parallax */
+    /* Image Side */
     .elevated-image {
         width: 50%;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-attachment: fixed;
-        /* Creates the parallax effect */
         position: relative;
+        overflow: hidden;
+    }
+
+    .elevated-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
     }
 
     /* Text Side */
