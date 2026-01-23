@@ -15,15 +15,10 @@ export const manualListings = [
         "price": "Price Upon Request",
         "priceFormatted": "Price Upon Request",
         "heroImage": "3808-Potomac-Hero.webp",
+        "photoPrefix": "3808-Potomac",
+        "photoCount": 20,
         "photos": [
-            "3808-Potomac-Hero.webp",
-            "3808-Potomac-Hero.webp",
-            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
-            "house-thumb.jpg",
-            "3808-Potomac-Hero.webp",
-            "https://images.unsplash.com/photo-1600210492493-0946911123ea?auto=format&fit=crop&w=800&q=80",
-            "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80",
-            "https://images.unsplash.com/photo-1600566752355-35792bedcfe1?auto=format&fit=crop&w=800&q=80"
+            "3808-Potomac-Hero.webp"
         ],
         "specs": {
             "beds": 6,
@@ -85,8 +80,7 @@ export const manualListings = [
         "priceFormatted": "Price Upon Request",
         "heroImage": "5609-Ursula-Hero.webp",
         "photos": [
-            "5609-Ursula-Hero.webp",
-            "house-thumb.jpg"
+            "5609-Ursula-Hero.webp"
         ],
         "specs": {
             "beds": 5,
@@ -148,8 +142,7 @@ export const manualListings = [
         "priceFormatted": "$5,500,000",
         "heroImage": "4508-Belfort-Place.webp",
         "photos": [
-            "4508-Belfort-Place.webp",
-            "house-thumb.jpg"
+            "4508-Belfort-Place.webp"
         ],
         "specs": {
             "beds": 5,
@@ -197,38 +190,41 @@ export const manualListings = [
         }
     },
     {
-        "id": "notable-sale-03",
+        "id": "lakewood-6840",
         "source": "manual",
         "status": "Sold",
         "isOffMarket": false,
         "isFeatured": true,
         "displayPriority": 4,
-        "title": "LUXURY ESTATE",
-        "address": "Dallas, TX",
-        "street": "Luxury Estate",
+        "title": "6840 LAKEWOOD BLVD",
+        "address": "6840 Lakewood Blvd, Dallas, TX 75214",
+        "street": "6840 Lakewood Blvd",
         "city": "Dallas",
         "state": "TX",
-        "zip": "75000",
-        "price": "$8,500,000",
-        "priceFormatted": "$8,500,000",
-        "heroImage": "house-thumb.jpg",
+        "zip": "75214",
+        "price": "$2,895,000",
+        "priceFormatted": "$2,895,000",
+        "heroImage": "6840-lakewood/Lakewood/lakewood-1.webp",
+        "photoDirectory": "6840-lakewood/Lakewood",
+        "photoPrefix": "lakewood",
+        "photoCount": 12,
         "photos": [
-            "house-thumb.jpg"
+            "6840-lakewood/Lakewood/lakewood-1.webp"
         ],
         "specs": {
-            "beds": 5,
-            "baths": 7,
-            "sqft": "8,500"
+            "beds": 4,
+            "baths": 4,
+            "sqft": "3,963"
         },
-        "beds": 5,
-        "baths": 7,
-        "sqft": 8500,
-        "sqftFormatted": "8,500",
+        "beds": 4,
+        "baths": 4,
+        "sqft": 3963,
+        "sqftFormatted": "3,963",
         "type": "Single Family Residence",
-        "yearBuilt": 2023,
-        "mlsId": "CONFIDENTIAL",
+        "yearBuilt": 1926,
+        "mlsId": "20452891",
         "raw": {
-            "remarks": "Extraordinary luxury estate representing the pinnacle of sophisticated living. This magnificent property showcases world-class architecture, premium materials, and unparalleled attention to detail. Expansive living spaces feature soaring ceilings, walls of windows, and seamless indoor-outdoor flow. The chef's kitchen is equipped with the finest appliances and custom finishes. Primary suite is a private sanctuary with sitting area, spa bath, and dual custom closets. Additional bedroom suites offer luxury and privacy for family and guests. Resort-style grounds include infinity pool, spa, outdoor kitchen, and multiple entertaining areas. State-of-the-art smart home technology, wine cellar, home theater, and fitness center complete this exceptional offering. Located in one of Dallas' most prestigious neighborhoods.",
+            "remarks": "6840 Lakewood is a jewel, a timeless estate in the most beautiful setting on the boulevard. With its architecturally significant home situated on a .442 acre, hillside lot, complete with a pond, it’s hard to imagine a more idyllic landscape. Designed by Bertram Hill, the current owner has been a marvelous steward of the property. During their tenure, they have expanded the home to include a guest suite; a larger kitchen; a two-story, secondary living area; and an expanded primary bedroom suite. Across the front is the stately living room with a hammered metal fireplace. French doors in every room on the 1st floor open onto terraces, lawns, and walled courtyards. Dine alfresco in the spring and enjoy the spectacular view from the home’s wide front terrace or enjoy a holiday meal in the home’s frescoed dining room. There is a Rookwood tile floored entry foyer-solarium; two opera worthy staircases; leaded glass windows; and European inspired brass hardware. A multi-hued Ludowici tile roof and masonry construction marked by a subtle, crescent finish are among many considered details. The large European style kitchen is anchored by a French made LaCanche range and oven, and the central island, with its exuberant terrazzo-finishes is perfectly sized for cooking and dining. There are 4 bedrooms. The primary suite has been expanded to include an exquisite, mosaic-tiled bath cabinetry detail and natural light. The home’s second bedroom is as inviting as the primary suite and shares a significant bath with vintage-style and black & white appointments with a fourth bedroom. There are many beautiful and well loved homes in Lakewood, however, no home on Lakewood Blvd has the matchless combination of setting and architectural design found here.",
             "property": {
                 "interiorFeatures": [
                     "Grand architectural design",

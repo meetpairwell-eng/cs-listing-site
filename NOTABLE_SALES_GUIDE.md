@@ -38,11 +38,28 @@ Edit: `src/data/listings.js`
 
 ### To Add Images:
 
-**Option 1: Use R2 (Recommended)**
+**Option 1: Use R2 (Recommended for Hero Image)**
 1. Upload image to your R2 bucket
 2. Use just the filename: `"heroImage": "my-property.webp"`
 
-**Option 2: Placeholder**
+**Option 2: Manual Array (For specific specific photos)**
+- List each filename in the `photos` array:
+  ```javascript
+  "photos": ["img1.webp", "img2.webp", "img3.webp"]
+  ```
+
+**Option 3: Bulk Loading (Best for 20+ images)**
+If you have many images, follow this naming convention in R2:
+1. Create a folder in R2 for the property (e.g., `potomac`)
+2. Name your images with a number: `potomac-1.webp`, `potomac-2.webp`, ... `potomac-25.webp`
+3. In `manualListings.js`, add these two lines to the property:
+   ```javascript
+   "photoPrefix": "potomac",
+   "photoCount": 25
+   ```
+   The site will automatically find all 25 images!
+
+**Option 4: Placeholder**
 - Use `"heroImage": "house-thumb.jpg"` until you have the real image
 
 ### Example Update:

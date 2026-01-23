@@ -13,18 +13,39 @@ const normalizeListing = (item) => {
     if (!item) return item;
 
     // Determine the best main image
-    // 1. item.image (from MLS map)
-    // 2. item.heroImage (from manual listings)
-    // 3. item.photos[0] (fallback)
     const mainImage = item.image || item.heroImage || (item.photos && item.photos.length > 0 ? item.photos[0] : null);
 
     // If we still don't have an image, use a placeholder
     const finalImage = mainImage || '/placeholder-house.jpg';
 
+    // Handle photos array
+    let finalPhotos = item.photos || [];
+
+    // Support for bulk loading: photoPrefix and photoCount
+    // Example: photoDirectory: '6840-lakewood', photoPrefix: 'lakewood', photoCount: 12
+    // Results in: '6840-lakewood/lakewood-1.webp', etc.
+    if (item.photoCount && item.photoPrefix) {
+        const directory = item.photoDirectory || item.photoPrefix;
+        const generatedPhotos = [];
+        for (let i = 1; i <= item.photoCount; i++) {
+            generatedPhotos.push(`${directory}/${item.photoPrefix}-${i}.webp`);
+        }
+        // If there are manual photos, put them first, then the bulk ones
+        finalPhotos = [...finalPhotos, ...generatedPhotos];
+    }
+
+    // Deduplicate photos and filter out empty strings
+    finalPhotos = [...new Set(finalPhotos)].filter(Boolean);
+
+    // If NO photos at all (manual or generated), only then fallback to hero image
+    if (finalPhotos.length === 0) {
+        finalPhotos = [finalImage];
+    }
+
     return {
         ...item,
-        image: finalImage, // Ensure 'image' property exists for Cards
-        photos: Array(8).fill(finalImage) // Create 8 copies for testing carousel
+        image: finalImage,
+        photos: finalPhotos
     };
 };
 
