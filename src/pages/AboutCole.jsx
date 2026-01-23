@@ -140,7 +140,7 @@ const AboutCole = () => {
             {/* Key Highlights Section */}
             <section className="cole-highlights">
                 <div className="container">
-                    <h2 className="section-title">DEFINING THE MODERN STANDARD</h2>
+                    <h2 className="section-title">A STRATEGIC ADVANTAGE</h2>
                     <p className="section-subtitle">Expert guidance and deep-rooted Dallas connections, tailored to your unique objectives.</p>
                     <div className="highlights-grid">
                         {keyHighlights.map((highlight, index) => (
@@ -157,8 +157,7 @@ const AboutCole = () => {
             {/* Showcase Section */}
             <section className="cole-showcase">
                 <div className="container">
-                    <h2 className="section-title">A Glimpse Into My Work</h2>
-                    <h2 className="section-title">A Glimpse Into My Work</h2>
+                    <h2 className="section-title">DEFINING THE MODERN STANDARD</h2>
                     <div className="showcase-list">
                         {showcaseItems.map((item, index) => (
                             <div key={index} className={`showcase-item ${index % 2 === 1 ? 'reverse' : ''}`}>
