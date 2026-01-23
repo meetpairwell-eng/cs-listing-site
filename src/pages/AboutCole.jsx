@@ -90,7 +90,7 @@ const AboutCole = () => {
             <section className="cole-hero">
                 <div className="cole-hero-background">
                     <img
-                        src={getMediaUrl('about/hero-image.jpg', 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1200&q=80')}
+                        src={getMediaUrl('3808Potomac/3808Potomac-24.webp', 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1200&q=80')}
                         alt="Luxury home"
                         onError={(e) => {
                             e.target.src = 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1200&q=80';
@@ -126,7 +126,7 @@ const AboutCole = () => {
                         </div>
                         <div className="cole-about-image">
                             <img
-                                src={getMediaUrl('about/about-image.jpg', 'https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=800&q=80')}
+                                src={getMediaUrl('about/cole-swearingen-headshot.webp', 'https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=800&q=80')}
                                 alt="Cole Swearingen professional"
                                 onError={(e) => {
                                     e.target.src = 'https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=800&q=80';
@@ -140,7 +140,7 @@ const AboutCole = () => {
             {/* Key Highlights Section */}
             <section className="cole-highlights">
                 <div className="container">
-                    <h2 className="section-title">A STRATEGIC ADVANTAGE</h2>
+                    <h2 className="section-title">DEFINING THE MODERN STANDARD</h2>
                     <p className="section-subtitle">Expert guidance and deep-rooted Dallas connections, tailored to your unique objectives.</p>
                     <div className="highlights-grid">
                         {keyHighlights.map((highlight, index) => (
