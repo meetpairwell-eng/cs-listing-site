@@ -141,8 +141,8 @@ const AboutCole = () => {
                     <h2 className="section-title">DEFINING THE PROFESSIONAL STANDARD</h2>
                     <div className="showcase-list">
                         {showcaseItems.map((item, index) => (
-                            <div key={index} className="showcase-card">
-                                <div className="showcase-card-image">
+                            <div key={index} className={`showcase-item ${index % 2 === 1 ? 'reverse' : ''}`}>
+                                <div className="showcase-image">
                                     <img
                                         src={getMediaUrl(item.r2Path, item.fallback)}
                                         alt={item.title}
@@ -151,36 +151,9 @@ const AboutCole = () => {
                                         }}
                                     />
                                 </div>
-                                <div className="showcase-card-content">
-                                    <h3 className="showcase-card-title">{item.title}</h3>
-                                    <p className="showcase-card-description">{item.description}</p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Showcase Section Option B (Elevated Rows) */}
-            <section className="cole-showcase-option-b">
-                <div className="container">
-                    <h2 className="section-title">OPTION B: ELEVATED ROWS</h2>
-                    <div className="showcase-elevated-list">
-                        {showcaseItems.map((item, index) => (
-                            <div key={index} className={`showcase-elevated-item ${index % 2 === 1 ? 'reverse' : ''}`}>
-                                <div className="elevated-image-wrapper">
-                                    <img
-                                        src={getMediaUrl(item.r2Path, item.fallback)}
-                                        alt={item.title}
-                                        onError={(e) => {
-                                            e.target.src = item.fallback;
-                                        }}
-                                    />
-                                </div>
-                                <div className="elevated-content-wrapper">
-                                    <h3 className="elevated-title">{item.title}</h3>
-                                    <div className="elevated-divider"></div>
-                                    <p className="elevated-description">{item.description}</p>
+                                <div className="showcase-content">
+                                    <h3 className="showcase-title">{item.title}</h3>
+                                    <p className="showcase-description">{item.description}</p>
                                 </div>
                             </div>
                         ))}
