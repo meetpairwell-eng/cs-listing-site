@@ -89,7 +89,7 @@ const Navbar = ({ onContactClick }) => {
                 </button>
 
                 <ul className={`navbar-menu ${mobileMenuOpen ? 'open' : ''}`}>
-                    <li><a onClick={() => scrollToSection('about')}>ABOUT</a></li>
+                    <li><Link to="/about-cole" onClick={closeMobileMenu}>MEET COLE</Link></li>
                     <li>
                         <Link to="/properties" onClick={closeMobileMenu}>PROPERTIES</Link>
                     </li>
