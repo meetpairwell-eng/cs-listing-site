@@ -395,12 +395,13 @@
 }
 
 .favorite-btn.active {
-    background: rgba(0, 0, 0, 0.7) !important;
-    color: white !important;
+    background: white !important;
+    /* White circle for better contrast with red heart */
+    color: #ff4d4d !important;
 }
 
 .favorite-btn.active svg {
-    fill: white !important;
+    fill: #ff4d4d !important;
 }
 
 .favorite-btn:hover {

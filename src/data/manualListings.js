@@ -77,10 +77,11 @@ export const manualListings = [
         "zip": "75229",
         "price": "Price Upon Request",
         "priceFormatted": "Price Upon Request",
-        "heroImage": "5609-Ursula-Hero.webp",
-        "photos": [
-            "5609-Ursula-Hero.webp"
-        ],
+        "heroImage": "5609Ursula/5609Ursula-1.webp",
+        "photoDirectory": "5609Ursula",
+        "photoPrefix": "5609Ursula",
+        "photoCount": 15,
+        "photos": [],
         "specs": {
             "beds": 5,
             "baths": 8,

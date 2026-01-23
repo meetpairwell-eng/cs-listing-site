@@ -13,16 +13,15 @@ const PropertyMapGoogle = ({ listings, onMapMove, onMarkerClick, selectedListing
     const [mapLoaded, setMapLoaded] = useState(false);
     const [isInitialLoad, setIsInitialLoad] = useState(true);
 
-    console.log('Google Maps API Key:', SITE_CONFIG.googleMaps.apiKey ? 'Loaded' : 'Missing');
-    console.log('API Key value:', SITE_CONFIG.googleMaps.apiKey);
+    const apiKey = SITE_CONFIG.googleMaps.apiKey;
+    const isApiKeyMissing = !apiKey || apiKey === 'YOUR_API_KEY' || apiKey === 'undefined';
 
     const { isLoaded, loadError } = useJsApiLoader({
         id: 'google-map-script',
-        googleMapsApiKey: SITE_CONFIG.googleMaps.apiKey
+        googleMapsApiKey: apiKey
     });
 
     const onLoad = useCallback((map) => {
-        console.log('Google Map loaded successfully!');
         setMap(map);
         setMapLoaded(true);
         // Allow bounds changes after a short delay to ensure initial center is set
@@ -64,16 +63,34 @@ const PropertyMapGoogle = ({ listings, onMapMove, onMarkerClick, selectedListing
         }
     }, [map, selectedListing]);
 
+    if (isApiKeyMissing) {
+        return (
+            <div className="map-error" style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#f5f5f5', color: '#666', padding: '40px', textAlign: 'center' }}>
+                <div style={{ maxWidth: '300px' }}>
+                    <svg viewBox="0 0 24 24" width="48" height="48" stroke="currentColor" fill="none" style={{ marginBottom: '20px', opacity: 0.5 }}>
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                        <circle cx="12" cy="10" r="3" />
+                        <line x1="3" y1="3" x2="21" y2="21" />
+                    </svg>
+                    <h3 style={{ margin: '0 0 10px 0', fontSize: '1.2rem', color: '#333' }}>Map Setup Required</h3>
+                    <p style={{ margin: 0, fontSize: '0.9rem', lineHeight: '1.5' }}>
+                        Google Maps API key is missing. Please add your key to <code>.env</code> to enable property map views.
+                    </p>
+                </div>
+            </div>
+        );
+    }
+
     if (loadError) {
         return (
             <div className="map-error" style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#f0f0f0', color: '#666', padding: '20px', textAlign: 'center' }}>
-                <p>Map cannot be loaded.<br /><span style={{ fontSize: '0.8em' }}>Please check API configuration.</span></p>
+                <p>Map cannot be loaded.<br /><span style={{ fontSize: '0.8em' }}>Please check connection or API key restrictions.</span></p>
             </div>
         );
     }
 
     if (!isLoaded) {
-        return <div className="map-loading">Loading map...</div>;
+        return <div className="map-loading" style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#f9f9f9', color: '#999' }}>Loading map...</div>;
     }
 
     return (
