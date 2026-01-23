@@ -423,8 +423,8 @@
     .elevated-row {
         display: flex;
         width: 100%;
-        min-height: 600px;
-        /* Tall rows for parallax impact */
+        min-height: 450px;
+        /* Reduced from 600px */
     }
 
     /* Image Side */
@@ -444,31 +444,34 @@
     /* Text Side */
     .elevated-text-panel {
         width: 50%;
-        background: #fdfdfd;
-        /* Very subtle contrast or pure white */
+        background: #fdfbf7;
+        /* Warm beige for checkerboard effect */
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 6rem;
+        padding: 4rem;
+        /* Reduced padding */
     }
 
     .elevated-content {
-        max-width: 550px;
+        max-width: 480px;
+        text-align: left;
     }
 
     .elevated-content h3 {
         font-family: var(--font-heading);
-        font-size: 2.2rem;
+        font-size: 1.8rem;
+        /* Smaller heading */
         font-weight: 400;
         letter-spacing: 0.05em;
         color: #111;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1rem;
         text-transform: uppercase;
     }
 
     .elevated-content p {
-        font-size: 1.05rem;
-        line-height: 1.9;
+        font-size: 1rem;
+        line-height: 1.8;
         color: #444;
         font-weight: 300;
     }
