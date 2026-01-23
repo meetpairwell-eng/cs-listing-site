@@ -88,32 +88,30 @@ const AboutCole = () => {
 
             {/* About Content Section */}
             <section className="cole-about-content">
-                <div className="container">
-                    <div className="cole-about-grid">
-                        <div className="cole-about-text">
-                            <h2>About Cole</h2>
-                            <p>
-                                As a Dallas native, Cole Swearingen offers his clients a genuine "insider" perspective on the DFW Metroplex. His background as a Sales Director in the hospitality industry shaped his client-first approach, ensuring that everyone he works with feels supported and heard. Since joining Compass and the Laguna Residential Group in 2018, Cole has built a reputation for being a reliable and resilient advisor, helping people find their way through the city's competitive real estate market with ease.
-                            </p>
-                            <p>
-                                Cole's local expertise is backed by strong relationships with respected builders and designers, giving him a great eye for quality construction and home potential. He stays connected with a close circle of top agents to make sure his clients get a first look at great properties, including those not yet on the market.
-                            </p>
-                            <p>
-                                When he isn't busy with real estate, Cole loves exploring the local Dallas food scene or traveling the world to gain inspiration from different cultures and architecture - experiences he uses to bring fresh, creative ideas back home to his clients.
-                            </p>
-                            <button onClick={() => setIsContactModalOpen(true)} className="cole-cta-button">
-                                GET IN TOUCH
-                            </button>
-                        </div>
-                        <div className="cole-about-image">
-                            <img
-                                src={getMediaUrl(SITE_CONFIG.aboutCole?.headshot?.r2Path, SITE_CONFIG.aboutCole?.headshot?.fallback)}
-                                alt="Cole Swearingen professional"
-                                onError={(e) => {
-                                    e.target.src = SITE_CONFIG.aboutCole?.headshot?.fallback;
-                                }}
-                            />
-                        </div>
+                <div className="cole-about-grid">
+                    <div className="cole-about-text">
+                        <h2>About Cole</h2>
+                        <p>
+                            As a Dallas native, Cole Swearingen offers his clients a genuine "insider" perspective on the DFW Metroplex. His background as a Sales Director in the hospitality industry shaped his client-first approach, ensuring that everyone he works with feels supported and heard. Since joining Compass and the Laguna Residential Group in 2018, Cole has built a reputation for being a reliable and resilient advisor, helping people find their way through the city's competitive real estate market with ease.
+                        </p>
+                        <p>
+                            Cole's local expertise is backed by strong relationships with respected builders and designers, giving him a great eye for quality construction and home potential. He stays connected with a close circle of top agents to make sure his clients get a first look at great properties, including those not yet on the market.
+                        </p>
+                        <p>
+                            When he isn't busy with real estate, Cole loves exploring the local Dallas food scene or traveling the world to gain inspiration from different cultures and architecture - experiences he uses to bring fresh, creative ideas back home to his clients.
+                        </p>
+                        <button onClick={() => setIsContactModalOpen(true)} className="cole-cta-button">
+                            GET IN TOUCH
+                        </button>
+                    </div>
+                    <div className="cole-about-image">
+                        <img
+                            src={getMediaUrl(SITE_CONFIG.aboutCole?.headshot?.r2Path, SITE_CONFIG.aboutCole?.headshot?.fallback)}
+                            alt="Cole Swearingen professional"
+                            onError={(e) => {
+                                e.target.src = SITE_CONFIG.aboutCole?.headshot?.fallback;
+                            }}
+                        />
                     </div>
                 </div>
             </section>
