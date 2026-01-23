@@ -7,6 +7,7 @@ import About from './components/About';
 import Awards from './components/Awards';
 import FeaturedListings from './components/FeaturedListings';
 import Testimonials from './components/Testimonials';
+import DesignEditorial from './components/DesignEditorial';
 import Contact from './components/Contact';
 import ContactModal from './components/ContactModal';
 import FloatingContactButton from './components/FloatingContactButton';
@@ -31,6 +32,7 @@ const HomePage = ({ onContactClick }) => (
     <About />
     <FeaturedListings />
     <Testimonials />
+    <DesignEditorial />
     <Contact onContactClick={onContactClick} />
 
 
