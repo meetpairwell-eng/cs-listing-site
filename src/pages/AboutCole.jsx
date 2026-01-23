@@ -126,7 +126,7 @@ const AboutCole = () => {
                         </div>
                         <div className="cole-about-image">
                             <img
-                                src={getMediaUrl('about/cole-swearingen-headshot.webp', 'https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=800&q=80')}
+                                src={getMediaUrl('cole-swearingen-headshot.webp', 'https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=800&q=80')}
                                 alt="Cole Swearingen professional"
                                 onError={(e) => {
                                     e.target.src = 'https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=800&q=80';
@@ -158,6 +158,7 @@ const AboutCole = () => {
             <section className="cole-showcase">
                 <div className="container">
                     <h2 className="section-title">DEFINING THE MODERN STANDARD</h2>
+                    <p className="section-subtitle" style={{ marginBottom: '4rem', marginTop: '-0.5rem' }}>A PROVEN PROFESSIONAL</p>
                     <div className="showcase-list">
                         {showcaseItems.map((item, index) => (
                             <div key={index} className={`showcase-item ${index % 2 === 1 ? 'reverse' : ''}`}>
