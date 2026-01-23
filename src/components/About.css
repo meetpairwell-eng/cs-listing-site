@@ -26,9 +26,12 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: top center;
+    object-position: center;
     /* Focus on face */
     display: block;
+    transition: transform var(--transition-slow);
+    transform: scale(1.15) translateY(-7%);
+    /* Restore preferred crop */
 }
 
 .about-content {
