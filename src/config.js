@@ -10,7 +10,7 @@ export const SITE_CONFIG = {
   // Your specific R2 Placeholder URL
   mediaBaseUrl: "https://pub-0a14d2bf83cc482ab589da588a45c6b0.r2.dev",
   // Hero video from R2 (Desktop)
-  heroVideo: "dallas-house.mp4",
+  heroVideo: "main-page/dallas-house.mp4",
   // Hero Image (Mobile Replacement) - upload to R2
   heroMobileImage: "3808-Potomac-Hero.webp", // Default fallback until you upload specific one
   // Headshot from R2

@@ -14,12 +14,11 @@ export const manualListings = [
         "zip": "75205",
         "price": "Price Upon Request",
         "priceFormatted": "Price Upon Request",
-        "heroImage": "3808-Potomac-Hero.webp",
-        "photoPrefix": "3808-Potomac",
-        "photoCount": 20,
-        "photos": [
-            "3808-Potomac-Hero.webp"
-        ],
+        "heroImage": "3808Potomac/3808Potomac-1.webp",
+        "photoDirectory": "3808Potomac",
+        "photoPrefix": "3808Potomac",
+        "photoCount": 35,
+        "photos": [],
         "specs": {
             "beds": 6,
             "baths": 11,

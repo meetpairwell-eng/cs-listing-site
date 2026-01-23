@@ -361,39 +361,52 @@
     /* Hide property type to save space */
 }
 
-/* Favorite Button */
-/* Favorite Button */
+/* Favorite Button - Luxurious Redesign */
 .favorite-btn {
     position: absolute !important;
-    top: 0.5rem !important;
-    right: 0.5rem !important;
+    top: 0.75rem !important;
+    right: 0.75rem !important;
     left: auto !important;
-    background: rgba(255, 255, 255, 0.95) !important;
-    border: none !important;
+    background: rgba(0, 0, 0, 0.45) !important;
+    /* Slightly opaque black */
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
     border-radius: 50% !important;
-    width: 28px !important;
-    height: 28px !important;
+    width: 32px !important;
+    height: 32px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    font-size: 14px !important;
     cursor: pointer;
-    transition: all var(--transition-base);
-    color: #000 !important;
-    /* Black by default for better visibility */
-    z-index: 3 !important;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    color: white !important;
+    z-index: 10 !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.favorite-btn svg {
+    width: 16px !important;
+    height: 16px !important;
+    stroke: currentColor !important;
+    stroke-width: 2px !important;
+    fill: none;
+    transition: all 0.3s ease;
 }
 
 .favorite-btn.active {
-    color: #e74c3c !important;
+    background: rgba(0, 0, 0, 0.7) !important;
+    color: white !important;
+}
+
+.favorite-btn.active svg {
+    fill: white !important;
 }
 
 .favorite-btn:hover {
     transform: scale(1.1);
-    background: white;
-    color: #e74c3c !important;
-    /* Red on hover */
+    background: rgba(0, 0, 0, 0.6) !important;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
 }
 
 
