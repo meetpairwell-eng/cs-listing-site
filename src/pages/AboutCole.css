@@ -406,4 +406,95 @@
     .showcase-title {
         font-size: 1.5rem;
     }
-}
+
+    /* Elevated Showcase V2 */
+    .cole-showcase-elevated {
+        width: 100%;
+        background: #fff;
+        padding-bottom: 4rem;
+    }
+
+    .elevated-header {
+        padding: 6rem 1rem 3rem;
+        text-align: center;
+        background: #fff;
+    }
+
+    .elevated-row {
+        display: flex;
+        width: 100%;
+        min-height: 600px;
+        /* Tall rows for parallax impact */
+    }
+
+    /* Image Side with Parallax */
+    .elevated-image {
+        width: 50%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        /* Creates the parallax effect */
+        position: relative;
+    }
+
+    /* Text Side */
+    .elevated-text-panel {
+        width: 50%;
+        background: #fdfdfd;
+        /* Very subtle contrast or pure white */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 6rem;
+    }
+
+    .elevated-content {
+        max-width: 550px;
+    }
+
+    .elevated-content h3 {
+        font-family: var(--font-heading);
+        font-size: 2.2rem;
+        font-weight: 400;
+        letter-spacing: 0.05em;
+        color: #111;
+        margin-bottom: 1.5rem;
+        text-transform: uppercase;
+    }
+
+    .elevated-content p {
+        font-size: 1.05rem;
+        line-height: 1.9;
+        color: #444;
+        font-weight: 300;
+    }
+
+    /* Alternating Layout */
+    .elevated-row.reverse {
+        flex-direction: row-reverse;
+    }
+
+    /* Parallax Check & Mobile Reset */
+    @media (max-width: 1024px) {
+        .elevated-row {
+            flex-direction: column;
+            min-height: auto;
+        }
+
+        .elevated-row.reverse {
+            flex-direction: column;
+        }
+
+        .elevated-image {
+            width: 100%;
+            height: 400px;
+            background-attachment: scroll;
+            /* Disable parallax on mobile for performance */
+        }
+
+        .elevated-text-panel {
+            width: 100%;
+            padding: 4rem 2rem;
+        }
+    }

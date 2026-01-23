@@ -161,6 +161,31 @@ const AboutCole = () => {
                 </div>
             </section>
 
+            {/* Elevated Showcase Section (V2) */}
+            <section className="cole-showcase-elevated">
+                <div className="elevated-header">
+                    <h2 className="section-title" style={{ color: '#000', marginBottom: '1rem' }}>ELEVATED EDIT (V2)</h2>
+                    <p style={{ textAlign: 'center', marginBottom: '3rem', color: '#666' }}>Comparing styles - this content uses zero-gap layout + parallax effect.</p>
+                </div>
+
+                {showcaseItems.map((item, index) => (
+                    <div key={index} className={`elevated-row ${index % 2 === 1 ? 'reverse' : ''}`}>
+                        <div
+                            className="elevated-image"
+                            style={{
+                                backgroundImage: `url(${getMediaUrl(item.r2Path, item.fallback)})`
+                            }}
+                        ></div>
+                        <div className="elevated-text-panel">
+                            <div className="elevated-content">
+                                <h3>{item.title}</h3>
+                                <p>{item.description}</p>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </section>
+
             {/* Contact Banner Reuse */}
             <div className="contact-banner" style={{ marginTop: '0', marginBottom: '0' }}>
                 <div className="contact-banner-inner">
