@@ -36,7 +36,6 @@ export const SITE_CONFIG = {
     linkedin: null,
     zillow: null
   },
-},
   // About Cole Configuration
   aboutCole: {
     heroImage: {
