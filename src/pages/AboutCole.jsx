@@ -135,37 +135,11 @@ const AboutCole = () => {
                 </div>
             </section>
 
-            {/* Showcase Section */}
-            <section className="cole-showcase">
-                <div className="container">
-                    <h2 className="section-title">DEFINING THE PROFESSIONAL STANDARD</h2>
-                    <div className="showcase-list">
-                        {showcaseItems.map((item, index) => (
-                            <div key={index} className={`showcase-item ${index % 2 === 1 ? 'reverse' : ''}`}>
-                                <div className="showcase-image">
-                                    <img
-                                        src={getMediaUrl(item.r2Path, item.fallback)}
-                                        alt={item.title}
-                                        onError={(e) => {
-                                            e.target.src = item.fallback;
-                                        }}
-                                    />
-                                </div>
-                                <div className="showcase-content">
-                                    <h3 className="showcase-title">{item.title}</h3>
-                                    <p className="showcase-description">{item.description}</p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
 
-            {/* Elevated Showcase Section (V2) */}
+            {/* Showcase Section */}
             <section className="cole-showcase-elevated">
                 <div className="elevated-header">
-                    <h2 className="section-title" style={{ color: '#000', marginBottom: '1rem' }}>ELEVATED EDIT (V2)</h2>
-                    <p style={{ textAlign: 'center', marginBottom: '3rem', color: '#666' }}>Comparing styles - this content uses zero-gap layout + parallax effect.</p>
+                    <h2 className="section-title" style={{ color: '#000', marginBottom: '1rem' }}>DEFINING THE PROFESSIONAL STANDARD</h2>
                 </div>
 
                 {showcaseItems.map((item, index) => (
