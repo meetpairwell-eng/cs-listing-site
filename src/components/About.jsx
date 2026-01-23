@@ -4,16 +4,10 @@ import './About.css';
 
 const About = () => {
     return (
-        <section id="about" className="section about-section">
-            <div className="about-grid">
-                <div className="about-image">
-                    <img
-                        src={`${SITE_CONFIG.mediaBaseUrl}/${SITE_CONFIG.headshot}`}
-                        alt={SITE_CONFIG.agentName}
-                    />
-                </div>
-
-                <div className="about-content">
+        <section id="about" className="section about-section" style={{ backgroundImage: `url(${SITE_CONFIG.mediaBaseUrl}/${SITE_CONFIG.headshot})` }}>
+            <div className="about-overlay"></div>
+            <div className="about-floating-card">
+                <div className="about-content-inner">
                     <h2>MEET {SITE_CONFIG.agentName.split(' ')[0].toUpperCase()}</h2>
 
                     <p className="about-label">LUXURY ESTATES AGENT</p>
