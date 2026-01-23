@@ -238,6 +238,12 @@
     background: var(--color-bg);
 }
 
+.cole-showcase .section-title,
+.cole-showcase .section-subtitle {
+    color: var(--color-text);
+    /* Ensure visible on light background */
+}
+
 .gallery-subtitle {
     text-align: center;
     font-size: 1.125rem;
