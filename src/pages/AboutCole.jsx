@@ -161,6 +161,33 @@ const AboutCole = () => {
                 </div>
             </section>
 
+            {/* Showcase Section Option B (Overlay) */}
+            <section className="cole-showcase-option-b">
+                <div className="container">
+                    <h2 className="section-title">OPTION B: VISUAL OVERLAY</h2>
+                    <div className="showcase-overlay-grid">
+                        {showcaseItems.map((item, index) => (
+                            <div key={index} className="showcase-overlay-card">
+                                <div className="overlay-card-image">
+                                    <img
+                                        src={getMediaUrl(item.r2Path, item.fallback)}
+                                        alt={item.title}
+                                        onError={(e) => {
+                                            e.target.src = item.fallback;
+                                        }}
+                                    />
+                                    <div className="overlay-card-gradient"></div>
+                                </div>
+                                <div className="overlay-card-content">
+                                    <h3 className="overlay-card-title">{item.title}</h3>
+                                    <p className="overlay-card-description">{item.description}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
             {/* Contact Banner Reuse */}
             <div className="contact-banner" style={{ marginTop: '0', marginBottom: '0' }}>
                 <div className="contact-banner-inner">
