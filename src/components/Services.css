@@ -1,12 +1,15 @@
 .services-section {
-    padding: var(--spacing-3xl) 0;
-    background: var(--color-bg);
+    padding: 0;
+    width: 100%;
+    margin-top: -1px;
+    /* Ensure visual connection with Hero */
 }
 
 .services-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: var(--spacing-lg);
+    gap: 0;
+    width: 100%;
 }
 
 .service-card {
