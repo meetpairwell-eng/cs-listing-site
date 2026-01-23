@@ -161,14 +161,14 @@ const AboutCole = () => {
                 </div>
             </section>
 
-            {/* Showcase Section Option B (Overlay) */}
+            {/* Showcase Section Option B (Elevated Rows) */}
             <section className="cole-showcase-option-b">
                 <div className="container">
-                    <h2 className="section-title">OPTION B: VISUAL OVERLAY</h2>
-                    <div className="showcase-overlay-grid">
+                    <h2 className="section-title">OPTION B: ELEVATED ROWS</h2>
+                    <div className="showcase-elevated-list">
                         {showcaseItems.map((item, index) => (
-                            <div key={index} className="showcase-overlay-card">
-                                <div className="overlay-card-image">
+                            <div key={index} className={`showcase-elevated-item ${index % 2 === 1 ? 'reverse' : ''}`}>
+                                <div className="elevated-image-wrapper">
                                     <img
                                         src={getMediaUrl(item.r2Path, item.fallback)}
                                         alt={item.title}
@@ -176,11 +176,11 @@ const AboutCole = () => {
                                             e.target.src = item.fallback;
                                         }}
                                     />
-                                    <div className="overlay-card-gradient"></div>
                                 </div>
-                                <div className="overlay-card-content">
-                                    <h3 className="overlay-card-title">{item.title}</h3>
-                                    <p className="overlay-card-description">{item.description}</p>
+                                <div className="elevated-content-wrapper">
+                                    <h3 className="elevated-title">{item.title}</h3>
+                                    <div className="elevated-divider"></div>
+                                    <p className="elevated-description">{item.description}</p>
                                 </div>
                             </div>
                         ))}
