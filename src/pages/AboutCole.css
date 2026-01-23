@@ -413,7 +413,8 @@
 .cole-showcase-elevated {
     width: 100%;
     background: #fff;
-    padding-bottom: 4rem;
+    padding-bottom: 0;
+    /* Removed spacing to touch banner */
 }
 
 .elevated-header {
