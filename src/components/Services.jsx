@@ -57,8 +57,7 @@ const Services = ({ onContactClick }) => {
                     )
                 ))}
             </div>
-        </div>
-        </section >
+        </section>
     );
 };
 
