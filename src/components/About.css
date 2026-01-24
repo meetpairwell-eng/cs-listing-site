@@ -14,10 +14,10 @@
 /* Left Side - Image Side with Parallax */
 .about-image-side {
     width: 50%;
-    background-size: 50vw auto;
-    /* Force width to match column exactly */
-    background-position: left -30vh;
-    /* Scoot image up 30% per request */
+    background-size: cover;
+    /* Ensures image fills the area on ALL screens (no white space) */
+    background-position: 25% 25%;
+    /* horizontal: centers in left half | vertical: focuses on top 1/4 */
     background-attachment: fixed;
     background-repeat: no-repeat;
     position: relative;
