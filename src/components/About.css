@@ -14,10 +14,10 @@
 /* Left Side - Image Side with Parallax */
 .about-image-side {
     width: 50%;
-    background-size: 60vw auto;
-    /* 60% of viewport width ensures coverage without massive zoom */
-    background-position: left 15%;
-    /* Align left, sit slightly down from top */
+    background-size: 50vw auto;
+    /* Exactly fills the 50% width of the screen */
+    background-position: left 40%;
+    /* Left: Aligns to start of screen (0-50%). 40%: Moves image up to reveal more body */
     background-attachment: fixed;
     background-repeat: no-repeat;
     position: relative;

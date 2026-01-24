@@ -17,7 +17,7 @@ const About = () => {
                 <div className="about-content-side">
                     <div className="about-content-inner">
                         <span className="about-eyebrow">MEET {SITE_CONFIG.agentName.split(' ')[0].toUpperCase()}</span>
-                        <h2>Luxury Estates Agent</h2>
+                        <h2>Dallas Real Estate Expert</h2>
 
                         <p>
                             {SITE_CONFIG.agentName} brings a wealth of real estate expertise and a proven track record

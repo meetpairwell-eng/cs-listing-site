@@ -47,7 +47,7 @@ const Hero = () => {
             <div className="container hero-container">
                 <div className="hero-main-stack">
                     <h1 className="hero-name">{SITE_CONFIG.agentName.toUpperCase()}</h1>
-                    <p className="hero-subtitle">LUXURY ESTATES AGENT</p>
+                    <p className="hero-subtitle">REAL ESTATE EXPERT</p>
                     <div className="hero-actions">
                         <Link to="/search" className="btn-hero">
                             SEARCH HOMES
