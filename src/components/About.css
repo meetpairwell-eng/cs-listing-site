@@ -16,8 +16,8 @@
     width: 50%;
     background-size: 50vw auto;
     /* Force width to match column exactly */
-    background-position: left -10vh;
-    /* Scoot image up to move head towards top */
+    background-position: left -30vh;
+    /* Scoot image up 30% per request */
     background-attachment: fixed;
     background-repeat: no-repeat;
     position: relative;
