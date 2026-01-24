@@ -20,6 +20,11 @@ export const SITE_CONFIG = {
   // Modal background (Unsplash or R2)
   modalBg: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80",
   testimonialsBg: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80",
+  serviceImages: {
+    homeSearch: "5609Ursula/5609Ursula-5.webp",
+    homeValuation: "5609Ursula/5609Ursula-7.webp",
+    connect: "4508-Belfort/4508Belfort-27.webp"
+  },
 
   // Awards Images (upload to R2)
   awards: [

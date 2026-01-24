@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { SITE_CONFIG } from '../config';
 import './Services.css';
 
 const Services = ({ onContactClick }) => {
@@ -6,21 +7,21 @@ const Services = ({ onContactClick }) => {
         {
             id: 1,
             title: 'HOME SEARCH',
-            image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80',
+            image: `${SITE_CONFIG.mediaBaseUrl}/${SITE_CONFIG.serviceImages?.homeSearch}`,
             type: 'link',
             path: '/search'
         },
         {
             id: 2,
             title: 'HOME VALUATION',
-            image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80',
+            image: `${SITE_CONFIG.mediaBaseUrl}/${SITE_CONFIG.serviceImages?.homeValuation}`,
             type: 'link',
             path: '/home-valuation'
         },
         {
             id: 3,
             title: "LET'S CONNECT",
-            image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80',
+            image: `${SITE_CONFIG.mediaBaseUrl}/${SITE_CONFIG.serviceImages?.connect}`,
             type: 'modal'
         }
     ];

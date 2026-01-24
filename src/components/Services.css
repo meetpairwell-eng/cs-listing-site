@@ -14,24 +14,37 @@
 
 .service-card {
     position: relative;
-    height: 350px;
-    overflow: hidden;
+    height: 455px;
+    /* Increased 30% from 350px */
+    overflow: visible;
+    /* Changed to allow popping out over edges */
     text-decoration: none;
     display: block;
     cursor: pointer;
+    z-index: 1;
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.6s ease;
+}
+
+.service-card:hover {
+    transform: scale(1.05);
+    /* "Pops" out towards screen */
+    z-index: 10;
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.45);
 }
 
 .service-image {
     position: relative;
     width: 100%;
     height: 100%;
+    overflow: hidden;
+    /* Keep image zoom contained within the card */
 }
 
 .service-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform var(--transition-slow);
+    transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .service-overlay {
@@ -40,46 +53,63 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.3);
-    transition: background var(--transition-base);
+    background: rgba(0, 0, 0, 0.15);
+    /* Slightly lighter initially */
+    transition: background 0.6s ease;
 }
 
 .service-card:hover .service-image img {
-    transform: scale(1.05);
+    transform: scale(1.1);
+    /* Slightly more zoom on image */
 }
 
 .service-card:hover .service-overlay {
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.4);
 }
 
 .service-title {
     position: absolute;
-    top: 50%;
+    top: 90%;
+    /* Start at bottom */
     left: 50%;
     transform: translate(-50%, -50%);
     color: var(--color-text-inverse);
     font-family: var(--font-heading);
     font-size: 1.75rem;
     font-weight: 400;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.15em;
     text-align: center;
     z-index: 2;
     margin: 0;
     text-transform: uppercase;
     white-space: nowrap;
+    transition: top 0.6s cubic-bezier(0.165, 0.84, 0.44, 1), font-size 0.6s ease;
+}
+
+.service-card:hover .service-title {
+    top: 50%;
+    /* Glides to center */
+    font-size: 2rem;
+    /* Grows slightly for emphasis */
 }
 
 @media (max-width: 968px) {
     .services-grid {
         grid-template-columns: 1fr;
-        gap: var(--spacing-md);
+        gap: 0;
+        /* Remove gaps between boxes */
     }
 
     .service-card {
-        height: 300px;
+        height: 25vh;
+        /* Reduced height to fit 3 on one screen */
+        overflow: hidden;
+        /* Disable pop-out for mobile touch */
     }
 
     .service-title {
         font-size: 1.5rem;
+        top: 50%;
+        /* Center titles by default on mobile (no hover state) */
     }
 }
