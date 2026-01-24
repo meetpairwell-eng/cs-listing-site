@@ -14,9 +14,9 @@
 /* Left Side - Image Side with Parallax */
 .about-image-side {
     width: 50%;
-    background-size: cover;
-    background-position: left center;
-    /* Align image to the left of the screen */
+    background-size: 50vw auto;
+    /* Force width to match column exactly */
+    background-position: top left;
     background-attachment: fixed;
     background-repeat: no-repeat;
     position: relative;
@@ -95,6 +95,9 @@
     .about-image-side {
         width: 100%;
         height: 50vh;
+        background-size: cover;
+        /* Reset to cover for mobile stacking */
+        background-position: center;
         background-attachment: scroll;
         /* Disable fixed parallax on mobile */
     }
