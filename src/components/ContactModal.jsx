@@ -12,6 +12,8 @@ const ContactModal = ({ isOpen, onClose }) => {
     });
     const [consent, setConsent] = useState(false);
 
+    const [status, setStatus] = useState('idle'); // idle, submitting, success, error
+
     // Helper to get correct asset URL
     const getAssetUrl = (path) => {
         if (!path) return '';
@@ -28,7 +30,7 @@ const ContactModal = ({ isOpen, onClose }) => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         if (!consent) {
@@ -36,16 +38,45 @@ const ContactModal = ({ isOpen, onClose }) => {
             return;
         }
 
-        // Create mailto link with form data
-        const subject = encodeURIComponent('Contact Request from Website');
-        const body = encodeURIComponent(
-            `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\n\nMessage:\n${formData.message}`
-        );
+        setStatus('submitting');
 
-        window.location.href = `mailto:${SITE_CONFIG.agentEmail}?subject=${subject}&body=${body}`;
+        try {
+            const response = await fetch(SITE_CONFIG.n8nWebhookUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    ...formData,
+                    property: "Cole Website",
+                    source: 'Contact Modal',
+                    timestamp: new Date().toISOString()
+                }),
+            });
 
-        // Close modal after submission
-        onClose();
+            if (response.ok) {
+                setStatus('success');
+                // Reset form after success
+                setFormData({
+                    name: '',
+                    email: '',
+                    phone: '',
+                    message: ''
+                });
+                setConsent(false);
+
+                // Close modal after 3 seconds
+                setTimeout(() => {
+                    onClose();
+                    setStatus('idle');
+                }, 3000);
+            } else {
+                setStatus('error');
+            }
+        } catch (error) {
+            console.error('Submission error:', error);
+            setStatus('error');
+        }
     };
 
     const handleOverlayClick = (e) => {
@@ -157,73 +188,90 @@ const ContactModal = ({ isOpen, onClose }) => {
                     <div className="modal-form-section">
                         <h2 className="modal-section-title">SUBMIT A MESSAGE</h2>
 
-                        <form onSubmit={handleSubmit} className="contact-form">
-                            <div className="form-group">
-                                <label htmlFor="name">NAME</label>
-                                <input
-                                    type="text"
-                                    id="name"
-                                    name="name"
-                                    value={formData.name}
-                                    onChange={handleChange}
-                                    required
-                                />
+                        {status === 'success' ? (
+                            <div className="modal-success-message">
+                                <div className="success-icon">✓</div>
+                                <h3>Message Sent</h3>
+                                <p>Thank you for reaching out. {SITE_CONFIG.agentName.split(' ')[0]} will be in touch with you shortly.</p>
                             </div>
+                        ) : (
+                            <form onSubmit={handleSubmit} className="contact-form">
+                                <div className="form-group">
+                                    <label htmlFor="name">NAME</label>
+                                    <input
+                                        type="text"
+                                        id="name"
+                                        name="name"
+                                        value={formData.name}
+                                        onChange={handleChange}
+                                        required
+                                        disabled={status === 'submitting'}
+                                    />
+                                </div>
 
-                            <div className="form-group">
-                                <label htmlFor="email">EMAIL</label>
-                                <input
-                                    type="email"
-                                    id="email"
-                                    name="email"
-                                    value={formData.email}
-                                    onChange={handleChange}
-                                    required
-                                />
-                            </div>
+                                <div className="form-group">
+                                    <label htmlFor="email">EMAIL</label>
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        name="email"
+                                        value={formData.email}
+                                        onChange={handleChange}
+                                        required
+                                        disabled={status === 'submitting'}
+                                    />
+                                </div>
 
-                            <div className="form-group">
-                                <label htmlFor="phone">PHONE</label>
-                                <input
-                                    type="tel"
-                                    id="phone"
-                                    name="phone"
-                                    value={formData.phone}
-                                    onChange={handleChange}
-                                    required
-                                />
-                            </div>
+                                <div className="form-group">
+                                    <label htmlFor="phone">PHONE</label>
+                                    <input
+                                        type="tel"
+                                        id="phone"
+                                        name="phone"
+                                        value={formData.phone}
+                                        onChange={handleChange}
+                                        required
+                                        disabled={status === 'submitting'}
+                                    />
+                                </div>
 
-                            <div className="form-group">
-                                <label htmlFor="message">MESSAGE</label>
-                                <textarea
-                                    id="message"
-                                    name="message"
-                                    value={formData.message}
-                                    onChange={handleChange}
-                                    rows="4"
-                                ></textarea>
-                            </div>
+                                <div className="form-group">
+                                    <label htmlFor="message">MESSAGE</label>
+                                    <textarea
+                                        id="message"
+                                        name="message"
+                                        value={formData.message}
+                                        onChange={handleChange}
+                                        rows="4"
+                                        disabled={status === 'submitting'}
+                                    ></textarea>
+                                </div>
 
-                            <div className="form-consent">
-                                <input
-                                    type="checkbox"
-                                    id="consent"
-                                    checked={consent}
-                                    onChange={(e) => setConsent(e.target.checked)}
-                                    required
-                                />
-                                <label htmlFor="consent">
-                                    I agree to be contacted by {SITE_CONFIG.agentName} via call, email, and text for real estate services.
-                                    To opt out, reply 'stop' at any time or reply 'help' for assistance. You can also click the unsubscribe link in the emails.
-                                    Message and data rates may apply. Message frequency may vary. <Link to="/privacy-policy" className="privacy-policy-link">Privacy Policy</Link>.
-                                </label>
-                            </div>
+                                <div className="form-consent">
+                                    <input
+                                        type="checkbox"
+                                        id="consent"
+                                        checked={consent}
+                                        onChange={(e) => setConsent(e.target.checked)}
+                                        required
+                                        disabled={status === 'submitting'}
+                                    />
+                                    <label htmlFor="consent">
+                                        I agree to be contacted by {SITE_CONFIG.agentName} via call, email, and text for real estate services.
+                                        To opt out, reply 'stop' at any time or reply 'help' for assistance. You can also click the unsubscribe link in the emails.
+                                        Message and data rates may apply. Message frequency may vary. <Link to="/privacy-policy" className="privacy-policy-link">Privacy Policy</Link>.
+                                    </label>
+                                </div>
 
-                            <button type="submit" className="btn-submit-form">
-                                SUBMIT
-                            </button>
-                        </form>
+                                <button type="submit" className="btn-submit-form" disabled={status === 'submitting'}>
+                                    {status === 'submitting' ? 'SENDING...' : 'SUBMIT'}
+                                </button>
+
+                                {status === 'error' && (
+                                    <p className="error-message">Something went wrong. Please try again or contact us directly.</p>
+                                )}
+                            </form>
+                        )}
                     </div>
                 </div>
             </div>

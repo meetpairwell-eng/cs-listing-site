@@ -72,6 +72,8 @@ export const SITE_CONFIG = {
       }
     ]
   },
+  // n8n Webhook Configuration
+  n8nWebhookUrl: "https://n8n.meetpairwell.com/webhook/lobello-lead",
   // Google Maps Configuration
   googleMaps: {
     apiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,

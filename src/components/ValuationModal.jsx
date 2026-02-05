@@ -11,6 +11,8 @@ const ValuationModal = ({ isOpen, onClose, propertyAddress }) => {
         termsAccepted: false
     });
 
+    const [status, setStatus] = useState('idle'); // idle, submitting, success, error
+
 
     useEffect(() => {
         if (isOpen) {
@@ -63,12 +65,47 @@ const ValuationModal = ({ isOpen, onClose, propertyAddress }) => {
         };
     }, [isOpen, propertyAddress]);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Handle form submission
-        console.log('Valuation request:', { ...formData, address: propertyAddress });
-        // Close modal and show success message
-        onClose();
+        setStatus('submitting');
+
+        try {
+            const response = await fetch(SITE_CONFIG.n8nWebhookUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    ...formData,
+                    property: "Cole Website",
+                    searchedAddress: propertyAddress,
+                    source: 'Valuation Request',
+                    timestamp: new Date().toISOString()
+                }),
+            });
+
+            if (response.ok) {
+                setStatus('success');
+                // Reset form
+                setFormData({
+                    name: '',
+                    email: '',
+                    phone: '',
+                    termsAccepted: false
+                });
+
+                // Close modal after 3 seconds
+                setTimeout(() => {
+                    onClose();
+                    setStatus('idle');
+                }, 3000);
+            } else {
+                setStatus('error');
+            }
+        } catch (error) {
+            console.error('Valuation submission error:', error);
+            setStatus('error');
+        }
     };
 
     const handleChange = (e) => {
@@ -100,80 +137,98 @@ const ValuationModal = ({ isOpen, onClose, propertyAddress }) => {
                             Enter your details to see how much your home is worth.
                         </p>
 
-                        <form className="valuation-form" onSubmit={handleSubmit}>
-                            <div className="valuation-form-group">
-                                <label htmlFor="name">Full Name*</label>
-                                <input
-                                    type="text"
-                                    id="name"
-                                    name="name"
-                                    value={formData.name}
-                                    onChange={handleChange}
-                                    placeholder="Full Name"
-                                    required
-                                />
+                        {status === 'success' ? (
+                            <div className="valuation-success-message">
+                                <div className="success-icon">✓</div>
+                                <h3>Valuation Request Received</h3>
+                                <p>
+                                    Thank you for your request. {SITE_CONFIG.agentName.split(' ')[0]} will manually review the data for <strong>{propertyAddress}</strong> and send your personalized valuation shortly.
+                                </p>
                             </div>
-
-                            <div className="valuation-form-group">
-                                <label htmlFor="email">Email*</label>
-                                <input
-                                    type="email"
-                                    id="email"
-                                    name="email"
-                                    value={formData.email}
-                                    onChange={handleChange}
-                                    placeholder="Email"
-                                    required
-                                />
-                            </div>
-
-                            <div className="valuation-form-group">
-                                <label htmlFor="phone">Phone*</label>
-                                <input
-                                    type="tel"
-                                    id="phone"
-                                    name="phone"
-                                    value={formData.phone}
-                                    onChange={handleChange}
-                                    placeholder="Phone"
-                                    pattern="[0-9\-\(\)+\.\+ ]{5,}"
-                                    required
-                                />
-                            </div>
-
-                            <div className="valuation-form-checkbox">
-                                <label>
+                        ) : (
+                            <form className="valuation-form" onSubmit={handleSubmit}>
+                                <div className="valuation-form-group">
+                                    <label htmlFor="name">Full Name*</label>
                                     <input
-                                        type="checkbox"
-                                        name="termsAccepted"
-                                        checked={formData.termsAccepted}
+                                        type="text"
+                                        id="name"
+                                        name="name"
+                                        value={formData.name}
                                         onChange={handleChange}
+                                        placeholder="Full Name"
                                         required
+                                        disabled={status === 'submitting'}
                                     />
-                                    <span>
-                                        I agree to be contacted by {SITE_CONFIG.agentName} via call, email, and text for real estate services.
-                                        To opt out, reply 'stop' at any time or reply 'help' for assistance. You can also click the unsubscribe link in the emails.
-                                        Message and data rates may apply. Message frequency may vary. <Link to="/privacy-policy" className="privacy-policy-link">Privacy Policy</Link>.
-                                    </span>
-                                </label>
-                            </div>
+                                </div>
 
-                            <button type="submit" className="valuation-submit-btn">
-                                Unlock Your Free Valuation
-                            </button>
+                                <div className="valuation-form-group">
+                                    <label htmlFor="email">Email*</label>
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        name="email"
+                                        value={formData.email}
+                                        onChange={handleChange}
+                                        placeholder="Email"
+                                        required
+                                        disabled={status === 'submitting'}
+                                    />
+                                </div>
 
-                            <div className="valuation-benefits">
-                                <div className="valuation-benefit-item">
-                                    <span className="benefit-check">✓</span> Personalized Result
+                                <div className="valuation-form-group">
+                                    <label htmlFor="phone">Phone*</label>
+                                    <input
+                                        type="tel"
+                                        id="phone"
+                                        name="phone"
+                                        value={formData.phone}
+                                        onChange={handleChange}
+                                        placeholder="Phone"
+                                        pattern="[0-9\-\(\)+\.\+ ]{5,}"
+                                        required
+                                        disabled={status === 'submitting'}
+                                    />
                                 </div>
-                                <div className="valuation-benefit-item">
-                                    <span className="benefit-check">✓</span> Sell for More
+
+                                <div className="valuation-form-checkbox">
+                                    <label>
+                                        <input
+                                            type="checkbox"
+                                            name="termsAccepted"
+                                            checked={formData.termsAccepted}
+                                            onChange={handleChange}
+                                            required
+                                            disabled={status === 'submitting'}
+                                        />
+                                        <span>
+                                            I agree to be contacted by {SITE_CONFIG.agentName} via call, email, and text for real estate services.
+                                            To opt out, reply 'stop' at any time or reply 'help' for assistance. You can also click the unsubscribe link in the emails.
+                                            Message and data rates may apply. Message frequency may vary. <Link to="/privacy-policy" className="privacy-policy-link">Privacy Policy</Link>.
+                                        </span>
+                                    </label>
                                 </div>
-                                <div className="valuation-benefit-item">
-                                    <span className="benefit-check">✓</span> Get Expert Advice
+
+                                <button type="submit" className="valuation-submit-btn" disabled={status === 'submitting'}>
+                                    {status === 'submitting' ? 'Processing...' : 'Unlock Your Free Valuation'}
+                                </button>
+
+                                {status === 'error' && (
+                                    <p className="valuation-error-message">Something went wrong. Please try again or contact us directly.</p>
+                                )}
+
+                                <div className="valuation-benefits">
+                                    <div className="valuation-benefit-item">
+                                        <span className="benefit-check">✓</span> Personalized Result
+                                    </div>
+                                    <div className="valuation-benefit-item">
+                                        <span className="benefit-check">✓</span> Sell for More
+                                    </div>
+                                    <div className="valuation-benefit-item">
+                                        <span className="benefit-check">✓</span> Get Expert Advice
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                        )}
                     </div>
 
                     {/* Right Side - Property Info */}
