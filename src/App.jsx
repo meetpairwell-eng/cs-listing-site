@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Services from './components/Services';
@@ -20,6 +20,18 @@ import PropertyPhotoGrid from './pages/PropertyPhotoGrid';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import './App.css';
+
+// Component to handle /connect route
+const ConnectPage = ({ onContactClick }) => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    onContactClick();
+    navigate('/', { replace: true });
+  }, [onContactClick, navigate]);
+
+  return null;
+};
 
 // Home Page Component
 const HomePage = ({ onContactClick }) => (
@@ -57,6 +69,10 @@ function App() {
               />
             }
           />
+
+          {/* Connect / Contact Aliases */}
+          <Route path="/connect" element={<ConnectPage onContactClick={() => setIsContactModalOpen(true)} />} />
+          <Route path="/contact" element={<ConnectPage onContactClick={() => setIsContactModalOpen(true)} />} />
 
           {/* Portfolio (formerly Properties) */}
           <Route
