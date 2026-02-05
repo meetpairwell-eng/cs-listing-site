@@ -82,8 +82,10 @@ const Footer = () => {
 
                     <nav className="footer-nav">
                         <Link to="/" onClick={scrollToTop}>HOME</Link>
+                        {/* 
                         <span className="nav-separator">|</span>
                         <Link to="/properties" onClick={scrollToTop}>PORTFOLIO</Link>
+                        */}
                         <span className="nav-separator">|</span>
                         <Link to="/home-valuation" onClick={scrollToTop}>HOME VALUATION</Link>
                         <span className="nav-separator">|</span>

@@ -12,7 +12,7 @@ export const SITE_CONFIG = {
   // Hero video from R2 (Desktop)
   heroVideo: "main-page/dallas-house.mp4",
   // Hero Image (Mobile Replacement) - upload to R2
-  heroMobileImage: "3808-Potomac-Hero.webp", // Default fallback until you upload specific one
+  heroMobileImage: "5609Ursula/5609Ursula-1.webp", // Updated from 3808-Potomac-Hero.webp
   // Headshot from R2
   headshot: "cole-swearingen-headshot.webp",
   // Contact section background

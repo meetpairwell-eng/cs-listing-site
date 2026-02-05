@@ -49,9 +49,11 @@ const Hero = () => {
                     <h1 className="hero-name">{SITE_CONFIG.agentName.toUpperCase()}</h1>
                     <p className="hero-subtitle">REAL ESTATE EXPERT</p>
                     <div className="hero-actions">
+                        {/* 
                         <Link to="/properties" className="btn-hero">
                             VIEW PORTFOLIO
                         </Link>
+                        */}
                     </div>
                 </div>
             </div>
