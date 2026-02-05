@@ -57,6 +57,18 @@
 @media (max-width: 968px) {
     .valuation-modal-grid {
         grid-template-columns: 1fr;
+        height: auto;
+        overflow-y: auto;
+    }
+
+    .valuation-modal-content {
+        height: 100vh;
+        overflow-y: auto;
+    }
+
+    .valuation-modal-left,
+    .valuation-modal-right {
+        padding: 3rem 1.5rem;
     }
 }
 
@@ -243,8 +255,28 @@
 }
 
 @media (max-width: 768px) {
+
+    .valuation-modal-left,
     .valuation-modal-right {
-        padding: 40px 30px;
+        padding: 3.5rem 1.25rem 2rem 1.25rem;
+    }
+
+    .valuation-modal-title {
+        font-size: 1.25rem;
+    }
+
+    .valuation-modal-subtitle {
+        font-size: 0.8rem;
+    }
+
+    .valuation-property-card {
+        padding: 1.5rem;
+    }
+
+    .valuation-benefits {
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: flex-start;
     }
 }
 
