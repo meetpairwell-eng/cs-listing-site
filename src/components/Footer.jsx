@@ -94,7 +94,7 @@ const Footer = () => {
 
                     <div className="footer-legal-links">
                         <a href="https://www.trec.texas.gov/sites/default/files/pdf-forms/CN%201-5_0.pdf" target="_blank" rel="noopener noreferrer">Texas Real Estate Commission Consumer Protection Notice</a>
-                        <a href={getAssetUrl("main-page/swearingen_IABS.webp")} target="_blank" rel="noopener noreferrer">Texas Real Estate Commission Information About Brokerage Services</a>
+                        <a href={getAssetUrl("main-page/swearingen_IABS.pdf")} target="_blank" rel="noopener noreferrer">Texas Real Estate Commission Information About Brokerage Services</a>
                         <a href="https://d1e1jt2fj4r8r.cloudfront.net/938208c7-113c-4b76-96bb-f65cefa93252/pkR5n4vC6/trec.pdf" target="_blank" rel="noopener noreferrer" className="legal-modal-trigger">TREC Disclaimer</a>
                     </div>
 
