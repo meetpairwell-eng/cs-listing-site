@@ -173,7 +173,7 @@ const AboutCole = () => {
                         </div>
                     </div>
                     <div className="banner-cta">
-                        <button className="banner-btn" onClick={() => setIsContactModalOpen(true)}>Inquire about this home</button>
+                        <button className="banner-btn" onClick={() => setIsContactModalOpen(true)}>Work with Cole</button>
                         <div className="banner-links">
                             <a href={`tel:${SITE_CONFIG.agentPhone?.replace(/\D/g, '')}`}>{SITE_CONFIG.agentPhone}</a>
                             <a href={`mailto:${SITE_CONFIG.agentEmail}`}>{SITE_CONFIG.agentEmail}</a>

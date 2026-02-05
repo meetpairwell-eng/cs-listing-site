@@ -5,13 +5,6 @@ import './Services.css';
 const Services = ({ onContactClick }) => {
     const services = [
         {
-            id: 1,
-            title: 'HOME SEARCH',
-            image: `${SITE_CONFIG.mediaBaseUrl}/${SITE_CONFIG.serviceImages?.homeSearch}`,
-            type: 'link',
-            path: '/search'
-        },
-        {
             id: 2,
             title: 'HOME VALUATION',
             image: `${SITE_CONFIG.mediaBaseUrl}/${SITE_CONFIG.serviceImages?.homeValuation}`,

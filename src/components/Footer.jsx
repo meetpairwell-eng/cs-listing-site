@@ -81,9 +81,9 @@ const Footer = () => {
                     <hr className="footer-divider" />
 
                     <nav className="footer-nav">
-                        <Link to="/properties" onClick={scrollToTop}>PROPERTIES</Link>
+                        <Link to="/" onClick={scrollToTop}>HOME</Link>
                         <span className="nav-separator">|</span>
-                        <Link to="/search" onClick={scrollToTop}>HOME SEARCH</Link>
+                        <Link to="/properties" onClick={scrollToTop}>PORTFOLIO</Link>
                         <span className="nav-separator">|</span>
                         <Link to="/home-valuation" onClick={scrollToTop}>HOME VALUATION</Link>
                         <span className="nav-separator">|</span>

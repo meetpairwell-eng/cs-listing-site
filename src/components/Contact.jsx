@@ -19,8 +19,7 @@ const Contact = ({ onContactClick }) => {
                 <div className="contact-hero-divider"></div>
                 <p className="contact-hero-text">
                     Get assistance in determining current property value, crafting a competitive offer,
-                    writing and negotiating a contract, and much more. Contact {SITE_CONFIG.agentName.split(' ')[0]}
-                    today to discuss all your real estate needs!
+                    writing and negotiating a contract, and much more. Contact {SITE_CONFIG.agentName.split(' ')[0]} today to discuss all your real estate needs!
                 </p>
                 <button onClick={onContactClick} className="btn-contact-hero">
                     LET'S CONNECT

@@ -11,13 +11,10 @@ import DesignEditorial from './components/DesignEditorial';
 import Contact from './components/Contact';
 import ContactModal from './components/ContactModal';
 import FloatingContactButton from './components/FloatingContactButton';
-import PropertySearch from './modules/property-search/PropertySearch';
 import FeaturedProperties from './pages/FeaturedProperties';
-import Favorites from './pages/Favorites';
 import HomeValuation from './pages/HomeValuation';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import AboutCole from './pages/AboutCole';
-import APITestPage from './pages/APITestPage';
 import PropertyDetails from './pages/PropertyDetails';
 import PropertyPhotoGrid from './pages/PropertyPhotoGrid';
 import Footer from './components/Footer';
@@ -61,27 +58,12 @@ function App() {
             }
           />
 
-          {/* Property Search */}
-          <Route path="/search" element={<PropertySearch />} />
-
-          {/* Featured Properties */}
+          {/* Portfolio (formerly Properties) */}
           <Route
             path="/properties"
             element={
               <>
                 <FeaturedProperties />
-                <Awards />
-                <Footer />
-              </>
-            }
-          />
-
-          {/* Favorites */}
-          <Route
-            path="/favorites"
-            element={
-              <>
-                <Favorites />
                 <Awards />
                 <Footer />
               </>
@@ -142,18 +124,6 @@ function App() {
             element={
               <>
                 <PropertyPhotoGrid />
-                <Awards />
-                <Footer />
-              </>
-            }
-          />
-
-          {/* API Test Page */}
-          <Route
-            path="/api-test"
-            element={
-              <>
-                <APITestPage />
                 <Awards />
                 <Footer />
               </>

@@ -70,6 +70,8 @@ export const getAllListings = async (filters = {}) => {
 
     // Get MLS listings if requested
     let mls = [];
+    // Temporarily disabled MLS IDX fetching
+    /*
     if (includeMLS && source !== 'manual') {
         try {
             const mlsParams = {
@@ -91,6 +93,7 @@ export const getAllListings = async (filters = {}) => {
             // Gracefully degrade to manual listings only
         }
     }
+    */
 
     // Combine both sources
     let combined = [];

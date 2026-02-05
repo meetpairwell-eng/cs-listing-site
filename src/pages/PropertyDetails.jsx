@@ -1,6 +1,6 @@
 import { useState, useEffect, useLayoutEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { getListingById } from '../data/listingsService';
+import { getListingById, isMLSListing } from '../data/listingsService';
 import { SITE_CONFIG } from '../config';
 import ContactModal from '../components/ContactModal';
 import './PropertyDetails.css';
@@ -179,7 +179,7 @@ const PropertyDetails = () => {
             <div className="property-details-error">
                 <h2>{error || 'Property Not Found'}</h2>
                 <p>We couldn't find the listing you're looking for.</p>
-                <Link to="/properties" className="back-btn">Back to Listings</Link>
+                <Link to="/properties" className="back-btn">Back to Portfolio</Link>
             </div>
         );
     }
@@ -382,29 +382,33 @@ const PropertyDetails = () => {
                             </div>
                         </section>
 
-                        {/* MLS Info */}
-                        <section className="property-mls-info">
-                            <div className="mls-data-item">
-                                <span>MLS® Number:</span>
-                                <span>{property.mlsId}</span>
-                            </div>
-                            <div className="mls-data-item">
-                                <span>Property Type:</span>
-                                <span>{property.type}</span>
-                            </div>
-                            <div className="mls-data-item">
-                                <span>Year Built:</span>
-                                <span>{property.yearBuilt || 'N/A'}</span>
-                            </div>
-                            <div className="mls-data-item">
-                                <span>Status:</span>
-                                <span>{property.status}</span>
-                            </div>
-                        </section>
+                        {/* MLS Info - Only show for MLS properties */}
+                        {isMLSListing(property) && (
+                            <>
+                                <section className="property-mls-info">
+                                    <div className="mls-data-item">
+                                        <span>MLS® Number:</span>
+                                        <span>{property.mlsId}</span>
+                                    </div>
+                                    <div className="mls-data-item">
+                                        <span>Property Type:</span>
+                                        <span>{property.type}</span>
+                                    </div>
+                                    <div className="mls-data-item">
+                                        <span>Year Built:</span>
+                                        <span>{property.yearBuilt || 'N/A'}</span>
+                                    </div>
+                                    <div className="mls-data-item">
+                                        <span>Status:</span>
+                                        <span>{property.status}</span>
+                                    </div>
+                                </section>
 
-                        <div className="mls-disclaimer">
-                            Listing courtesy of {property.office?.name || raw.office?.name || 'MLS Participating Broker'}. Data provided by SimplyRETS. All information deemed reliable but not guaranteed.
-                        </div>
+                                <div className="mls-disclaimer">
+                                    Listing courtesy of {property.office?.name || raw.office?.name || 'MLS Participating Broker'}. Data provided by SimplyRETS. All information deemed reliable but not guaranteed.
+                                </div>
+                            </>
+                        )}
 
                     </div>
                 </div>

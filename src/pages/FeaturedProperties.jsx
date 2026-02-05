@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { fetchProperties } from '../api/idxService';
+import { getActiveListings, getSoldListings } from '../data/listingsService';
 import './FeaturedProperties.css';
 
 const FeaturedProperties = () => {
@@ -14,24 +14,14 @@ const FeaturedProperties = () => {
             try {
                 setLoading(true);
 
-                // Fetch Curated 'For Sale' properties ($2M - $5M)
-                const activeData = await fetchProperties({
-                    status: 'Active',
-                    minprice: 2000000,
-                    maxprice: 5000000,
-                    limit: 6
-                });
-
-                // Fetch 'Sold' properties for the bottom section
-                const soldData = await fetchProperties({
-                    status: 'Closed',
-                    limit: 6
-                });
+                // Get manual active and sold listings from our service
+                const activeData = await getActiveListings();
+                const soldData = await getSoldListings();
 
                 setFeaturedListings(activeData);
                 setSoldListings(soldData);
             } catch (error) {
-                console.error('Error loading featured properties:', error);
+                console.error('Error loading property portfolio:', error);
             } finally {
                 setLoading(false);
             }
@@ -86,14 +76,14 @@ const FeaturedProperties = () => {
             {/* Hero Section */}
             <section className="featured-hero">
                 <div className="featured-hero-content">
-                    <h1>FEATURED PROPERTIES</h1>
+                    <h1>PORTFOLIO</h1>
                 </div>
             </section>
 
             {/* Featured Properties Grid */}
             <section className="featured-section">
                 <div className="featured-container">
-                    <h2 className="featured-section-title">For Sale</h2>
+                    <h2 className="featured-section-title">Active Listings</h2>
                     <div className="featured-grid">
                         {featuredListings.length > 0 ? (
                             featuredListings.map((listing) => (

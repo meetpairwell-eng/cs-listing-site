@@ -89,12 +89,10 @@ const Navbar = ({ onContactClick }) => {
                 </button>
 
                 <ul className={`navbar-menu ${mobileMenuOpen ? 'open' : ''}`}>
+                    <li><Link to="/" onClick={handleLogoClick}>HOME</Link></li>
                     <li><Link to="/about-cole" onClick={closeMobileMenu}>MEET COLE</Link></li>
                     <li>
-                        <Link to="/properties" onClick={closeMobileMenu}>PROPERTIES</Link>
-                    </li>
-                    <li>
-                        <Link to="/search" onClick={closeMobileMenu}>HOME SEARCH</Link>
+                        <Link to="/properties" onClick={closeMobileMenu}>PORTFOLIO</Link>
                     </li>
                     <li>
                         <Link to="/home-valuation" onClick={closeMobileMenu}>HOME VALUATION</Link>

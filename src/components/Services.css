@@ -7,7 +7,7 @@
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 0;
     width: 100%;
 }
@@ -101,8 +101,8 @@
     }
 
     .service-card {
-        height: 25vh;
-        /* Reduced height to fit 3 on one screen */
+        height: 40vh;
+        /* Increased height for 2-item layout */
         overflow: hidden;
         /* Disable pop-out for mobile touch */
     }
