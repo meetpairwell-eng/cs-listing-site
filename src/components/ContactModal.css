@@ -337,126 +337,102 @@ a.contact-value:hover {
     color: white;
 }
 
-/* Responsive Design */
+/* Mobile Specific Layout */
+.modal-mobile-header {
+    display: none;
+    /* Hidden on desktop */
+}
+
 @media (max-width: 968px) {
-    .modal-content-wrapper {
-        grid-template-columns: 1fr;
-        max-height: 100vh;
-        overflow-y: auto;
-    }
-
-    .modal-contact-details,
-    .modal-form-section {
-        padding: 4rem 1.5rem 2rem 1.5rem;
-    }
-
-    .modal-close-btn {
-        top: 1rem;
-        right: 1rem;
-        color: white;
-        background: rgba(0, 0, 0, 0.3);
-        border-radius: 50%;
-        width: 32px;
-        height: 32px;
-        font-size: 1.25rem;
-    }
-
-    .contact-modal {
+    .modal-mobile-header {
+        display: block;
         width: 100%;
-        height: 100vh;
-        max-height: 100vh;
+        background: #1a1a1a;
+        position: relative;
+    }
+
+    .mobile-header-nav {
+        height: 60px;
+        display: flex;
+        align-items: center;
+        padding: 0 1.5rem;
+        background: #1a1a1a;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-logo {
+        font-family: var(--font-heading);
+        font-size: 1.5rem;
+        color: #fff;
+        letter-spacing: 0.2em;
+    }
+
+    .mobile-hero-image {
+        width: 100%;
+        height: 350px;
+        background-size: cover;
+        background-position: center top;
+        position: relative;
+    }
+
+    .mobile-hero-text {
+        padding: 1.5rem;
+        text-align: center;
+        background: #fff;
+    }
+
+    .mobile-hero-text h2 {
+        font-family: var(--font-heading);
+        font-size: 2rem;
+        margin: 0;
+        letter-spacing: 0.1em;
+        color: #1a1a1a;
+    }
+
+    .modal-contact-details {
+        background: #f9f9f9 !important;
+        padding: 1.5rem !important;
+        grid-row: 3;
+        /* Push to bottom */
+        border-top: 1px solid #eee;
+    }
+
+    .modal-contact-details .modal-section-title {
+        color: #1a1a1a !important;
+        font-size: 0.9rem !important;
+    }
+
+    .modal-contact-details .modal-agent-name,
+    .modal-contact-details .contact-label,
+    .modal-contact-details .contact-value {
+        color: #1a1a1a !important;
+    }
+
+    .modal-form-section {
+        padding: 1.5rem !important;
+        grid-row: 2;
+        /* Middle section */
+    }
+
+    .modal-content-wrapper {
+        display: flex;
+        flex-direction: column;
     }
 }
 
 @media (max-width: 480px) {
-    .modal-contact-details {
-        padding: 2.5rem 1rem 1rem 1rem;
-        background-image: none !important;
-        background-color: #1a1a1a;
+    .modal-close-btn {
+        background: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        z-index: 100;
     }
 
-    .modal-form-section {
-        padding: 1.5rem 1rem;
+    .mobile-hero-image {
+        height: 300px;
     }
 
-    .modal-section-title {
-        font-size: 1.1rem;
-        margin-bottom: 0.75rem;
-    }
-
-    .modal-agent-name {
-        font-size: 0.9rem;
-        margin-bottom: 0.5rem;
-    }
-
-    .modal-contact-item {
-        margin-bottom: 0.5rem;
-        gap: 0.5rem;
-    }
-
-    .contact-icon {
-        width: 32px;
-        height: 32px;
-    }
-
-    .contact-icon svg {
-        width: 16px;
-        height: 16px;
-    }
-
-    .contact-label {
-        font-size: 0.65rem;
-    }
-
-    .contact-value {
-        font-size: 0.9rem;
-        padding: 0.25rem 0;
-    }
-
-    .modal-social-icons {
-        margin-top: 1rem;
-        gap: 0.5rem;
-    }
-
-    .social-icon {
-        width: 32px;
-        height: 32px;
-    }
-
-    .social-icon svg {
-        width: 16px;
-        height: 16px;
-    }
-
-    .form-group {
-        margin-bottom: 0.35rem;
-    }
-
-    .form-group label {
-        font-size: 0.65rem;
-        margin-bottom: 0.25rem;
-    }
-
-    .form-group input,
-    .form-group textarea {
-        padding: 0.5rem 0;
-        font-size: 0.9rem;
-    }
-
-    .form-consent {
-        margin: 1rem 0;
-        gap: 0.5rem;
-    }
-
-    .form-consent label {
-        font-size: 0.65rem;
-    }
-
-    .btn-submit-form {
-        padding: 0.75rem 2rem;
-        font-size: 0.75rem;
-        width: 100%;
-        margin-top: 0.5rem;
+    .mobile-hero-text h2 {
+        font-size: 1.75rem;
     }
 }
 
@@ -491,6 +467,16 @@ a.contact-value:hover {
     font-size: 0.875rem;
     margin-top: 1rem;
     text-align: center;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 input:disabled,
