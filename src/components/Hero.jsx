@@ -3,7 +3,7 @@ import { SITE_CONFIG } from '../config';
 import './Hero.css';
 import { useState } from 'react';
 
-const Hero = () => {
+const Hero = ({ onContactClick }) => {
     const videoUrl = `${SITE_CONFIG.mediaBaseUrl}/${SITE_CONFIG.heroVideo}`;
     const [videoError, setVideoError] = useState(false);
 
@@ -49,11 +49,9 @@ const Hero = () => {
                     <h1 className="hero-name">{SITE_CONFIG.agentName.toUpperCase()}</h1>
                     <p className="hero-subtitle">REAL ESTATE EXPERT</p>
                     <div className="hero-actions">
-                        {/* 
-                        <Link to="/properties" className="btn-hero">
-                            VIEW PORTFOLIO
-                        </Link>
-                        */}
+                        <button onClick={onContactClick} className="btn-hero">
+                            LET'S CONNECT
+                        </button>
                     </div>
                 </div>
             </div>

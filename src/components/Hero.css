@@ -141,6 +141,8 @@
     text-decoration: none;
     transition: all 0.3s ease;
     z-index: 12 !important;
+    cursor: pointer;
+    border-radius: 0;
 }
 
 .btn-hero:hover {

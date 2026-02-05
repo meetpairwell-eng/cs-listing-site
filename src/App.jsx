@@ -36,7 +36,7 @@ const ConnectPage = ({ onContactClick }) => {
 // Home Page Component
 const HomePage = ({ onContactClick }) => (
   <>
-    <Hero />
+    <Hero onContactClick={onContactClick} />
     <About />
     <Services onContactClick={onContactClick} />
     <FeaturedListings />
