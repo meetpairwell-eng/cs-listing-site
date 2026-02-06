@@ -370,7 +370,7 @@ a.contact-value:hover {
         background: #1a1a1a;
         position: sticky;
         top: 0;
-        z-index: 100;
+        z-index: 1000;
     }
 
     .nav-logo {
@@ -413,7 +413,7 @@ a.contact-value:hover {
         height: 50vh;
         /* Scaled up for better visibility */
         background-size: cover;
-        background-position: center 25%;
+        background-position: center top;
         /* Lower value to show more of the face/head */
         background-repeat: no-repeat;
     }
