@@ -88,15 +88,14 @@ const ContactModal = ({ isOpen, onClose }) => {
     return (
         <div className="contact-modal-overlay" onClick={handleOverlayClick}>
             <div className="contact-modal">
-                <button className="modal-close-btn" onClick={onClose}>
-                    ✕
-                </button>
-
                 <div className="modal-content-wrapper">
                     {/* New Mobile Header - Managed via CSS for visibility */}
                     <div className="modal-mobile-header">
                         <div className="mobile-header-nav">
                             <span className="nav-logo">{SITE_CONFIG.agentInitials}</span>
+                            <button className="modal-close-btn mobile-only-close" onClick={onClose}>
+                                ✕
+                            </button>
                         </div>
                         <div
                             className="mobile-hero-image"
@@ -106,6 +105,11 @@ const ContactModal = ({ isOpen, onClose }) => {
                             <h2>LET'S CONNECT</h2>
                         </div>
                     </div>
+
+                    {/* Desktop Close Button (hidden on mobile via CSS) */}
+                    <button className="modal-close-btn desktop-only-close" onClick={onClose}>
+                        ✕
+                    </button>
 
                     {/* Left Side - Contact Details (Hidden/Resized on mobile) */}
                     <div

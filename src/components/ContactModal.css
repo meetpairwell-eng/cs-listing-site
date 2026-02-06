@@ -48,20 +48,24 @@
 
 .modal-close-btn {
     position: absolute;
-    top: 2rem;
-    right: 2rem;
+    top: 25px;
+    right: 30px;
     background: transparent;
     border: none;
-    font-size: 2rem;
-    color: #333;
+    font-size: 1.8rem;
+    color: #fff;
     cursor: pointer;
-    z-index: 10;
+    z-index: 1000;
     width: 40px;
     height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.2s ease;
+    transition: opacity 0.3s ease;
+}
+
+.mobile-only-close {
+    display: none;
 }
 
 .modal-close-btn:hover {
@@ -344,95 +348,135 @@ a.contact-value:hover {
 }
 
 @media (max-width: 968px) {
+    .contact-modal {
+        width: 100%;
+        height: 100vh;
+        max-height: 100vh;
+        border-radius: 0;
+    }
+
     .modal-mobile-header {
         display: block;
         width: 100%;
         background: #1a1a1a;
-        position: relative;
     }
 
     .mobile-header-nav {
-        height: 60px;
+        height: 70px;
         display: flex;
         align-items: center;
+        justify-content: space-between;
         padding: 0 1.5rem;
         background: #1a1a1a;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 100;
     }
 
     .nav-logo {
         font-family: var(--font-heading);
-        font-size: 1.5rem;
+        font-size: 1.6rem;
         color: #fff;
-        letter-spacing: 0.2em;
+        letter-spacing: 0.3em;
+        font-weight: 300;
+    }
+
+    /* Target the close button specifically on mobile */
+    .desktop-only-close {
+        display: none !important;
+    }
+
+    .mobile-only-close {
+        display: block !important;
+        position: static !important;
+        background: transparent !important;
+        color: #fff !important;
+        font-size: 1.5rem !important;
+        padding: 0;
+        width: auto !important;
+        height: auto !important;
+        opacity: 1 !important;
+    }
+
+    .modal-close-btn {
+        position: static !important;
+        background: transparent !important;
+        color: #fff !important;
+        font-size: 1.5rem !important;
+        padding: 0;
+        width: auto !important;
+        height: auto !important;
     }
 
     .mobile-hero-image {
         width: 100%;
-        height: 350px;
+        height: 50vh;
+        /* Scaled up for better visibility */
         background-size: cover;
-        background-position: center top;
-        position: relative;
+        background-position: center 25%;
+        /* Lower value to show more of the face/head */
+        background-repeat: no-repeat;
     }
 
     .mobile-hero-text {
-        padding: 1.5rem;
+        padding: 2.5rem 1.5rem;
         text-align: center;
         background: #fff;
+        border-bottom: 1px solid #f0f0f0;
     }
 
     .mobile-hero-text h2 {
         font-family: var(--font-heading);
-        font-size: 2rem;
+        font-size: 1.8rem;
         margin: 0;
-        letter-spacing: 0.1em;
+        letter-spacing: 0.15em;
         color: #1a1a1a;
-    }
-
-    .modal-contact-details {
-        background: #f9f9f9 !important;
-        padding: 1.5rem !important;
-        grid-row: 3;
-        /* Push to bottom */
-        border-top: 1px solid #eee;
-    }
-
-    .modal-contact-details .modal-section-title {
-        color: #1a1a1a !important;
-        font-size: 0.9rem !important;
-    }
-
-    .modal-contact-details .modal-agent-name,
-    .modal-contact-details .contact-label,
-    .modal-contact-details .contact-value {
-        color: #1a1a1a !important;
+        font-weight: 400;
     }
 
     .modal-form-section {
-        padding: 1.5rem !important;
-        grid-row: 2;
-        /* Middle section */
+        padding: 2rem 1.5rem !important;
+        background: #fff;
+    }
+
+    .modal-contact-details {
+        background: #fdfdfd !important;
+        padding: 2.5rem 1.5rem !important;
+        border-top: 5px solid #1a1a1a;
+        /* Visual separator */
     }
 
     .modal-content-wrapper {
         display: flex;
         flex-direction: column;
+        height: 100vh;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .contact-modal-overlay {
+        background: #fff !important;
+        /* Full white background for mobile app feel */
     }
 }
 
 @media (max-width: 480px) {
-    .modal-close-btn {
-        background: rgba(0, 0, 0, 0.5);
-        color: #fff;
-        z-index: 100;
-    }
-
     .mobile-hero-image {
-        height: 300px;
+        height: 40vh;
     }
 
     .mobile-hero-text h2 {
-        font-size: 1.75rem;
+        font-size: 1.6rem;
+    }
+
+    .contact-label {
+        font-size: 0.6rem;
+        letter-spacing: 0.2em;
+    }
+
+    .modal-agent-name {
+        font-size: 1.1rem;
+        letter-spacing: 0.1em;
     }
 }
 
