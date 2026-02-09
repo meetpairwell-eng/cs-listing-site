@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { SITE_CONFIG } from '../config';
+import OptimizedImage from './common/OptimizedImage';
 import './Services.css';
 
 const Services = ({ onContactClick }) => {
@@ -7,14 +8,14 @@ const Services = ({ onContactClick }) => {
         {
             id: 2,
             title: 'HOME VALUATION',
-            image: `${SITE_CONFIG.mediaBaseUrl}/${SITE_CONFIG.serviceImages?.homeValuation}`,
+            image: SITE_CONFIG.serviceImages?.homeValuation,
             type: 'link',
             path: '/home-valuation'
         },
         {
             id: 3,
             title: "LET'S CONNECT",
-            image: `${SITE_CONFIG.mediaBaseUrl}/${SITE_CONFIG.serviceImages?.connect}`,
+            image: SITE_CONFIG.serviceImages?.connect,
             type: 'modal'
         }
     ];
@@ -30,7 +31,7 @@ const Services = ({ onContactClick }) => {
                             className="service-card"
                         >
                             <div className="service-image">
-                                <img src={service.image} alt={service.title} />
+                                <OptimizedImage src={service.image} alt={service.title} width={1000} />
                                 <div className="service-overlay"></div>
                             </div>
                             <h3 className="service-title">{service.title}</h3>
@@ -43,7 +44,7 @@ const Services = ({ onContactClick }) => {
                             style={{ cursor: 'pointer' }}
                         >
                             <div className="service-image">
-                                <img src={service.image} alt={service.title} />
+                                <OptimizedImage src={service.image} alt={service.title} width={1000} />
                                 <div className="service-overlay"></div>
                             </div>
                             <h3 className="service-title">{service.title}</h3>

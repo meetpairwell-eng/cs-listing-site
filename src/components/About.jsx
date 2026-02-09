@@ -1,15 +1,18 @@
 import { Link } from 'react-router-dom';
 import { SITE_CONFIG } from '../config';
+import { getOptimizedImageUrl } from '../utils/imageHandler';
 import './About.css';
 
 const About = () => {
+    const aboutImage = SITE_CONFIG.aboutCole?.headshot?.r2Path || SITE_CONFIG.headshot;
+
     return (
         <section id="about" className="about-section">
             <div className="about-split-container">
                 {/* Left Side - Image Side with Parallax */}
                 <div
                     className="about-image-side"
-                    style={{ backgroundImage: `url(${SITE_CONFIG.mediaBaseUrl}/${SITE_CONFIG.aboutCole?.headshot?.r2Path || SITE_CONFIG.headshot})` }}
+                    style={{ backgroundImage: `url(${getOptimizedImageUrl(aboutImage, { width: 1500 })})` }}
                 >
                 </div>
 

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getActiveListings, getSoldListings } from '../data/listingsService';
+import OptimizedImage from '../components/common/OptimizedImage';
 import './FeaturedProperties.css';
 
 const FeaturedProperties = () => {
@@ -37,7 +38,7 @@ const FeaturedProperties = () => {
             style={{ cursor: 'pointer' }}
         >
             <div className="featured-property-image">
-                <img src={listing.image} alt={listing.address} />
+                <OptimizedImage src={listing.image} alt={listing.address} width={800} />
                 <div className="featured-property-status">
                     <span className="status-badge">{listing.status}</span>
                 </div>

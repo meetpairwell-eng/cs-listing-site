@@ -2,6 +2,7 @@ import { useState, useEffect, useLayoutEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { getListingById } from '../data/listingsService';
 import { SITE_CONFIG } from '../config';
+import OptimizedImage from '../components/common/OptimizedImage';
 import ContactModal from '../components/ContactModal';
 import './PropertyPhotoGrid.css';
 import './PropertyDetails.css'; // Reuse banner styles
@@ -39,12 +40,7 @@ const PropertyPhotoGrid = () => {
         loadProperty();
     }, [id]);
 
-    const getPhotoUrl = (photo) => {
-        if (!photo) return '';
-        if (photo.startsWith('http') || photo.startsWith('/')) return photo;
-        const baseUrl = SITE_CONFIG.mediaBaseUrl || '';
-        return `${baseUrl}/${photo}`;
-    };
+
 
     if (loading) {
         return <div className="loading-screen">Loading...</div>;
@@ -77,7 +73,7 @@ const PropertyPhotoGrid = () => {
                 <div className="photo-grid">
                     {photos.map((photo, index) => (
                         <div key={index} className="photo-grid-item">
-                            <img src={getPhotoUrl(photo)} alt={`View ${index + 1}`} loading="lazy" />
+                            <OptimizedImage src={photo} alt={`View ${index + 1}`} width={1000} />
                         </div>
                     ))}
                 </div>
@@ -88,7 +84,7 @@ const PropertyPhotoGrid = () => {
             <div className="contact-banner" style={{ marginTop: '80px', marginBottom: '0' }}>
                 <div className="contact-banner-inner">
                     <div className="banner-content">
-                        <img src={`${SITE_CONFIG.mediaBaseUrl}/${SITE_CONFIG.headshot}`} alt={SITE_CONFIG.agentName} className="banner-thumb" />
+                        <OptimizedImage src={SITE_CONFIG.headshot} alt={SITE_CONFIG.agentName} className="banner-thumb" width={200} />
                         <div className="banner-text">
                             <p>Presented by</p>
                             <h3>{SITE_CONFIG.agentName}</h3>

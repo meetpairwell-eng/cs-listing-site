@@ -2,6 +2,7 @@ import { useState, useEffect, useLayoutEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { getListingById, isMLSListing } from '../data/listingsService';
 import { SITE_CONFIG } from '../config';
+import OptimizedImage from '../components/common/OptimizedImage';
 import ContactModal from '../components/ContactModal';
 import './PropertyDetails.css';
 import './PropertyMap.css';
@@ -184,13 +185,7 @@ const PropertyDetails = () => {
         );
     }
 
-    const getPhotoUrl = (photo) => {
-        if (!photo) return '';
-        if (photo.startsWith('http') || photo.startsWith('/')) return photo;
-        // Check if SITE_CONFIG.mediaBaseUrl is defined, if not use a fallback or empty string
-        const baseUrl = SITE_CONFIG.mediaBaseUrl || '';
-        return `${baseUrl}/${photo}`;
-    };
+
 
     const { raw } = property;
     const photos = property.photos || [];
@@ -208,17 +203,19 @@ const PropertyDetails = () => {
                     {photos.length > 0 ? (
                         <>
                             {/* Dual image setup for smooth crossfade */}
-                            <img
+                            <OptimizedImage
                                 className="gallery-image current"
-                                src={getPhotoUrl(photos[activePhoto])}
+                                src={photos[activePhoto]}
                                 alt={`${property.address} - view ${activePhoto + 1}`}
                                 key={`current-${activePhoto}`}
+                                isHero={true}
                             />
-                            <img
+                            <OptimizedImage
                                 className="gallery-image previous"
-                                src={getPhotoUrl(photos[activePhoto === 0 ? photos.length - 1 : activePhoto - 1])}
+                                src={photos[activePhoto === 0 ? photos.length - 1 : activePhoto - 1]}
                                 alt="Previous view"
                                 key={`prev-${activePhoto}`}
+                                isHero={true}
                             />
                         </>
                     ) : (
@@ -261,15 +258,15 @@ const PropertyDetails = () => {
                 {/* Mobile Header (TRG Style Grid) */}
                 <div className="mobile-property-header">
                     <div className="mobile-hero-main">
-                        <img src={getPhotoUrl(photos[0])} alt="Main view" onClick={() => setActivePhoto(0)} />
+                        <OptimizedImage src={photos[0]} alt="Main view" onClick={() => setActivePhoto(0)} isHero={true} />
                     </div>
                     {photos.length > 1 && (
                         <div className="mobile-hero-grid">
                             <div className="mobile-sub-img">
-                                <img src={getPhotoUrl(photos[1])} alt="View 2" />
+                                <OptimizedImage src={photos[1]} alt="View 2" width={500} />
                             </div>
                             <div className="mobile-sub-img view-all-trigger">
-                                <img src={getPhotoUrl(photos[2] || photos[1])} alt="View 3" />
+                                <OptimizedImage src={photos[2] || photos[1]} alt="View 3" width={500} />
                                 <Link to={`/property/${id}/photos`} className="mobile-view-all-overlay">
                                     VIEW ALL
                                 </Link>
@@ -300,7 +297,7 @@ const PropertyDetails = () => {
                                     className={`thumbnail ${activePhoto === originalIndex ? 'active' : ''}`}
                                     onClick={() => setActivePhoto(originalIndex)}
                                 >
-                                    <img src={getPhotoUrl(photo)} alt={`View ${originalIndex + 1}`} />
+                                    <OptimizedImage src={photo} alt={`View ${originalIndex + 1}`} width={300} />
                                 </button>
                             );
                         })}
@@ -418,7 +415,7 @@ const PropertyDetails = () => {
             <div className="contact-banner">
                 <div className="contact-banner-inner">
                     <div className="banner-content">
-                        <img src={`${SITE_CONFIG.mediaBaseUrl}/${SITE_CONFIG.headshot}`} alt={SITE_CONFIG.agentName} className="banner-thumb" />
+                        <OptimizedImage src={SITE_CONFIG.headshot} alt={SITE_CONFIG.agentName} className="banner-thumb" width={200} />
                         <div className="banner-text">
                             <p>Presented by</p>
                             <h3>{SITE_CONFIG.agentName}</h3>

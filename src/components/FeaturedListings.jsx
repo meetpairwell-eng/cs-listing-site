@@ -1,16 +1,12 @@
 import { Link } from 'react-router-dom';
 import { getNotableSales } from '../data/listingsService';
 import { SITE_CONFIG } from '../config';
+import OptimizedImage from './common/OptimizedImage';
 import './FeaturedListings.css';
 
 const FeaturedListings = () => {
     // Get notable sales (manually curated featured properties)
     const listings = getNotableSales(4);
-
-    const getMediaUrl = (filename) => {
-        return `${SITE_CONFIG.mediaBaseUrl}/${filename}`;
-    };
-
 
     return (
         <section id="listings" className="section listings-section">
@@ -27,12 +23,10 @@ const FeaturedListings = () => {
                             className="listing-card"
                         >
                             <div className="listing-image">
-                                <img
-                                    src={getMediaUrl(listing.heroImage)}
+                                <OptimizedImage
+                                    src={listing.heroImage}
                                     alt={listing.title}
-                                    onError={(e) => {
-                                        e.target.src = 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80';
-                                    }}
+                                    width={800}
                                 />
                                 <div className="listing-status">{listing.status}</div>
                                 {listing.customBadge && (

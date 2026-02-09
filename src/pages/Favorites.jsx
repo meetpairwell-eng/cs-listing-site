@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { mockListings } from '../modules/property-search/api/mockData';
 import useFavorites from '../hooks/useFavorites';
+import OptimizedImage from '../components/common/OptimizedImage';
 import './Favorites.css';
 
 const Favorites = () => {
@@ -40,7 +41,7 @@ const Favorites = () => {
                             {favoriteListings.map((listing) => (
                                 <div key={listing.id} className="favorite-card">
                                     <div className="favorite-image">
-                                        <img src={listing.image} alt={listing.address} />
+                                        <OptimizedImage src={listing.image} alt={listing.address} width={800} />
                                         <button
                                             className="favorite-btn active"
                                             onClick={() => toggleFavorite(listing.id)}

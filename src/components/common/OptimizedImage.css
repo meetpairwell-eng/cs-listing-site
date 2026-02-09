@@ -1,0 +1,41 @@
+.optimized-image-container {
+    position: relative;
+    overflow: hidden;
+    background: #f0f0f0;
+    width: 100%;
+    height: 100%;
+}
+
+.optimized-image-container img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.placeholder-img {
+    filter: blur(10px);
+    transform: scale(1.05);
+    /* Avoid white edges from blur */
+    transition: opacity 0.4s ease-out;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.main-img {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    position: relative;
+    z-index: 2;
+}
+
+.main-img.loaded {
+    opacity: 1;
+}
+
+.placeholder-img.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}

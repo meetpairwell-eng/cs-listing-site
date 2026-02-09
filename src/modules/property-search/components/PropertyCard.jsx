@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import useFavorites from '../../../hooks/useFavorites';
+import OptimizedImage from '../../../components/common/OptimizedImage';
 
 const PropertyCard = ({ listing, onSelect, isSelected }) => {
     const { isFavorite, toggleFavorite } = useFavorites();
@@ -27,7 +28,7 @@ const PropertyCard = ({ listing, onSelect, isSelected }) => {
             onClick={handleCardClick}
         >
             <div className="property-image">
-                <img src={listing.image} alt={listing.address} />
+                <OptimizedImage src={listing.image} alt={listing.address} width={800} />
                 <button
                     className={`favorite-btn ${favorite ? 'active' : ''}`}
                     onClick={handleFavoriteClick}

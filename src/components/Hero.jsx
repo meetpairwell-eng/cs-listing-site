@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { SITE_CONFIG } from '../config';
+import OptimizedImage from './common/OptimizedImage';
 import './Hero.css';
 import { useState } from 'react';
 
@@ -29,15 +30,12 @@ const Hero = ({ onContactClick }) => {
                 </video>
             )}
 
-            {/* Mobile Image (Visible on small screens via CSS) - ALways render */}
-            <img
-                src={`${SITE_CONFIG.mediaBaseUrl}/${SITE_CONFIG.heroMobileImage}`}
+            {/* Mobile Image (Visible on small screens via CSS) */}
+            <OptimizedImage
+                src={SITE_CONFIG.heroMobileImage}
                 alt="Hero background"
                 className="hero-mobile-bg"
-                onError={(e) => {
-                    // Fallback to high-quality unsplash if custom image fails
-                    e.target.src = 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80';
-                }}
+                isHero={true}
             />
 
             {/* Fallback gradient if video fails */}

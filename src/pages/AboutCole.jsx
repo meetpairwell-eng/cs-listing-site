@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { SITE_CONFIG } from '../config';
+import OptimizedImage from '../components/common/OptimizedImage';
 import ContactModal from '../components/ContactModal';
 import Contact from '../components/Contact';
 import './AboutCole.css';
@@ -9,13 +10,7 @@ import './PropertyDetails.css'; // For contact-banner styles
 const AboutCole = () => {
     const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
-    // Helper to get media URL - supports both R2 and fallback URLs
-    const getMediaUrl = (r2Path, fallbackUrl) => {
-        if (r2Path && SITE_CONFIG.mediaBaseUrl) {
-            return `${SITE_CONFIG.mediaBaseUrl}/${r2Path}`;
-        }
-        return fallbackUrl;
-    };
+
 
     const keyHighlights = [
         {
@@ -70,12 +65,10 @@ const AboutCole = () => {
             {/* Hero Section */}
             <section className="cole-hero">
                 <div className="cole-hero-background">
-                    <img
-                        src={getMediaUrl(SITE_CONFIG.aboutCole?.heroImage?.r2Path, SITE_CONFIG.aboutCole?.heroImage?.fallback)}
+                    <OptimizedImage
+                        src={SITE_CONFIG.aboutCole?.heroImage?.r2Path}
                         alt="Luxury home"
-                        onError={(e) => {
-                            e.target.src = SITE_CONFIG.aboutCole?.heroImage?.fallback;
-                        }}
+                        isHero={true}
                     />
                     <div className="cole-hero-overlay"></div>
                 </div>
@@ -105,12 +98,9 @@ const AboutCole = () => {
                         </button>
                     </div>
                     <div className="cole-about-image">
-                        <img
-                            src={getMediaUrl(SITE_CONFIG.aboutCole?.headshot?.r2Path, SITE_CONFIG.aboutCole?.headshot?.fallback)}
+                        <OptimizedImage
+                            src={SITE_CONFIG.aboutCole?.headshot?.r2Path}
                             alt="Cole Swearingen professional"
-                            onError={(e) => {
-                                e.target.src = SITE_CONFIG.aboutCole?.headshot?.fallback;
-                            }}
                         />
                     </div>
                 </div>
@@ -143,12 +133,10 @@ const AboutCole = () => {
                 {showcaseItems.map((item, index) => (
                     <div key={index} className={`elevated-row ${index % 2 === 1 ? 'reverse' : ''}`}>
                         <div className="elevated-image">
-                            <img
-                                src={getMediaUrl(item.r2Path, item.fallback)}
+                            <OptimizedImage
+                                src={item.r2Path}
                                 alt={item.title}
-                                onError={(e) => {
-                                    e.target.src = item.fallback;
-                                }}
+                                width={1000}
                             />
                         </div>
                         <div className="elevated-text-panel">
@@ -165,7 +153,7 @@ const AboutCole = () => {
             <div className="contact-banner" style={{ marginTop: '0', marginBottom: '0' }}>
                 <div className="contact-banner-inner">
                     <div className="banner-content">
-                        <img src={`${SITE_CONFIG.mediaBaseUrl}/${SITE_CONFIG.headshot}`} alt={SITE_CONFIG.agentName} className="banner-thumb" />
+                        <OptimizedImage src={SITE_CONFIG.headshot} alt={SITE_CONFIG.agentName} className="banner-thumb" width={200} />
                         <div className="banner-text">
                             <p>Presented by</p>
                             <h3>{SITE_CONFIG.agentName}</h3>
