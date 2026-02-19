@@ -24,6 +24,11 @@ export const getOptimizedImageUrl = (path, options = {}) => {
         return fullUrl;
     }
 
+    // Skip optimization in development mode
+    if (import.meta.env.DEV) {
+        return fullUrl;
+    }
+
     const { width = 1000, quality = 80, format = 'auto' } = options;
     const params = `width=${width},quality=${quality},format=${format}`;
 
