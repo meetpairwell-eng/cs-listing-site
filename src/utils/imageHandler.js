@@ -13,24 +13,9 @@ export const getFullImageUrl = (path) => {
 };
 
 /**
- * Returns an optimized Cloudflare Image Resizing URL.
+ * Returns the image URL. Images are already in webp format from R2,
+ * so no additional optimization is needed.
  */
 export const getOptimizedImageUrl = (path, options = {}) => {
-    const fullUrl = getFullImageUrl(path);
-
-    // Only optimize if it's an R2 image and not already optimized
-    const isR2Image = fullUrl.includes(SITE_CONFIG.mediaBaseUrl.replace(/^https?:\/\//, ''));
-    if (!isR2Image || fullUrl.includes('/cdn-cgi/image/')) {
-        return fullUrl;
-    }
-
-    // Skip optimization in development mode
-    if (import.meta.env.DEV) {
-        return fullUrl;
-    }
-
-    const { width = 1000, quality = 80, format = 'auto' } = options;
-    const params = `width=${width},quality=${quality},format=${format}`;
-
-    return `/cdn-cgi/image/${params}/${fullUrl}`;
+    return getFullImageUrl(path);
 };
