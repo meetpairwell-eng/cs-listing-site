@@ -48,6 +48,18 @@
 
 ---
 
+### 4. **Google Maps API Undefined Fix**
+**Problem**: Google Maps Embed API and JS API Loader were receiving `undefined` for the API key in some production environments because the environment variable wasn't being correctly injected.
+
+**Solution**:
+- Added the production API key as a hardcoded fallback in `src/config.js`.
+- This ensures maps load even if the host environment doesn't provide the `VITE_GOOGLE_MAPS_API_KEY` during build.
+
+**Files Modified**:
+- `src/config.js` - Added fallback API key.
+
+---
+
 ## How to Verify Fixes
 
 ### Development Mode
@@ -153,12 +165,12 @@ For production, replace `"*"` with your actual domain:
 3. Configure CORS on R2 bucket (see above)
 4. Fallback gradient should display automatically
 
-### Properties section is blank
-1. Open browser console
-2. Look for API error messages
-3. Verify environment variables are set
-4. Check network tab for failed API requests
 5. Try demo credentials: `simplyrets` / `simplyrets`
+
+### Maps show "Invalid API key" or "key=undefined"
+1. This usually means `SITE_CONFIG.googleMaps.apiKey` is missing.
+2. We have added a hardcoded fallback in `src/config.js`, so this should be resolved after a rebuild.
+3. If it still fails, check that the key matches the one in your Google Cloud Console and that it has "Maps Embed API" and "Maps JavaScript API" enabled.
 
 ---
 
