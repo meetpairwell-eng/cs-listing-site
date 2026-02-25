@@ -76,7 +76,7 @@ export const SITE_CONFIG = {
   n8nWebhookUrl: "https://n8n.meetpairwell.com/webhook/lobello-lead",
   // Google Maps Configuration
   googleMaps: {
-    apiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY || 'AIzaSyDFBUJSmoJccQw1ZMDUwiBAibiXgwkhxlo',
+    apiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
     defaultCenter: { lat: 32.7767, lng: -96.7970 }, // Dallas, TX
     defaultZoom: 11
   }

@@ -60,15 +60,32 @@ cp .env.example .env.local
 
 Required variables:
 - `VITE_GOOGLE_MAPS_API_KEY` - Google Maps API key
-- `VITE_SIMPLYRETS_API_KEY` - MLS API credentials (optional)
 
-**Important**: After changing `.env.local`, you MUST restart the dev server.
+Optional variables:
+- `VITE_SIMPLYRETS_API_KEY` - MLS API credentials
+- `VITE_SIMPLYRETS_API_SECRET` - MLS API secret
+- `VITE_AGENT_MLS_ID` - Your MLS agent ID
+
+**Important**:
+- After changing `.env.local`, you MUST restart the dev server
+- NEVER commit `.env.local` to git (it's already in `.gitignore`)
+- See `SECURITY.md` for API key security best practices
+
+## 🔐 Security Setup (IMPORTANT!)
+
+**First-time setup or if you see API key errors:**
+
+1. **Read the security guide**: See [`SECURITY.md`](SECURITY.md) for critical security information
+2. **Configure Google Maps API**: Follow [`GOOGLE_CLOUD_SETUP.md`](GOOGLE_CLOUD_SETUP.md) for step-by-step setup
+3. **Secure your API key**: Apply restrictions in Google Cloud Console (takes 5 minutes)
 
 ## Helpful Guides
 
-- `QUICK_REFERENCE.md` - Quick workflow cheat sheet
-- `NOTABLE_SALES_GUIDE.md` - How to add/edit notable sales
-- `MLS_SETUP_GUIDE.md` - MLS integration setup
+- 🔐 **[`SECURITY.md`](SECURITY.md)** - **READ THIS FIRST** - API key security and rotation procedures
+- 🔧 **[`GOOGLE_CLOUD_SETUP.md`](GOOGLE_CLOUD_SETUP.md)** - Step-by-step Google Maps API setup
+- 📝 `QUICK_REFERENCE.md` - Quick workflow cheat sheet
+- 🏠 `NOTABLE_SALES_GUIDE.md` - How to add/edit notable sales
+- 🏢 `MLS_SETUP_GUIDE.md` - MLS integration setup
 
 ## Scripts
 
