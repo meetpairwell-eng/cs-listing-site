@@ -14,7 +14,7 @@ export const SITE_CONFIG = {
   // Hero Image (Mobile Replacement) - upload to R2
   heroMobileImage: "5609Ursula/5609Ursula-1.webp", // Updated from 3808-Potomac-Hero.webp
   // Headshot from R2
-  headshot: "cole-swearingen-headshot.webp",
+  headshot: "agents/cole-swearingen/profile/headshot.webp",
   // Contact section background
   contactHeroBg: "contact-bg.png",
   // Modal background (Unsplash or R2)
@@ -48,7 +48,7 @@ export const SITE_CONFIG = {
       fallback: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1200&q=80"
     },
     headshot: {
-      r2Path: "cole-swearingen-headshot.webp",
+      r2Path: "agents/cole-swearingen/profile/headshot.webp",
       fallback: "https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=800&q=80"
     },
     showcaseImages: [
